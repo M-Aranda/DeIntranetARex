@@ -5,7 +5,12 @@
       "ProjectGuid": "c2fa9d26-e965-4d25-9948-00a9e9deb395",
       "DisplayName": "DeIntranetARex",
       "ColorIndex": 0
+    },
+    "ccdeed71-ddc5-4bb0-b857-7131e45c6715": {
+      "ProjectGuid": "ccdeed71-ddc5-4bb0-b857-7131e45c6715",
+      "DisplayName": "DeIntranetARex",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
