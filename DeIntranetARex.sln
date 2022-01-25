@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeIntranetARex", "DeIntranetARex.csproj", "{C2FA9D26-E965-4D25-9948-00A9E9DEB395}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeIntranetARex", "DeIntranetARex.csproj", "{CCDEED71-DDC5-4BB0-B857-7131E45C6715}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C2FA9D26-E965-4D25-9948-00A9E9DEB395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2FA9D26-E965-4D25-9948-00A9E9DEB395}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2FA9D26-E965-4D25-9948-00A9E9DEB395}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2FA9D26-E965-4D25-9948-00A9E9DEB395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCDEED71-DDC5-4BB0-B857-7131E45C6715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCDEED71-DDC5-4BB0-B857-7131E45C6715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCDEED71-DDC5-4BB0-B857-7131E45C6715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCDEED71-DDC5-4BB0-B857-7131E45C6715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {55705210-ED84-4B89-A7D2-66ECE6C3A73C}
+		SolutionGuid = {82D12D0D-22A0-40E7-B89D-05EFB6E4ABC5}
 	EndGlobalSection
 EndGlobal

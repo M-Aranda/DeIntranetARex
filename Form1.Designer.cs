@@ -1,15 +1,14 @@
-﻿
-namespace DeIntranetARex
+﻿namespace DeIntranetARex
 {
     partial class Form1
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -24,8 +23,8 @@ namespace DeIntranetARex
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -35,9 +34,9 @@ namespace DeIntranetARex
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(530, 181);
+            this.button1.Location = new System.Drawing.Point(454, 136);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 71);
+            this.button1.Size = new System.Drawing.Size(157, 46);
             this.button1.TabIndex = 0;
             this.button1.Text = "Transformar asistencias";
             this.button1.UseVisualStyleBackColor = true;
@@ -45,9 +44,9 @@ namespace DeIntranetARex
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(530, 293);
+            this.button2.Location = new System.Drawing.Point(454, 211);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(234, 73);
+            this.button2.Size = new System.Drawing.Size(157, 47);
             this.button2.TabIndex = 1;
             this.button2.Text = "Transformar comisiones";
             this.button2.UseVisualStyleBackColor = true;
@@ -55,9 +54,9 @@ namespace DeIntranetARex
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1363, 849);
+            this.ClientSize = new System.Drawing.Size(1066, 513);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
