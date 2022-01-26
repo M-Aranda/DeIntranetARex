@@ -6,5 +6,9 @@ namespace DeIntranetARex
 {
     class Comision
     {
+
+        //ayudantes tiene 26 columnas
+        //conductores tiene 23
+
     }
 }

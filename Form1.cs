@@ -145,6 +145,27 @@ namespace DeIntranetARex
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int colCount = worksheet.Dimension.End.Column;  //get Column Count
                 int rowCount = worksheet.Dimension.End.Row;     //get row count
+               Asistencia encabezado = new Asistencia();
+                encabezado.Empleado = "Empleado";
+                encabezado.Contratos = "Contratos";
+                encabezado.Tipo = "Tipo";
+                encabezado.FechaInicio = "Fecha Inicio";
+                encabezado.FechaTermino = "Fecha Término";
+                encabezado.DiasDeAusencia = "Dias de ausencia";
+                encabezado.Descripcion = "Descripción";
+                encabezado.MedioDia = "Medio día";
+                encabezado.EnviaMailSupervisor = "Envia mail supervisor";
+                encabezado.NumeroDeLicencia = "Número de licencia";
+                encabezado.DiasAPagar = "Días a pagar";
+                encabezado.NoRebaja = "No rebaja";
+                encabezado.FechaDeCalculo = "Fecha Cálculo";
+                encabezado.FechaDeAplicacion = "Fecha Aplicación";
+                encabezado.GoceSueldo = "Goce sueldo";
+                encabezado.TipoDePermiso = "Tipo Permiso";
+
+                asistencias.Add(encabezado);    
+
+
                 for (int row = 1; row <= rowCount; row++)
                 {
 
@@ -152,12 +173,34 @@ namespace DeIntranetARex
                     a.Tipo = worksheet.Cells[row, 1].Value?.ToString().Trim();
                     a.Empleado = worksheet.Cells[row, 3].Value?.ToString().Trim();
                     a.FechaInicio = worksheet.Cells[row, 5].Value?.ToString().Trim();
+                    a.FechaInicio = alterarFormatoDeFecha(a.FechaInicio);
+
+                    switch (a.Tipo)
+                    {
+                        case "Falla":
+                            a.Descripcion = "Falla";
+                            a.Tipo = "F";
+                            a.TipoDePermiso = "";
+                            break;
+                        case "Permiso":
+                            a.Descripcion = "Permiso";
+                            a.Tipo = "P";
+                            a.TipoDePermiso = "N";
+                            break;
+                        default:
+                            a.Descripcion = "Falla";
+                            a.Tipo = "F";
+                            a.TipoDePermiso = "";
+                            break;
+                    }
+
+
+
 
                     a.FechaTermino = a.FechaInicio;
                     a.Contratos = "1";
                     
                     a.DiasDeAusencia = "1";
-                    a.Descripcion = "";
                     a.MedioDia = "";
                     a.EnviaMailSupervisor = "N";
                     a.NumeroDeLicencia = "";
@@ -166,7 +209,7 @@ namespace DeIntranetARex
                     a.FechaDeCalculo = "";
                     a.FechaDeAplicacion = "";
                     a.GoceSueldo = "N";
-                    a.TipoDePermiso = "";
+                    
 
 
                     for (int col = 1; col <= colCount; col++)
@@ -174,7 +217,13 @@ namespace DeIntranetARex
                        // Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
                     }
 
-                    asistencias.Add(a);
+                    if (a.Tipo != "Estado")
+                    {
+                        asistencias.Add(a);
+                    }
+                        
+      
+                    
                 }
             }
 
@@ -202,6 +251,20 @@ namespace DeIntranetARex
                     }
                 }
             }
+        }
+
+
+        private String alterarFormatoDeFecha(String fechaATransformar)
+        {
+            String fechaNueva = "";
+
+            string[] words = fechaATransformar.Split('-');
+            //0 anio
+            //1 mes
+            //2 dia
+            fechaNueva = words[2]+"-"+words[1] + "-"+words[0];
+
+            return fechaNueva;
         }
 
 
