@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using OfficeOpenXml;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 using System.Data;
 using System.Data.SqlClient;
-using Excel = Microsoft.Office.Interop.Excel;
-
-using System.IO;
-using System.Runtime.InteropServices;
 using Windows.Storage;
-using OfficeOpenXml;
-using Microsoft.Office.Interop.Excel;
-
 namespace DeIntranetARex
 {
     public partial class Form1 : Form
@@ -24,12 +22,12 @@ namespace DeIntranetARex
         public Form1()
         {
             InitializeComponent();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string sFileName = "";
-            List<Asistencia> asistencias = new List<Asistencia>();
 
             OpenFileDialog choofdlog = new OpenFileDialog();
             choofdlog.Filter = "Archivos XLSX (*.xlsx)|*.xlsx";
@@ -44,43 +42,16 @@ namespace DeIntranetARex
                 arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
             }
 
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@sFileName);
-            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            Excel.Range xlRange = xlWorksheet.UsedRange;
-
-            int rowCount = xlRange.Rows.Count;
-            int colCount = xlRange.Columns.Count;
-
-            //for (int i = 1; i <= rowCount; i++)
-            //{
-            //    Asistencia a = new Asistencia();
-
-            //    for (int j = 1; j <= colCount; j++)
-            //    {
-                   
-            //        if (j == 1 && xlRange.Cells[i, j].Value2!=null )
-            //        {
-            //            a.Empleado = xlRange.Cells[i, j].Value2.ToString();
-            //        }
-            //        asistencias.Add(a);
-            //    }
-
-            //}
+            List<Asistencia> asistencias = leerExcelDeFallos(sFileName);
 
 
 
 
-
-            
 
             string localfolder = ApplicationData.Current.LocalFolder.Path;
             var array = localfolder.Split('\\');
             var username = array[2];
             string downloads = @"C:\Users\" + username + @"\Downloads";
-
-
-
 
 
             var archivo = new FileInfo(downloads + @"\Asistencias.xlsx");
@@ -111,6 +82,8 @@ namespace DeIntranetARex
                 arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
             }
 
+            readXLS2(sFileName);
+
 
 
 
@@ -121,7 +94,6 @@ namespace DeIntranetARex
             var array = localfolder.Split('\\');
             var username = array[2];
             string downloads = @"C:\Users\" + username + @"\Downloads";
-
 
 
             var archivo = new FileInfo(downloads + @"\Comisiones.xlsx");
@@ -160,6 +132,76 @@ namespace DeIntranetARex
             range.AutoFitColumns();
 
             await package.SaveAsync();
+        }
+
+
+        private List<Asistencia> leerExcelDeFallos(string FilePath)
+        {
+            List<Asistencia> asistencias = new List<Asistencia>();     
+            FileInfo existingFile = new FileInfo(FilePath);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
+            {
+                //get the first worksheet in the workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                int rowCount = worksheet.Dimension.End.Row;     //get row count
+                for (int row = 1; row <= rowCount; row++)
+                {
+
+                    Asistencia a = new Asistencia();
+                    a.Tipo = worksheet.Cells[row, 1].Value?.ToString().Trim();
+                    a.Empleado = worksheet.Cells[row, 3].Value?.ToString().Trim();
+                    a.FechaInicio = worksheet.Cells[row, 5].Value?.ToString().Trim();
+
+                    a.FechaTermino = a.FechaInicio;
+                    a.Contratos = "1";
+                    
+                    a.DiasDeAusencia = "1";
+                    a.Descripcion = "";
+                    a.MedioDia = "";
+                    a.EnviaMailSupervisor = "N";
+                    a.NumeroDeLicencia = "";
+                    a.DiasAPagar = "0";
+                    a.NoRebaja = "N";
+                    a.FechaDeCalculo = "";
+                    a.FechaDeAplicacion = "";
+                    a.GoceSueldo = "N";
+                    a.TipoDePermiso = "";
+
+
+                    for (int col = 1; col <= colCount; col++)
+                    {
+                       // Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
+                    }
+
+                    asistencias.Add(a);
+                }
+            }
+
+            return asistencias;
+        
+        }
+
+
+
+
+        public void readXLS2(string FilePath)
+        {
+            FileInfo existingFile = new FileInfo(FilePath);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
+            {
+                //get the first worksheet in the workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                int rowCount = worksheet.Dimension.End.Row;     //get row count
+                for (int row = 1; row <= rowCount; row++)
+                {
+                    for (int col = 1; col <= colCount; col++)
+                    {
+                        Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
+                    }
+                }
+            }
         }
 
 
