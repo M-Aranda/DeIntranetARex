@@ -82,13 +82,9 @@ namespace DeIntranetARex
                 arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
             }
 
-            readXLS2(sFileName);
+ 
 
-
-
-
-
-            List<Comision> comisiones = new List<Comision>();
+            List<Comision> comisiones = leerExcelDeComisiones(sFileName);
 
             string localfolder = ApplicationData.Current.LocalFolder.Path;
             var array = localfolder.Split('\\');
@@ -234,8 +230,11 @@ namespace DeIntranetARex
 
 
 
-        public void readXLS2(string FilePath)
+        private List<Comision>  leerExcelDeComisiones(string FilePath)
         {
+
+            List<Comision> comisiones = new List<Comision>();
+
             FileInfo existingFile = new FileInfo(FilePath);
             using (ExcelPackage package = new ExcelPackage(existingFile))
             {
@@ -245,12 +244,46 @@ namespace DeIntranetARex
                 int rowCount = worksheet.Dimension.End.Row;     //get row count
                 for (int row = 1; row <= rowCount; row++)
                 {
-                    for (int col = 1; col <= colCount; col++)
+
+
+                    Comision c = new Comision();
+                    String numerosRut = worksheet.Cells[row, 2].Value?.ToString().Trim();
+                    String digitoVerificador = worksheet.Cells[row, 3].Value?.ToString().Trim();
+                    String rut = numerosRut + "-" + digitoVerificador;
+                    c.Plantilla = rut;
+                    c.Contrato = "1";
+
+                    Comision vuelta1 = new Comision();
+                    Comision vuelta2 = new Comision();
+                    Comision totalCajas = new Comision();
+                    Comision cajasFijas = new Comision();
+                    Comision semanaCorrida = new Comision();
+                    Comision innovacion = new Comision();
+                    Comision clientes = new Comision();
+                    Comision dotacion = new Comision();
+                    Comision bonificado = new Comision();
+                    Comision cargaLiquidada = new Comision();
+                    Comision bonoAsistencia = new Comision();
+                    Comision recargue = new Comision();
+
+
+
+                    //for (int col = 1; col <= colCount; col++)
+                    //{
+                    //    Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
+                    //}
+
+                    if(c.Plantilla!= "Rut-Dv")
                     {
-                        Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
+                        comisiones.Add(c);
                     }
+                    
+                    
                 }
             }
+
+            return comisiones;
+
         }
 
 
