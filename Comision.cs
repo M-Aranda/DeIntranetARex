@@ -12,19 +12,19 @@ namespace DeIntranetARex
 
 
         private String plantilla;//el rut
-        private String contrato;
-        private String concepto;
-        private String valor;
-        private String origen;
-        private String objeto;
-        private String periodoDePago;
-        private String fechaDeInicio;
-        private String fechaDeTermino;
-        private String institucion;
-        private String datoAdicional;
-        private String comentario;
-        private String valorPorDefecto;
-        private String accion;
+        private String contrato;//cantidad de contratos siempre es 1
+        private String concepto;// codigo de concepto en rex
+        private String valor;// valor de concepto que viene en el Excel que hace Francisco
+        private String origen; //siempre es M
+        private String objeto;//siempre es vacío
+        private String periodoDePago;// siempre es M
+        private String fechaDeInicio;// siempre es vacío
+        private String fechaDeTermino;// siempre es vacío
+        private String institucion;// siempre es vacío
+        private String datoAdicional;// siempre es vacío
+        private String comentario;// siempre es vacío
+        private String valorPorDefecto;// siempre es vacío
+        private String accion;// siempre es vacío
 
 
 
