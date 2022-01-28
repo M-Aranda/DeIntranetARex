@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DeIntranetARex
 {
-    class Asistencia
+    class Ausencia
     {
         private String empleado;
         private String contratos;
@@ -26,7 +26,7 @@ namespace DeIntranetARex
         //el archivo de ayudantes entrante tiene 17 columnas, pero el de conductores 16
         //para los efectos subir fallas en masa a manager, solo necesito el rut, el dia y el tipo de ausencia (falla o permiso)
 
-        public Asistencia(string empleado, string contratos, string tipo, string fechaInicio, string fechaTermino, string diasDeAusencia, string descripcion, string medioDia, string enviaMailSupervisor, string numeroDeLicencia, string diasAPagar, string noRebaja, string fechaDeCalculo, string fechaDeAplicacion, string goceSueldo, string tipoDePermiso)
+        public Ausencia(string empleado, string contratos, string tipo, string fechaInicio, string fechaTermino, string diasDeAusencia, string descripcion, string medioDia, string enviaMailSupervisor, string numeroDeLicencia, string diasAPagar, string noRebaja, string fechaDeCalculo, string fechaDeAplicacion, string goceSueldo, string tipoDePermiso)
         {
             this.Empleado = empleado;
             this.Contratos = contratos;
@@ -46,7 +46,7 @@ namespace DeIntranetARex
             this.TipoDePermiso = tipoDePermiso;
         }
 
-        public Asistencia()
+        public Ausencia()
         {
 
         }

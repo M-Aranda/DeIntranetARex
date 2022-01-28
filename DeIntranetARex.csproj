@@ -118,7 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asistencia.cs" />
+    <Compile Include="Ausencia.cs" />
     <Compile Include="Comision.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

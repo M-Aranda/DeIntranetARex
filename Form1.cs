@@ -46,7 +46,7 @@ namespace DeIntranetARex
                 arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
             }
 
-            List<Asistencia> asistencias = leerExcelDeFallos(sFileName);
+            List<Ausencia> ausencias = leerExcelDeFallos(sFileName);
 
 
 
@@ -60,7 +60,7 @@ namespace DeIntranetARex
 
             var archivo = new FileInfo(downloads + @"\Asistencias.xlsx");
 
-            SaveExcelFileAsistencia(asistencias, archivo);
+            SaveExcelFileAusencia(ausencias, archivo);
 
             MessageBox.Show("Archivo Excel de asistencias creado en carpeta de descargas!");
 
@@ -116,7 +116,7 @@ namespace DeIntranetARex
 
 
 
-        private static async Task SaveExcelFileAsistencia(List<Asistencia> asistencias, FileInfo file)
+        private static async Task SaveExcelFileAusencia(List<Ausencia> asistencias, FileInfo file)
         {
             var package = new ExcelPackage(file);
             var ws = package.Workbook.Worksheets.Add("Asistencias");
@@ -143,9 +143,9 @@ namespace DeIntranetARex
         }
 
 
-        private List<Asistencia> leerExcelDeFallos(string FilePath)
+        private List<Ausencia> leerExcelDeFallos(string FilePath)
         {
-            List<Asistencia> asistencias = new List<Asistencia>();     
+            List<Ausencia> ausencias = new List<Ausencia>();     
             FileInfo existingFile = new FileInfo(FilePath);
             using (ExcelPackage package = new ExcelPackage(existingFile))
             {
@@ -153,7 +153,7 @@ namespace DeIntranetARex
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int colCount = worksheet.Dimension.End.Column;  //get Column Count
                 int rowCount = worksheet.Dimension.End.Row;     //get row count
-               Asistencia encabezado = new Asistencia();
+               Ausencia encabezado = new Ausencia();
                 encabezado.Empleado = "Empleado";
                 encabezado.Contratos = "Contratos";
                 encabezado.Tipo = "Tipo";
@@ -171,13 +171,13 @@ namespace DeIntranetARex
                 encabezado.GoceSueldo = "Goce sueldo";
                 encabezado.TipoDePermiso = "Tipo Permiso";
 
-                asistencias.Add(encabezado);    
+                ausencias.Add(encabezado);    
 
 
                 for (int row = 1; row <= rowCount; row++)
                 {
 
-                    Asistencia a = new Asistencia();
+                    Ausencia a = new Ausencia();
                     a.Tipo = worksheet.Cells[row, 1].Value?.ToString().Trim();
                     a.Empleado = worksheet.Cells[row, 3].Value?.ToString().Trim();
                     a.FechaInicio = worksheet.Cells[row, 5].Value?.ToString().Trim();
@@ -227,7 +227,7 @@ namespace DeIntranetARex
 
                     if (a.Tipo != "Estado")
                     {
-                        asistencias.Add(a);
+                        ausencias.Add(a);
                     }
                         
       
@@ -235,7 +235,7 @@ namespace DeIntranetARex
                 }
             }
 
-            return asistencias;
+            return ausencias;
         
         }
 
@@ -403,13 +403,20 @@ namespace DeIntranetARex
 
         private String alterarFormatoDeFecha(String fechaATransformar)
         {
-            String fechaNueva = "";
 
-            string[] words = fechaATransformar.Split('-');
-            //0 anio
-            //1 mes
-            //2 dia
-            fechaNueva = words[2]+"-"+words[1] + "-"+words[0];
+            String fechaNueva = "";
+            if (fechaATransformar != "Fecha")
+            {
+                fechaNueva = "";
+
+                string[] words = fechaATransformar.Split('-');
+                //0 anio
+                //1 mes
+                //2 dia
+                fechaNueva = words[2] + "-" + words[1] + "-" + words[0];
+
+                
+            }
 
             return fechaNueva;
         }
