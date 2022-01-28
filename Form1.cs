@@ -18,11 +18,15 @@ using Windows.Storage;
 namespace DeIntranetARex
 {
     public partial class Form1 : Form
+
     {
+        private bool esArchivoDeAyudantes = true;
+
         public Form1()
         {
             InitializeComponent();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,13 +94,21 @@ namespace DeIntranetARex
             var array = localfolder.Split('\\');
             var username = array[2];
             string downloads = @"C:\Users\" + username + @"\Downloads";
+            String tipoDeArchivo = "";
+            if (esArchivoDeAyudantes == true)
+            {
+                tipoDeArchivo = "ayudantes";
+            }else if(esArchivoDeAyudantes == false)
+            {
+                tipoDeArchivo = "conductores";
+            }
 
 
-            var archivo = new FileInfo(downloads + @"\Comisiones.xlsx");
+            var archivo = new FileInfo(downloads + @"\Comisiones de "+tipoDeArchivo+".xlsx");
 
             SaveExcelFileComision(comisiones, archivo);
 
-            MessageBox.Show("Archivo Excel de comisiones creado en carpeta de descargas!");
+            MessageBox.Show("Archivo Excel de comisiones de "+ tipoDeArchivo + " creado en carpeta de descargas!");
         }
 
 
@@ -242,9 +254,6 @@ namespace DeIntranetARex
 
                 //si el titulo de la quinta columna es Cajas v1, entonces es un archivo de ayudantes, si no, es de Conductores
 
-                Boolean esArchivoDeAyudantes = false;
-
-
                 //get the first worksheet in the workbook
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int colCount = worksheet.Dimension.End.Column;  //get Column Count
@@ -254,6 +263,10 @@ namespace DeIntranetARex
                 if (worksheet.Cells[1, 5].Value?.ToString().Trim()== "Cajas v1")
                 {
                     esArchivoDeAyudantes = true;
+                }
+                else
+                {
+                    esArchivoDeAyudantes = false;
                 }
 
                 for (int row = 1; row <= rowCount; row++)
@@ -364,14 +377,18 @@ namespace DeIntranetARex
 
                     //for (int col = 1; col <= colCount; col++)
                     //{
-                    //    Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
+                    //    Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value ?.ToString().Trim());
                     //}
 
                     foreach (var item in comisionesTemporales)
                     {
-                        if(Convert.ToInt32(item.Valor)>0)
-                        {
-                            comisiones.Add(c);
+
+                        
+
+                        if (item.Plantilla!="Rut-Dv" && item.Valor!="0" && String.IsNullOrEmpty(item.Valor)==false)
+                        {                        
+                                comisiones.Add(item);
+                                                
                         }
                     }
                     
