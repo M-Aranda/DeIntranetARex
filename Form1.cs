@@ -396,6 +396,8 @@ namespace DeIntranetARex
                 }
             }
 
+            comisiones = comisiones.Distinct().ToList();
+
             return comisiones;
 
         }
@@ -444,7 +446,15 @@ namespace DeIntranetARex
             return comision;
         }
 
+        private void mostrarAyuda()
+        {
+            MessageBox.Show("para subir asistencias a rex: * recibir excel de Francisco * copiar los datos que vienen filtrados en el excel, a un excel nuevo que tenga la cabecera(ese excel se descarga de rex) * Guardar el nuevo excel con los registros copiados como formato CSV * Enviar a las de remuneraciones para que ellas hagan la carga");
 
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mostrarAyuda();
+        }
     }
 }

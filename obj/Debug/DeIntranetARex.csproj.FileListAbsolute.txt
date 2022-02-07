@@ -41,3 +41,4 @@ C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.CoreCompil
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.CopyComplete
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.exe
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.pdb
+C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.SuggestedBindingRedirects.cache
