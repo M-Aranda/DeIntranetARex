@@ -22,11 +22,12 @@ namespace DeIntranetARex
         private String fechaDeAplicacion;
         private String goceSueldo;
         private String tipoDePermiso;
+        private String nombreDeEmpleado;
 
         //el archivo de ayudantes entrante tiene 17 columnas, pero el de conductores 16
         //para los efectos subir fallas en masa a manager, solo necesito el rut, el dia y el tipo de ausencia (falla o permiso)
 
-        public Ausencia(string empleado, string contratos, string tipo, string fechaInicio, string fechaTermino, string diasDeAusencia, string descripcion, string medioDia, string enviaMailSupervisor, string numeroDeLicencia, string diasAPagar, string noRebaja, string fechaDeCalculo, string fechaDeAplicacion, string goceSueldo, string tipoDePermiso)
+        public Ausencia(string empleado, string contratos, string tipo, string fechaInicio, string fechaTermino, string diasDeAusencia, string descripcion, string medioDia, string enviaMailSupervisor, string numeroDeLicencia, string diasAPagar, string noRebaja, string fechaDeCalculo, string fechaDeAplicacion, string goceSueldo, string tipoDePermiso, string nombreDeEmpleado)
         {
             this.Empleado = empleado;
             this.Contratos = contratos;
@@ -44,6 +45,7 @@ namespace DeIntranetARex
             this.FechaDeAplicacion = fechaDeAplicacion;
             this.GoceSueldo = goceSueldo;
             this.TipoDePermiso = tipoDePermiso;
+            this.nombreDeEmpleado = nombreDeEmpleado;
         }
 
         public Ausencia()
@@ -67,6 +69,8 @@ namespace DeIntranetARex
         public string FechaDeAplicacion { get => fechaDeAplicacion; set => fechaDeAplicacion = value; }
         public string GoceSueldo { get => goceSueldo; set => goceSueldo = value; }
         public string TipoDePermiso { get => tipoDePermiso; set => tipoDePermiso = value; }
+
+        public string NombreDeEmpleado { get => nombreDeEmpleado; set => nombreDeEmpleado = value; }
 
 
 

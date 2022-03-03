@@ -51,7 +51,7 @@ namespace DeIntranetARex
 
 
 
-
+            
             string localfolder = ApplicationData.Current.LocalFolder.Path;
             var array = localfolder.Split('\\');
             var username = array[2];
@@ -170,6 +170,7 @@ namespace DeIntranetARex
                 encabezado.FechaDeAplicacion = "Fecha Aplicación";
                 encabezado.GoceSueldo = "Goce sueldo";
                 encabezado.TipoDePermiso = "Tipo Permiso";
+                encabezado.NombreDeEmpleado = "Nombre de empleado";
 
                 ausencias.Add(encabezado);    
 
@@ -217,6 +218,7 @@ namespace DeIntranetARex
                     a.FechaDeCalculo = "";
                     a.FechaDeAplicacion = "";
                     a.GoceSueldo = "N";
+                    a.NombreDeEmpleado = worksheet.Cells[row, 4].Value?.ToString().Trim();
                     
 
 
@@ -297,8 +299,8 @@ namespace DeIntranetARex
                     {
                         //es archivo de ayudantes
                         //los posibles conceptos son estos:
-                        //Comisión V1 == ComisionMi columna 14
-                        //Comisión V2 == COMISDAVUELTA columna 15
+                        //Comisión V1 == comisionMi columna 14 (SE CAMBIO)
+                        //Comisión V2 == COMISDAVUELTA columna 15 
                         //Cajas Fijas == CAJASF columna 17
                         //Semana Corrida == semanaCorr columna 18
                         //Innovacion == BONOINNOV columna 19
@@ -307,7 +309,7 @@ namespace DeIntranetARex
                         //Bonificado == BOCARGBONI columna 22
                         //Bono Asistencia == BonoAsis columna 24
                         //Recargue == VIATICOREC columna 25
-                        Comision comisionPrimeraVuelta = retornarComisionConConcepto(c, "ComisionMi", worksheet.Cells[row, 14].Value?.ToString().Trim());
+                        Comision comisionPrimeraVuelta = retornarComisionConConcepto(c, "comisionMi", worksheet.Cells[row, 14].Value?.ToString().Trim());
                         Comision comisionSegundaVuelta = retornarComisionConConcepto(c, "COMISDAVUELTA", worksheet.Cells[row, 15].Value?.ToString().Trim());
                         Comision comisionCajasFijas = retornarComisionConConcepto(c, "CAJASF", worksheet.Cells[row, 17].Value?.ToString().Trim());
                         Comision comisionSemanaCorrida = retornarComisionConConcepto(c, "semanaCorr", worksheet.Cells[row, 18].Value?.ToString().Trim());
@@ -337,23 +339,23 @@ namespace DeIntranetARex
                         //Comisión == comisionMi columna 12
                         //Cajas Fijas == CAJASF columna 13
                         //Cli. 10p. == VIATIVISITA columna 14
-                        //Semana Corrida == semanacorr columna 16
+                        //Semana Corrida == semanaCorr columna 16
                         //Asig.Cajas == asigPerdCajaMi columna 17
                         //Dotación == BONODOT columna 18
                         //Bonificado == BOCARGBONI columna 19
-                        //Bono por Caja == VIATICOEXTCAJA columna 20
+                        //Bono por Caja == VIATICOEXTCAJ columna 20
                         //Bono Asistencia == BonoAsis columna 21
                         //Recargue == VIATICOREC columna 22
 
 
-                        Comision comisionSimple = retornarComisionConConcepto(c, "ComisionMi", worksheet.Cells[row, 12].Value?.ToString().Trim());
+                        Comision comisionSimple = retornarComisionConConcepto(c, "comisionMi", worksheet.Cells[row, 12].Value?.ToString().Trim());
                         Comision comisionCajasFijas = retornarComisionConConcepto(c, "CAJASF", worksheet.Cells[row, 13].Value?.ToString().Trim());
                         Comision comisionCli10p = retornarComisionConConcepto(c, "VIATIVISITA", worksheet.Cells[row, 14].Value?.ToString().Trim());
-                        Comision comisionSemanaCorrida = retornarComisionConConcepto(c, "semanacorr", worksheet.Cells[row, 16].Value?.ToString().Trim());
+                        Comision comisionSemanaCorrida = retornarComisionConConcepto(c, "semanaCorr", worksheet.Cells[row, 16].Value?.ToString().Trim());
                         Comision comisionAsignacionDeCajas = retornarComisionConConcepto(c, "asigPerdCajaMi", worksheet.Cells[row, 17].Value?.ToString().Trim());
                         Comision comisionDotacion = retornarComisionConConcepto(c, "BONODOT", worksheet.Cells[row, 18].Value?.ToString().Trim());
                         Comision comisionBonificado = retornarComisionConConcepto(c, "BOCARGBONI", worksheet.Cells[row, 19].Value?.ToString().Trim());
-                        Comision comisionBonoPorCaja = retornarComisionConConcepto(c, "VIATICOEXTCAJA", worksheet.Cells[row, 20].Value?.ToString().Trim());
+                        Comision comisionBonoPorCaja = retornarComisionConConcepto(c, "VIATICOEXTCAJ", worksheet.Cells[row, 20].Value?.ToString().Trim());
                         Comision comisionBonoAsistencia = retornarComisionConConcepto(c, "BonoAsis", worksheet.Cells[row, 21].Value?.ToString().Trim());
                         Comision comisionRecargue = retornarComisionConConcepto(c, "VIATICOREC", worksheet.Cells[row, 22].Value?.ToString().Trim());
 
