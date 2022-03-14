@@ -309,8 +309,8 @@ namespace DeIntranetARex
                         //Bonificado == BOCARGBONI columna 22
                         //Bono Asistencia == BonoAsis columna 24
                         //Recargue == VIATICOREC columna 25
-                        Comision comisionPrimeraVuelta = retornarComisionConConcepto(c, "comisionMi", worksheet.Cells[row, 14].Value?.ToString().Trim());
-                        Comision comisionSegundaVuelta = retornarComisionConConcepto(c, "COMISDAVUELTA", worksheet.Cells[row, 15].Value?.ToString().Trim());
+                        Comision comisionPrimeraVuelta = retornarComisionConConcepto(c, "COMISION", worksheet.Cells[row, 14].Value?.ToString().Trim());//comisionMi
+                        Comision comisionSegundaVuelta = retornarComisionConConcepto(c, "COMISDAVUELT", worksheet.Cells[row, 15].Value?.ToString().Trim());//COMISDAVUELTA
                         Comision comisionCajasFijas = retornarComisionConConcepto(c, "CAJASF", worksheet.Cells[row, 17].Value?.ToString().Trim());
                         Comision comisionSemanaCorrida = retornarComisionConConcepto(c, "semanaCorr", worksheet.Cells[row, 18].Value?.ToString().Trim());
                         Comision comisionInnovacion = retornarComisionConConcepto(c, "BONOINNOV", worksheet.Cells[row, 19].Value?.ToString().Trim());
@@ -348,7 +348,7 @@ namespace DeIntranetARex
                         //Recargue == VIATICOREC columna 22
 
 
-                        Comision comisionSimple = retornarComisionConConcepto(c, "comisionMi", worksheet.Cells[row, 12].Value?.ToString().Trim());
+                        Comision comisionSimple = retornarComisionConConcepto(c, "COMISION", worksheet.Cells[row, 12].Value?.ToString().Trim());//comisionMi
                         Comision comisionCajasFijas = retornarComisionConConcepto(c, "CAJASF", worksheet.Cells[row, 13].Value?.ToString().Trim());
                         Comision comisionCli10p = retornarComisionConConcepto(c, "VIATIVISITA", worksheet.Cells[row, 14].Value?.ToString().Trim());
                         Comision comisionSemanaCorrida = retornarComisionConConcepto(c, "semanaCorr", worksheet.Cells[row, 16].Value?.ToString().Trim());
