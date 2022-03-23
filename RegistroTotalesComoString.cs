@@ -9,6 +9,7 @@ namespace DeIntranetARex
     internal class RegistroTotalesComoString
     {
 
+        private String proceso;
         private String centro;
         private String cantidadDeConductoresActivos;
         private String cantidadDeConductoresDeLicencia;
@@ -31,6 +32,7 @@ namespace DeIntranetARex
 
         public RegistroTotalesComoString(RegistroDeTotales r)
         {
+
             this.Centro = r.Centro;
             this.CantidadDeConductoresActivos = r.CantidadDeConductoresActivos.ToString();
             this.CantidadDeConductoresDeLicencia = r.CantidadDeConductoresDeLicencia.ToString();
@@ -46,6 +48,13 @@ namespace DeIntranetARex
             this.TotalRemuneracionesAyudantes = r.TotalRemuneracionesAyudantes.ToString();
             this.TotalRemuneracionesOtros = r.TotalRemuneracionesOtros.ToString();
             this.TotalRemuneracionesDeTodosLosTrabajadores = r.TotalRemuneracionesDeTodosLosTrabajadores.ToString();
+        }
+
+        public RegistroTotalesComoString(String procesoEnLugarDeFecha)        
+        {
+
+            this.Centro = procesoEnLugarDeFecha;
+
         }
 
         public RegistroTotalesComoString(string centro, string cantidadDeConductoresActivos, string cantidadDeConductoresDeLicencia, string cantidadDeAyudantesActivos, string cantidadDeAyudantesDeLicencia, string cantidadDeApoyosActivos, string cantidadDeApoyosDeLicencia, string totalConductores, string totalAyudantes, string totalApoyos, string totalDotacion, string totalRemuneracionesConductores, string totalRemuneracionesAyudantes, string totalRemuneracionesOtros, string totalRemuneracionesDeTodosLosTrabajadores)

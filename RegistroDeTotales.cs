@@ -24,6 +24,7 @@ namespace DeIntranetARex
         private int totalRemuneracionesAyudantes;
         private int totalRemuneracionesOtros;
         private int totalRemuneracionesDeTodosLosTrabajadores;
+        
 
         public RegistroDeTotales()
         {

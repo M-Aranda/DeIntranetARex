@@ -502,9 +502,38 @@ namespace DeIntranetARex
 
         private List<RegistroTotalesComoString> procesarRegistrosMensuales(List<RegistroMensualDeTrabajador> registrosMensualesDeTrabajadores)
         {
-            List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
+
+            List<RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
+
+            List<String> procesos = new List<String>();
+
+            for (int i = 2022; i < 2023; i++)
+            {
+                for (int j = 1; j < 13; j++)
+                {
+                    if (j<10)
+                    {
+                        procesos.Add(i+"-0"+j);
+                    }
+                    else
+                    {
+                        procesos.Add(i + "-" + j);
+                    }
+                }
+            }
+
+
+            foreach (var procesoActual in procesos)
+            {
+                
+            
+
+            //List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
 
             //un registro de totales por centro
+
+            RegistroDeTotales registroProceso = new RegistroDeTotales(procesoActual, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             RegistroDeTotales registroCurico = new RegistroDeTotales("Curico",0,0,0,0,0,0,0,0,0,0,0,0,0,0);
             RegistroDeTotales registroInterplanta = new RegistroDeTotales("Interplanta", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             RegistroDeTotales registroRancagua = new RegistroDeTotales("Rancagua", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -515,914 +544,922 @@ namespace DeIntranetARex
             RegistroDeTotales registroSantiago = new RegistroDeTotales("Santiago", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             RegistroDeTotales registroMovilizadores = new RegistroDeTotales("Movilizadores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             RegistroDeTotales registroAdministracion = new RegistroDeTotales("Administracion", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+              
+
 
 
             foreach (var item in registrosMensualesDeTrabajadores)
             {
-                if (item.Proceso == "2022-02")
-                {
-                    if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
+
+                    if (item.Proceso == procesoActual)
                     {
-                        switch (item.Nombre_cargo)
+
+                        if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroCurico.TotalAyudantes = registroCurico.TotalAyudantes + 1;
-                                registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroCurico.CantidadDeAyudantesDeLicencia = registroCurico.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroCurico.TotalAyudantes = registroCurico.TotalAyudantes + 1;
+                                    registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroCurico.CantidadDeAyudantesDeLicencia = registroCurico.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroCurico.CantidadDeAyudantesActivos = registroCurico.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroCurico.CantidadDeAyudantesActivos = registroCurico.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroCurico.TotalAyudantes = registroCurico.TotalAyudantes + 1;
-                                registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroCurico.CantidadDeAyudantesDeLicencia = registroCurico.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroCurico.TotalAyudantes = registroCurico.TotalAyudantes + 1;
+                                    registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroCurico.CantidadDeAyudantesDeLicencia = registroCurico.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroCurico.CantidadDeAyudantesActivos = registroCurico.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroCurico.CantidadDeAyudantesActivos = registroCurico.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
-                                registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroCurico.CantidadDeConductoresDeLicencia = registroCurico.CantidadDeConductoresDeLicencia + 1;
+                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
+                                    registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroCurico.CantidadDeConductoresDeLicencia = registroCurico.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroCurico.CantidadDeConductoresActivos = registroCurico.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroCurico.CantidadDeConductoresActivos = registroCurico.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
-                                registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroCurico.CantidadDeConductoresDeLicencia = registroCurico.CantidadDeConductoresDeLicencia + 1;
+                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
+                                    registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroCurico.CantidadDeConductoresDeLicencia = registroCurico.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroCurico.CantidadDeConductoresActivos = registroCurico.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroCurico.CantidadDeConductoresActivos = registroCurico.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroCurico.TotalApoyos = registroCurico.TotalApoyos + 1;
-                                registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroCurico.CantidadDeApoyosDeLicencia = registroCurico.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroCurico.TotalApoyos = registroCurico.TotalApoyos + 1;
+                                    registroCurico.TotalDotacion = registroCurico.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroCurico.CantidadDeApoyosDeLicencia = registroCurico.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroCurico.CantidadDeApoyosActivos = registroCurico.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroCurico.CantidadDeApoyosActivos = registroCurico.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroCurico.TotalRemuneracionesOtros = registroCurico.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesOtros = registroCurico.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
 
 
-
-                    }
-
-
-                    if (item.Nombre_centro_costo == "ILLAPEL")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "ILLAPEL")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroIllapel.TotalAyudantes = registroIllapel.TotalAyudantes + 1;
-                                registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroIllapel.CantidadDeAyudantesDeLicencia = registroIllapel.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroIllapel.TotalAyudantes = registroIllapel.TotalAyudantes + 1;
+                                    registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroIllapel.CantidadDeAyudantesDeLicencia = registroIllapel.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroIllapel.CantidadDeAyudantesActivos = registroIllapel.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroIllapel.CantidadDeAyudantesActivos = registroIllapel.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroIllapel.TotalAyudantes = registroIllapel.TotalAyudantes + 1;
-                                registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroIllapel.CantidadDeAyudantesDeLicencia = registroIllapel.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroIllapel.TotalAyudantes = registroIllapel.TotalAyudantes + 1;
+                                    registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroIllapel.CantidadDeAyudantesDeLicencia = registroIllapel.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroIllapel.CantidadDeAyudantesActivos = registroIllapel.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroIllapel.CantidadDeAyudantesActivos = registroIllapel.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
-                                registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroIllapel.CantidadDeConductoresDeLicencia = registroIllapel.CantidadDeConductoresDeLicencia + 1;
+                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
+                                    registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroIllapel.CantidadDeConductoresDeLicencia = registroIllapel.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroIllapel.CantidadDeConductoresActivos = registroIllapel.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroIllapel.CantidadDeConductoresActivos = registroIllapel.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
-                                registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroIllapel.CantidadDeConductoresDeLicencia = registroIllapel.CantidadDeConductoresDeLicencia + 1;
+                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
+                                    registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroIllapel.CantidadDeConductoresDeLicencia = registroIllapel.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroIllapel.CantidadDeConductoresActivos = registroIllapel.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroIllapel.CantidadDeConductoresActivos = registroIllapel.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroIllapel.TotalApoyos = registroIllapel.TotalApoyos + 1;
-                                registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroIllapel.CantidadDeApoyosDeLicencia = registroIllapel.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroIllapel.TotalApoyos = registroIllapel.TotalApoyos + 1;
+                                    registroIllapel.TotalDotacion = registroIllapel.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroIllapel.CantidadDeApoyosDeLicencia = registroIllapel.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroIllapel.CantidadDeApoyosActivos = registroIllapel.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroIllapel.CantidadDeApoyosActivos = registroIllapel.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroIllapel.TotalRemuneracionesOtros = registroIllapel.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesOtros = registroIllapel.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
+
                         }
-
-
-                    }
-                    if (item.Nombre_centro_costo == "INTERPLANTA" || item.Nombre_centro_costo == "INTERPLANTA E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "INTERPLANTA" || item.Nombre_centro_costo == "INTERPLANTA E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroInterplanta.TotalAyudantes = registroInterplanta.TotalAyudantes + 1;
-                                registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroInterplanta.CantidadDeAyudantesDeLicencia = registroInterplanta.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroInterplanta.TotalAyudantes = registroInterplanta.TotalAyudantes + 1;
+                                    registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroInterplanta.CantidadDeAyudantesDeLicencia = registroInterplanta.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroInterplanta.CantidadDeAyudantesActivos = registroInterplanta.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroInterplanta.CantidadDeAyudantesActivos = registroInterplanta.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroInterplanta.TotalAyudantes = registroInterplanta.TotalAyudantes + 1;
-                                registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroInterplanta.CantidadDeAyudantesDeLicencia = registroInterplanta.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroInterplanta.TotalAyudantes = registroInterplanta.TotalAyudantes + 1;
+                                    registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroInterplanta.CantidadDeAyudantesDeLicencia = registroInterplanta.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroInterplanta.CantidadDeAyudantesActivos = registroInterplanta.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroInterplanta.CantidadDeAyudantesActivos = registroInterplanta.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroInterplanta.TotalConductores = registroInterplanta.TotalConductores + 1;
-                                registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroInterplanta.CantidadDeConductoresDeLicencia = registroInterplanta.CantidadDeConductoresDeLicencia + 1;
+                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroInterplanta.TotalConductores = registroInterplanta.TotalConductores + 1;
+                                    registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroInterplanta.CantidadDeConductoresDeLicencia = registroInterplanta.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroInterplanta.CantidadDeConductoresActivos = registroInterplanta.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroInterplanta.CantidadDeConductoresActivos = registroInterplanta.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroInterplanta.TotalConductores = registroInterplanta.TotalConductores + 1;
-                                registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroInterplanta.CantidadDeConductoresDeLicencia = registroInterplanta.CantidadDeConductoresDeLicencia + 1;
+                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroInterplanta.TotalConductores = registroInterplanta.TotalConductores + 1;
+                                    registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroInterplanta.CantidadDeConductoresDeLicencia = registroInterplanta.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroInterplanta.CantidadDeConductoresActivos = registroInterplanta.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroInterplanta.CantidadDeConductoresActivos = registroInterplanta.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroInterplanta.TotalApoyos = registroInterplanta.TotalApoyos + 1;
-                                registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroInterplanta.CantidadDeApoyosDeLicencia = registroInterplanta.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroInterplanta.TotalApoyos = registroInterplanta.TotalApoyos + 1;
+                                    registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroInterplanta.CantidadDeApoyosDeLicencia = registroInterplanta.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroInterplanta.CantidadDeApoyosActivos = registroInterplanta.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroInterplanta.CantidadDeApoyosActivos = registroInterplanta.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroInterplanta.TotalRemuneracionesOtros = registroInterplanta.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesOtros = registroInterplanta.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
-
-                    }
-                    if (item.Nombre_centro_costo == "MELIPILLA" || item.Nombre_centro_costo == "MELIPILLA E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "MELIPILLA" || item.Nombre_centro_costo == "MELIPILLA E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroMelipilla.TotalAyudantes = registroMelipilla.TotalAyudantes + 1;
-                                registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMelipilla.CantidadDeAyudantesDeLicencia = registroMelipilla.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroMelipilla.TotalAyudantes = registroMelipilla.TotalAyudantes + 1;
+                                    registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMelipilla.CantidadDeAyudantesDeLicencia = registroMelipilla.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMelipilla.CantidadDeAyudantesActivos = registroMelipilla.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMelipilla.CantidadDeAyudantesActivos = registroMelipilla.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroMelipilla.TotalAyudantes = registroMelipilla.TotalAyudantes + 1;
-                                registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMelipilla.CantidadDeAyudantesDeLicencia = registroMelipilla.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroMelipilla.TotalAyudantes = registroMelipilla.TotalAyudantes + 1;
+                                    registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMelipilla.CantidadDeAyudantesDeLicencia = registroMelipilla.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMelipilla.CantidadDeAyudantesActivos = registroMelipilla.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMelipilla.CantidadDeAyudantesActivos = registroMelipilla.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
-                                registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMelipilla.CantidadDeConductoresDeLicencia = registroMelipilla.CantidadDeConductoresDeLicencia + 1;
+                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
+                                    registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMelipilla.CantidadDeConductoresDeLicencia = registroMelipilla.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMelipilla.CantidadDeConductoresActivos = registroMelipilla.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMelipilla.CantidadDeConductoresActivos = registroMelipilla.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
-                                registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMelipilla.CantidadDeConductoresDeLicencia = registroMelipilla.CantidadDeConductoresDeLicencia + 1;
+                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
+                                    registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMelipilla.CantidadDeConductoresDeLicencia = registroMelipilla.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMelipilla.CantidadDeConductoresActivos = registroMelipilla.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMelipilla.CantidadDeConductoresActivos = registroMelipilla.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroMelipilla.TotalApoyos = registroMelipilla.TotalApoyos + 1;
-                                registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMelipilla.CantidadDeApoyosDeLicencia = registroMelipilla.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroMelipilla.TotalApoyos = registroMelipilla.TotalApoyos + 1;
+                                    registroMelipilla.TotalDotacion = registroMelipilla.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMelipilla.CantidadDeApoyosDeLicencia = registroMelipilla.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMelipilla.CantidadDeApoyosActivos = registroMelipilla.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMelipilla.CantidadDeApoyosActivos = registroMelipilla.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMelipilla.TotalRemuneracionesOtros = registroMelipilla.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesOtros = registroMelipilla.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
-
-                    }
-                    if (item.Nombre_centro_costo == "RANCAGUA" || item.Nombre_centro_costo == "RANCAGUA E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "RANCAGUA" || item.Nombre_centro_costo == "RANCAGUA E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroRancagua.TotalAyudantes = registroRancagua.TotalAyudantes + 1;
-                                registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroRancagua.CantidadDeAyudantesDeLicencia = registroRancagua.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroRancagua.TotalAyudantes = registroRancagua.TotalAyudantes + 1;
+                                    registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroRancagua.CantidadDeAyudantesDeLicencia = registroRancagua.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroRancagua.CantidadDeAyudantesActivos = registroRancagua.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroRancagua.CantidadDeAyudantesActivos = registroRancagua.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroRancagua.TotalAyudantes = registroRancagua.TotalAyudantes + 1;
-                                registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroRancagua.CantidadDeAyudantesDeLicencia = registroRancagua.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroRancagua.TotalAyudantes = registroRancagua.TotalAyudantes + 1;
+                                    registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroRancagua.CantidadDeAyudantesDeLicencia = registroRancagua.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroRancagua.CantidadDeAyudantesActivos = registroRancagua.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroRancagua.CantidadDeAyudantesActivos = registroRancagua.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
-                                registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroRancagua.CantidadDeConductoresDeLicencia = registroRancagua.CantidadDeConductoresDeLicencia + 1;
+                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
+                                    registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroRancagua.CantidadDeConductoresDeLicencia = registroRancagua.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroRancagua.CantidadDeConductoresActivos = registroRancagua.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroRancagua.CantidadDeConductoresActivos = registroRancagua.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
-                                registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroRancagua.CantidadDeConductoresDeLicencia = registroRancagua.CantidadDeConductoresDeLicencia + 1;
+                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
+                                    registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroRancagua.CantidadDeConductoresDeLicencia = registroRancagua.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroRancagua.CantidadDeConductoresActivos = registroRancagua.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroRancagua.CantidadDeConductoresActivos = registroRancagua.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroRancagua.TotalApoyos = registroRancagua.TotalApoyos + 1;
-                                registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroRancagua.CantidadDeApoyosDeLicencia = registroRancagua.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroRancagua.TotalApoyos = registroRancagua.TotalApoyos + 1;
+                                    registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroRancagua.CantidadDeApoyosDeLicencia = registroRancagua.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroRancagua.CantidadDeApoyosActivos = registroRancagua.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroRancagua.CantidadDeApoyosActivos = registroRancagua.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroRancagua.TotalRemuneracionesOtros = registroRancagua.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesOtros = registroRancagua.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
-
-                    }
-                    if (item.Nombre_centro_costo == "SAN ANTONIO" || item.Nombre_centro_costo == "SAN ANTONIO E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "SAN ANTONIO" || item.Nombre_centro_costo == "SAN ANTONIO E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroSanAntonio.TotalAyudantes = registroSanAntonio.TotalAyudantes + 1;
-                                registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSanAntonio.CantidadDeAyudantesDeLicencia = registroSanAntonio.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroSanAntonio.TotalAyudantes = registroSanAntonio.TotalAyudantes + 1;
+                                    registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSanAntonio.CantidadDeAyudantesDeLicencia = registroSanAntonio.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSanAntonio.CantidadDeAyudantesActivos = registroSanAntonio.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSanAntonio.CantidadDeAyudantesActivos = registroSanAntonio.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroSanAntonio.TotalAyudantes = registroSanAntonio.TotalAyudantes + 1;
-                                registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSanAntonio.CantidadDeAyudantesDeLicencia = registroSanAntonio.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroSanAntonio.TotalAyudantes = registroSanAntonio.TotalAyudantes + 1;
+                                    registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSanAntonio.CantidadDeAyudantesDeLicencia = registroSanAntonio.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSanAntonio.CantidadDeAyudantesActivos = registroSanAntonio.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSanAntonio.CantidadDeAyudantesActivos = registroSanAntonio.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
-                                registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSanAntonio.CantidadDeConductoresDeLicencia = registroSanAntonio.CantidadDeConductoresDeLicencia + 1;
+                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
+                                    registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSanAntonio.CantidadDeConductoresDeLicencia = registroSanAntonio.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSanAntonio.CantidadDeConductoresActivos = registroSanAntonio.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSanAntonio.CantidadDeConductoresActivos = registroSanAntonio.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
-                                registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSanAntonio.CantidadDeConductoresDeLicencia = registroSanAntonio.CantidadDeConductoresDeLicencia + 1;
+                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
+                                    registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSanAntonio.CantidadDeConductoresDeLicencia = registroSanAntonio.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSanAntonio.CantidadDeConductoresActivos = registroSanAntonio.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSanAntonio.CantidadDeConductoresActivos = registroSanAntonio.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroSanAntonio.TotalApoyos = registroSanAntonio.TotalApoyos + 1;
-                                registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSanAntonio.CantidadDeApoyosDeLicencia = registroSanAntonio.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroSanAntonio.TotalApoyos = registroSanAntonio.TotalApoyos + 1;
+                                    registroSanAntonio.TotalDotacion = registroSanAntonio.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSanAntonio.CantidadDeApoyosDeLicencia = registroSanAntonio.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSanAntonio.CantidadDeApoyosActivos = registroSanAntonio.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSanAntonio.CantidadDeApoyosActivos = registroSanAntonio.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroSanAntonio.TotalRemuneracionesOtros = registroSanAntonio.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesOtros = registroSanAntonio.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
-
-                    }
-                    if (item.Nombre_centro_costo == "SANTIAGO" || item.Nombre_centro_costo == "SANTIAGO E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "SANTIAGO" || item.Nombre_centro_costo == "SANTIAGO E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroSantiago.TotalAyudantes = registroSantiago.TotalAyudantes + 1;
-                                registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSantiago.CantidadDeAyudantesDeLicencia = registroSantiago.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroSantiago.TotalAyudantes = registroSantiago.TotalAyudantes + 1;
+                                    registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSantiago.CantidadDeAyudantesDeLicencia = registroSantiago.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSantiago.CantidadDeAyudantesActivos = registroSantiago.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSantiago.CantidadDeAyudantesActivos = registroSantiago.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroSantiago.TotalAyudantes = registroSantiago.TotalAyudantes + 1;
-                                registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSantiago.CantidadDeAyudantesDeLicencia = registroSantiago.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroSantiago.TotalAyudantes = registroSantiago.TotalAyudantes + 1;
+                                    registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSantiago.CantidadDeAyudantesDeLicencia = registroSantiago.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSantiago.CantidadDeAyudantesActivos = registroSantiago.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSantiago.CantidadDeAyudantesActivos = registroSantiago.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
-                                registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSantiago.CantidadDeConductoresDeLicencia = registroSantiago.CantidadDeConductoresDeLicencia + 1;
+                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
+                                    registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSantiago.CantidadDeConductoresDeLicencia = registroSantiago.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSantiago.CantidadDeConductoresActivos = registroSantiago.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSantiago.CantidadDeConductoresActivos = registroSantiago.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
-                                registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSantiago.CantidadDeConductoresDeLicencia = registroSantiago.CantidadDeConductoresDeLicencia + 1;
+                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
+                                    registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSantiago.CantidadDeConductoresDeLicencia = registroSantiago.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSantiago.CantidadDeConductoresActivos = registroSantiago.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSantiago.CantidadDeConductoresActivos = registroSantiago.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroSantiago.TotalApoyos = registroSantiago.TotalApoyos + 1;
-                                registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroSantiago.CantidadDeApoyosDeLicencia = registroSantiago.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroSantiago.TotalApoyos = registroSantiago.TotalApoyos + 1;
+                                    registroSantiago.TotalDotacion = registroSantiago.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroSantiago.CantidadDeApoyosDeLicencia = registroSantiago.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroSantiago.CantidadDeApoyosActivos = registroSantiago.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroSantiago.CantidadDeApoyosActivos = registroSantiago.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
-
-                    }
-                    if (item.Nombre_centro_costo == "CENTRAL" || item.Nombre_centro_costo == "CENTRAL E2")
-                    {
-                        switch (item.Nombre_cargo)
+                        if (item.Nombre_centro_costo == "CENTRAL" || item.Nombre_centro_costo == "CENTRAL E2")
                         {
-                            case "AYUDANTE CHOFER":
-                                registroAdministracion.TotalAyudantes = registroAdministracion.TotalAyudantes + 1;
-                                registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroAdministracion.CantidadDeAyudantesDeLicencia = registroAdministracion.CantidadDeAyudantesDeLicencia + 1;
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroAdministracion.TotalAyudantes = registroAdministracion.TotalAyudantes + 1;
+                                    registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroAdministracion.CantidadDeAyudantesDeLicencia = registroAdministracion.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroAdministracion.CantidadDeAyudantesActivos = registroAdministracion.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroAdministracion.CantidadDeAyudantesActivos = registroAdministracion.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
-                            case "AYUDANTE CHOFER E2":
-                                registroAdministracion.TotalAyudantes = registroAdministracion.TotalAyudantes + 1;
-                                registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroAdministracion.CantidadDeAyudantesDeLicencia = registroAdministracion.CantidadDeAyudantesDeLicencia + 1;
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroAdministracion.TotalAyudantes = registroAdministracion.TotalAyudantes + 1;
+                                    registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroAdministracion.CantidadDeAyudantesDeLicencia = registroAdministracion.CantidadDeAyudantesDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroAdministracion.CantidadDeAyudantesActivos = registroAdministracion.CantidadDeAyudantesActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroAdministracion.CantidadDeAyudantesActivos = registroAdministracion.CantidadDeAyudantesActivos + 1;
 
-                                }
+                                    }
 
-                                registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO":
-                                registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
-                                registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroAdministracion.CantidadDeConductoresDeLicencia = registroAdministracion.CantidadDeConductoresDeLicencia + 1;
+                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
+                                    registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroAdministracion.CantidadDeConductoresDeLicencia = registroAdministracion.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroAdministracion.CantidadDeConductoresActivos = registroAdministracion.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroAdministracion.CantidadDeConductoresActivos = registroAdministracion.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "CHOFER PORTEO E2":
-                                registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
-                                registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroAdministracion.CantidadDeConductoresDeLicencia = registroAdministracion.CantidadDeConductoresDeLicencia + 1;
+                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
+                                    registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroAdministracion.CantidadDeConductoresDeLicencia = registroAdministracion.CantidadDeConductoresDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroAdministracion.CantidadDeConductoresActivos = registroAdministracion.CantidadDeConductoresActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroAdministracion.CantidadDeConductoresActivos = registroAdministracion.CantidadDeConductoresActivos + 1;
 
-                                }
+                                    }
 
-                                registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            case "MOVILIZADOR":
-                                registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                case "MOVILIZADOR":
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                break;
-                            default:
-                                registroAdministracion.TotalApoyos = registroAdministracion.TotalApoyos + 1;
-                                registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
-                                if (item.Imponible_sin_tope == "0")
-                                {
-                                    registroAdministracion.CantidadDeApoyosDeLicencia = registroAdministracion.CantidadDeApoyosDeLicencia + 1;
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    break;
+                                default:
+                                    registroAdministracion.TotalApoyos = registroAdministracion.TotalApoyos + 1;
+                                    registroAdministracion.TotalDotacion = registroAdministracion.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroAdministracion.CantidadDeApoyosDeLicencia = registroAdministracion.CantidadDeApoyosDeLicencia + 1;
 
-                                }
-                                else
-                                {
-                                    registroAdministracion.CantidadDeApoyosActivos = registroAdministracion.CantidadDeApoyosActivos + 1;
+                                    }
+                                    else
+                                    {
+                                        registroAdministracion.CantidadDeApoyosActivos = registroAdministracion.CantidadDeApoyosActivos + 1;
 
-                                }
+                                    }
 
-                                registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
-                                break;
+                                    break;
+                            }
+
                         }
+                        if (item.Nombre_centro_costo == "EMPRENDEDORES")
+                        {
 
+                            //???
+                        }
                     }
-                    if (item.Nombre_centro_costo == "EMPRENDEDORES")
-                    {
-
-                        //???
-                    }
-
-                }
+                
             }
 
+
+            RegistroTotalesComoString registroProcesoComoString = new RegistroTotalesComoString(registroProceso.Centro);
+            RegistroTotalesComoString registroEspacioComoString = new RegistroTotalesComoString(registroEspacio.Centro);
             RegistroTotalesComoString registroCuricoComoString = new RegistroTotalesComoString(registroCurico);
             RegistroTotalesComoString registroInterplantaComoString = new RegistroTotalesComoString(registroInterplanta);
             RegistroTotalesComoString registroRancaguaComoString = new RegistroTotalesComoString(registroRancagua);
@@ -1433,7 +1470,12 @@ namespace DeIntranetARex
             RegistroTotalesComoString registroSantiagoComoString = new RegistroTotalesComoString(registroSantiago);
             RegistroTotalesComoString registroMovilizadoresComoString = new RegistroTotalesComoString(registroMovilizadores);
             RegistroTotalesComoString registroAdministracionComoString = new RegistroTotalesComoString(registroAdministracion);
+            RegistroTotalesComoString registroEspacioComoString2 = new RegistroTotalesComoString(registroEspacio2.Centro);
+            RegistroTotalesComoString registroEspacioComoString3 = new RegistroTotalesComoString(registroEspacio3.Centro);
 
+
+            listadoDeRegistrosDeTotales.Add(registroProcesoComoString);
+            listadoDeRegistrosDeTotales.Add(registroEspacioComoString);
             listadoDeRegistrosDeTotales.Add(registroCuricoComoString);
             listadoDeRegistrosDeTotales.Add(registroInterplantaComoString);
             listadoDeRegistrosDeTotales.Add(registroRancaguaComoString);
@@ -1444,7 +1486,10 @@ namespace DeIntranetARex
             listadoDeRegistrosDeTotales.Add(registroSantiagoComoString);
             listadoDeRegistrosDeTotales.Add(registroMovilizadoresComoString);
             listadoDeRegistrosDeTotales.Add(registroAdministracionComoString);
-            
+            listadoDeRegistrosDeTotales.Add(registroEspacioComoString2);
+            listadoDeRegistrosDeTotales.Add(registroEspacioComoString3);
+
+            }
 
             return listadoDeRegistrosDeTotales;
 
