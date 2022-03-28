@@ -158,8 +158,68 @@ namespace DeIntranetARex
             //e indirectos (todos los que NO sean conductores, ayudantes o sean de administracion)
 
 
+            ws.Cells["B1"].Value = "Conductores activos";
+            ws.Cells["C1"].Value = "Conductores de licencia";
+            ws.Cells["D1"].Value = "Ayudantes activos";
+            ws.Cells["E1"].Value = "Ayudantes de licencia";
+            ws.Cells["F1"].Value = "Apoyos activos";
+            ws.Cells["G1"].Value = "Apoyos de licencia";
+            ws.Cells["H1"].Value = "Total de conductores";
+            ws.Cells["I1"].Value = "Total de ayudantes";
+            ws.Cells["J1"].Value = "Total de apoyos";
+            ws.Cells["K1"].Value = "Total de trabajadores";
+            ws.Cells["L1"].Value = "Remuneraciones de conductores";
+            ws.Cells["M1"].Value = "Remuneraciones de ayudantes";
+            ws.Cells["N1"].Value = "Remuneraciones de apoyos";
+            ws.Cells["O1"].Value = "Total de remuneraciones";
 
-            //ws.Cells["B4"].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+            ws.Cells["B1"].Style.Font.Bold = true;
+            ws.Cells["C1"].Style.Font.Bold = true;
+            ws.Cells["D1"].Style.Font.Bold = true;
+            ws.Cells["E1"].Style.Font.Bold = true;
+            ws.Cells["F1"].Style.Font.Bold = true;
+            ws.Cells["G1"].Style.Font.Bold = true;
+            ws.Cells["H1"].Style.Font.Bold = true;
+            ws.Cells["I1"].Style.Font.Bold = true;
+            ws.Cells["J1"].Style.Font.Bold = true;
+            ws.Cells["K1"].Style.Font.Bold = true;
+            ws.Cells["L1"].Style.Font.Bold = true;
+            ws.Cells["M1"].Style.Font.Bold = true;
+            ws.Cells["N1"].Style.Font.Bold = true;
+            ws.Cells["O1"].Style.Font.Bold = true;
+
+
+            //no se donde termina, pero si donde empieza y cada cuanto se repite... asi que un for debiese funcionar
+            ws.Cells["B2"].Value = "";
+            ws.Cells["B3"].Value = "";
+            ws.Cells["C2"].Value = "";
+            ws.Cells["C3"].Value = "";
+            ws.Cells["D2"].Value = "";
+            ws.Cells["D3"].Value = "";
+            ws.Cells["E2"].Value = "";
+            ws.Cells["E3"].Value = "";
+            ws.Cells["F2"].Value = "";
+            ws.Cells["F3"].Value = "";
+            ws.Cells["G2"].Value = "";
+            ws.Cells["G3"].Value = "";
+            ws.Cells["H2"].Value = "";
+            ws.Cells["H3"].Value = "";
+            ws.Cells["I2"].Value = "";
+            ws.Cells["I3"].Value = "";
+            ws.Cells["J2"].Value = "";
+            ws.Cells["J3"].Value = "";
+            ws.Cells["K2"].Value = "";
+            ws.Cells["K3"].Value = "";
+            ws.Cells["L2"].Value = "";
+            ws.Cells["L3"].Value = "";
+            ws.Cells["M2"].Value = "";
+            ws.Cells["M3"].Value = "";
+            ws.Cells["N2"].Value = "";
+            ws.Cells["N3"].Value = "";
+            ws.Cells["O2"].Value = "";
+            ws.Cells["O3"].Value = "";
+
+            
 
 
             range.AutoFitColumns();
