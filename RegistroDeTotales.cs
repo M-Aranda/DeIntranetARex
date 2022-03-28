@@ -31,6 +31,7 @@ namespace DeIntranetARex
            
         }
 
+
         public RegistroDeTotales(string centro, int cantidadDeConductoresActivos, int cantidadDeConductoresDeLicencia, int cantidadDeAyudantesActivos, int cantidadDeAyudantesDeLicencia, int cantidadDeApoyosActivos, int cantidadDeApoyosDeLicencia, int totalConductores, int totalAyudantes, int totalApoyos, int totalDotacion, int totalRemuneracionesConductores, int totalRemuneracionesAyudantes, int totalRemuneracionesOtros, int totalRemuneracionesDeTodosLosTrabajadores)
         {
             this.Centro = centro;
