@@ -158,21 +158,43 @@ namespace DeIntranetARex
             //e indirectos (todos los que NO sean conductores, ayudantes o sean de administracion)
 
 
-            ws.Cells["B1"].Value = "Conductores activos";
-            ws.Cells["C1"].Value = "Conductores de licencia";
-            ws.Cells["D1"].Value = "Ayudantes activos";
-            ws.Cells["E1"].Value = "Ayudantes de licencia";
-            ws.Cells["F1"].Value = "Apoyos activos";
-            ws.Cells["G1"].Value = "Apoyos de licencia";
-            ws.Cells["H1"].Value = "Total de conductores";
-            ws.Cells["I1"].Value = "Total de ayudantes";
-            ws.Cells["J1"].Value = "Total de apoyos";
-            ws.Cells["K1"].Value = "Total de trabajadores";
-            ws.Cells["L1"].Value = "Remuneraciones de conductores";
-            ws.Cells["M1"].Value = "Remuneraciones de ayudantes";
-            ws.Cells["N1"].Value = "Remuneraciones de apoyos";
-            ws.Cells["O1"].Value = "Total de remuneraciones";
+            //fijar titulo de columnas
+            //ws.Cells["B1"].Value = "Cantidad de conductores activos";
+            //ws.Cells["C1"].Value = "Conductores de licencia";
+            //ws.Cells["D1"].Value = "Ayudantes activos";
+            //ws.Cells["E1"].Value = "Ayudantes de licencia";
+            //ws.Cells["F1"].Value = "Apoyos activos";
+            //ws.Cells["G1"].Value = "Apoyos de licencia";
+            //ws.Cells["H1"].Value = "Total de conductores";
+            //ws.Cells["I1"].Value = "Total de ayudantes";
+            //ws.Cells["J1"].Value = "Total de apoyos";
+            //ws.Cells["K1"].Value = "Total de trabajadores";
+            //ws.Cells["L1"].Value = "$ Conductores";
+            //ws.Cells["M1"].Value = "$ Ayudantes";
+            //ws.Cells["N1"].Value = "$ Apoyos";
+            //ws.Cells["O1"].Value = "Total";
 
+            // ws.Cells["A1"].Value = "";
+            ws.Cells["B1"].Value = "";
+            ws.Cells["C1"].Value = "";
+            ws.Cells["D1"].Value = "";
+            ws.Cells["E1"].Value = "";
+            ws.Cells["F1"].Value = "";
+            ws.Cells["G1"].Value = "";
+            ws.Cells["H1"].Value = "";
+            ws.Cells["I1"].Value = "";
+            ws.Cells["J1"].Value = "";
+            ws.Cells["K1"].Value = "";
+            ws.Cells["L1"].Value = "";
+            ws.Cells["M1"].Value = "";
+            ws.Cells["N1"].Value = "";
+            ws.Cells["O1"].Value = "";
+
+
+
+
+
+            //fijar  estilo de letra
             ws.Cells["B1"].Style.Font.Bold = true;
             ws.Cells["C1"].Style.Font.Bold = true;
             ws.Cells["D1"].Style.Font.Bold = true;
@@ -188,38 +210,341 @@ namespace DeIntranetARex
             ws.Cells["N1"].Style.Font.Bold = true;
             ws.Cells["O1"].Style.Font.Bold = true;
 
+            //fijar color de fondo de ciertas celdas
+            //ws.Cells["B1"].Style.Fill.BackgroundColor.SetColor(Color.Aqua);
+            //ws.Cells["C1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["D1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["E1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["F1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["G1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["H1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["I1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["J1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["K1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["L1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["M1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["N1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
+            //ws.Cells["O1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
 
-            //no se donde termina, pero si donde empieza y cada cuanto se repite... asi que un for debiese funcionar
-            ws.Cells["B2"].Value = "";
-            ws.Cells["B3"].Value = "";
-            ws.Cells["C2"].Value = "";
-            ws.Cells["C3"].Value = "";
-            ws.Cells["D2"].Value = "";
-            ws.Cells["D3"].Value = "";
-            ws.Cells["E2"].Value = "";
-            ws.Cells["E3"].Value = "";
-            ws.Cells["F2"].Value = "";
-            ws.Cells["F3"].Value = "";
-            ws.Cells["G2"].Value = "";
-            ws.Cells["G3"].Value = "";
-            ws.Cells["H2"].Value = "";
-            ws.Cells["H3"].Value = "";
-            ws.Cells["I2"].Value = "";
-            ws.Cells["I3"].Value = "";
-            ws.Cells["J2"].Value = "";
-            ws.Cells["J3"].Value = "";
-            ws.Cells["K2"].Value = "";
-            ws.Cells["K3"].Value = "";
-            ws.Cells["L2"].Value = "";
-            ws.Cells["L3"].Value = "";
-            ws.Cells["M2"].Value = "";
-            ws.Cells["M3"].Value = "";
-            ws.Cells["N2"].Value = "";
-            ws.Cells["N3"].Value = "";
-            ws.Cells["O2"].Value = "";
-            ws.Cells["O3"].Value = "";
 
-            
+
+            int fila2 = 2;
+            int fila3 = 3;
+            int fila4 = 4;
+            int fila5 = 5;
+            int fila6 = 6;
+            int fila7 = 7;
+            int fila8 = 8;
+            int fila9 = 9;
+            int fila10 = 10;
+            int fila11 = 11;
+            int fila12 = 12;
+            int fila13 = 13;
+            int fila14 = 14;
+            int fila15 = 15;
+
+
+
+            //quitar 0's sobrantes
+            for (int i = 1; i < 13; i++)
+            {
+
+                
+                // agregar  bordes a tabla
+                ws.Cells["A"+fila2+":O"+fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+                ws.Cells["H" + fila2 + ":N" + fila2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
+
+                //Arriba
+                ws.Cells["B" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["C" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["D" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["E" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["F" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["G" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["H" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["I" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["J" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["K" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["L" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["M" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["N" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                ////izquierda
+                ws.Cells["B" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila11].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila12].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["B" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                ////abajo
+                ws.Cells["B" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["C" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["D" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["E" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["F" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["G" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["H" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["I" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["J" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["K" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["L" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["M" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["N" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                ////derecha
+                ws.Cells["O" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila11].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["O" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                ws.Cells["B" + fila2].Value = "";
+                ws.Cells["B" + fila3].Value = "";
+                ws.Cells["B" + fila14].Value = "";
+                ws.Cells["B" + fila15].Value = "";
+                ws.Cells["C"+fila2].Value = "";
+                ws.Cells["C"+fila3].Value = "";
+                ws.Cells["C"+fila14].Value = "";
+                ws.Cells["C"+fila15].Value = "";
+                ws.Cells["D"+fila2].Value = "";
+                ws.Cells["D"+fila3].Value = "";
+                ws.Cells["D"+fila14].Value = "";
+                ws.Cells["D"+fila15].Value = "";
+                ws.Cells["E"+fila2].Value = "";
+                ws.Cells["E"+fila3].Value = "";
+                ws.Cells["E"+fila14].Value = "";
+                ws.Cells["E"+fila15].Value = "";
+                ws.Cells["F"+fila2].Value = "";
+                ws.Cells["F"+fila3].Value = "";
+                ws.Cells["F"+fila14].Value = "";
+                ws.Cells["F"+fila15].Value = "";
+                ws.Cells["G"+fila2].Value = "";
+                ws.Cells["G"+fila3].Value = "";
+                ws.Cells["G"+fila14].Value = "";
+                ws.Cells["G"+fila15].Value = "";
+                ws.Cells["H"+fila2].Value = "";
+                ws.Cells["H"+fila3].Value = "";
+                ws.Cells["H"+fila14].Value = "";
+                ws.Cells["H"+fila15].Value = "";
+                ws.Cells["I"+fila2].Value = "";
+                ws.Cells["I"+fila3].Value = "";
+                ws.Cells["I"+fila14].Value = "";
+                ws.Cells["I"+fila15].Value = "";
+                ws.Cells["J"+fila2].Value = "";
+                ws.Cells["J"+fila3].Value = "";
+                ws.Cells["J"+fila14].Value = "";
+                ws.Cells["J"+fila15].Value = "";
+                ws.Cells["K"+fila2].Value = "";
+                ws.Cells["K"+fila3].Value = "";
+                ws.Cells["K"+fila14].Value = "";
+                ws.Cells["K"+fila15].Value = "";
+                ws.Cells["L"+fila2].Value = "";
+                ws.Cells["L"+fila3].Value = "";
+                ws.Cells["L"+fila14].Value = "";
+                ws.Cells["L"+fila15].Value = "";
+                ws.Cells["M"+fila2].Value = "";
+                ws.Cells["M"+fila3].Value = "";
+                ws.Cells["M"+fila14].Value = "";
+                ws.Cells["M"+fila15].Value = "";
+                ws.Cells["N"+fila2].Value = "";
+                ws.Cells["N"+fila3].Value = "";
+                ws.Cells["N"+fila14].Value = "";
+                ws.Cells["N"+fila15].Value = "";
+                ws.Cells["O"+fila2].Value = "";
+                ws.Cells["O"+fila3].Value = "";
+                ws.Cells["O"+fila14].Value = "";
+                ws.Cells["O"+fila15].Value = "";
+
+                //agregar titulos en cada proceso
+                ws.Cells["B" + fila2].Value = "# de Conductores";
+                ws.Cells["B" + fila3].Value = "Activos";
+                ws.Cells["C" + fila3].Value = "De licencia";
+
+                ws.Cells["D" + fila2].Value = "# de Ayudantes";
+                ws.Cells["D" + fila3].Value = "Activos";
+                ws.Cells["E" +fila3].Value = "De licencia";
+
+                ws.Cells["F" + fila2].Value = "# de Apoyos";
+                ws.Cells["F" + fila3].Value = "Activos";
+                ws.Cells["G" + fila3].Value = "De licencia";
+
+                //H, I, J, K
+                ws.Cells["H" + fila2].Value = "Total conductores";
+                ws.Cells["I" + fila2].Value = "Total ayudantes";
+                ws.Cells["J" + fila2].Value = "Total apoyos";
+                ws.Cells["K" + fila2].Value = "Total dotación";
+
+                ws.Cells["L" + fila2].Value = "$ Concuctores";
+                ws.Cells["M" + fila2].Value = "$ Ayudantes";
+                ws.Cells["N" + fila2].Value = "$ Otros";
+                ws.Cells["O" + fila2].Value = "Total";
+
+                ws.Cells["B" + fila2].Style.Font.Bold = true;
+                ws.Cells["D" + fila2].Style.Font.Bold = true;
+                ws.Cells["F" + fila2].Style.Font.Bold = true;
+                ws.Cells["H" + fila2].Style.Font.Bold = true;
+                ws.Cells["I" + fila2].Style.Font.Bold = true;
+                ws.Cells["J" + fila2].Style.Font.Bold = true;
+                ws.Cells["K" + fila2].Style.Font.Bold = true;
+                ws.Cells["L" + fila2].Style.Font.Bold = true;
+                ws.Cells["M" + fila2].Style.Font.Bold = true;
+                ws.Cells["N" + fila2].Style.Font.Bold = true;
+                ws.Cells["O" + fila2].Style.Font.Bold = true;
+
+                ws.Cells["B" + fila3].Style.Font.Italic = true;
+                ws.Cells["C" + fila3].Style.Font.Italic = true;
+                ws.Cells["D" + fila3].Style.Font.Italic = true;
+                ws.Cells["E" + fila3].Style.Font.Italic = true;
+                ws.Cells["F" + fila3].Style.Font.Italic = true;
+                ws.Cells["G" + fila3].Style.Font.Italic = true;
+
+                ws.Cells["B" + fila2 + ":C" + fila2].Merge = true;
+                ws.Cells["D" + fila2 + ":E" + fila2].Merge = true;
+                ws.Cells["F" + fila2 + ":G" + fila2].Merge = true;
+
+
+
+                //totales al pie de la tabla
+                ws.Cells["A" + fila14].Value = "Totales";
+                ws.Cells["B"+fila14].Value = int.Parse(ws.Cells["B"+fila4].Value.ToString()) + int.Parse(ws.Cells["B"+fila5].Value.ToString()) + int.Parse(ws.Cells["B"+fila6].Value.ToString()) + int.Parse(ws.Cells["B"+fila7].Value.ToString()) + int.Parse(ws.Cells["B"+fila8].Value.ToString()) + int.Parse(ws.Cells["B"+fila9].Value.ToString()) + int.Parse(ws.Cells["B"+fila10].Value.ToString()) +  int.Parse(ws.Cells["B"+fila11].Value.ToString()) + int.Parse(ws.Cells["B"+fila12].Value.ToString()) + int.Parse(ws.Cells["B"+fila13].Value.ToString());
+                ws.Cells["C" + fila14].Value = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
+                ws.Cells["D" + fila14].Value = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
+                ws.Cells["E" + fila14].Value = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
+                ws.Cells["F" + fila14].Value = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
+                ws.Cells["G" + fila14].Value = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
+
+                ws.Cells["O" + fila14].Value = int.Parse(ws.Cells["O" + fila4].Value.ToString()) + int.Parse(ws.Cells["O" + fila5].Value.ToString()) + int.Parse(ws.Cells["O" + fila6].Value.ToString()) + int.Parse(ws.Cells["O" + fila7].Value.ToString()) + int.Parse(ws.Cells["O" + fila8].Value.ToString()) + int.Parse(ws.Cells["O" + fila9].Value.ToString()) + int.Parse(ws.Cells["O" + fila10].Value.ToString()) + int.Parse(ws.Cells["O" + fila11].Value.ToString()) + int.Parse(ws.Cells["O" + fila12].Value.ToString()) + int.Parse(ws.Cells["O" + fila13].Value.ToString());
+
+                //cuadro sub resumen
+                ws.Cells["Q" + fila4].Value = "RESUMEN DE MODELOS";
+
+                ws.Cells["Q" + fila4].Style.Border.Left.Style= OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                ws.Cells["Q" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                ws.Cells["R" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                // titulos de cuadro resumen
+                ws.Cells["Q" + fila5].Value = "INTERPLANTAS";
+                ws.Cells["Q" + fila5].Style.Font.Bold = true;
+                ws.Cells["Q" + fila6].Value = "MOVILIZADORES";
+                ws.Cells["Q" + fila6].Style.Font.Bold = true;
+                ws.Cells["Q" + fila7].Value = "EMPRENDEDORES";
+                ws.Cells["Q" + fila7].Style.Font.Bold = true;
+                ws.Cells["Q" + fila8].Value = "DIRECTOS";
+                ws.Cells["Q" + fila8].Style.Font.Bold = true;
+                ws.Cells["Q" + fila9].Value = "INDIRECTOS";
+                ws.Cells["Q" + fila9].Style.Font.Bold = true;
+                ws.Cells["Q" + fila10].Value = "ADMINISTRACION";
+                ws.Cells["Q" + fila10].Style.Font.Bold = true;
+                ws.Cells["Q" + fila11].Value = "TOTAL";
+                ws.Cells["Q" + fila11].Style.Font.Bold = true;
+
+
+                //valores de cuadro resumen (interplanta, movilizadores y emprendedores)
+                ws.Cells["R" + fila5].Value = ws.Cells["O" + fila5].Value;
+                ws.Cells["R" + fila6].Value = ws.Cells["O" + fila11].Value;
+                ws.Cells["R" + fila7].Value = ws.Cells["O" + fila12].Value;
+
+
+
+
+                int remuneracionesDirectosCurico = int.Parse(ws.Cells["L"+fila4].Value.ToString()) + int.Parse(ws.Cells["M" + fila4].Value.ToString());
+                int remuneracionesDirectosRancagua = int.Parse(ws.Cells["L" + fila6].Value.ToString()) + int.Parse(ws.Cells["M" + fila6].Value.ToString());
+                int remuneracionesDirectosMelipilla = int.Parse(ws.Cells["L" + fila7].Value.ToString()) + int.Parse(ws.Cells["M" + fila7].Value.ToString());
+                int remuneracionesDirectosSanAntonio = int.Parse(ws.Cells["L" + fila8].Value.ToString()) + int.Parse(ws.Cells["M" + fila8].Value.ToString());
+                int remuneracionesDirectosIllapel = int.Parse(ws.Cells["L" + fila9].Value.ToString()) + int.Parse(ws.Cells["M" + fila9].Value.ToString());
+                int remuneracionesDirectosSantiago = int.Parse(ws.Cells["L" + fila10].Value.ToString()) + int.Parse(ws.Cells["M" + fila10].Value.ToString());
+
+                int remuneracionesIndirectosCurico = int.Parse(ws.Cells["N" + fila4].Value.ToString());
+                int remuneracionesIndirectosRancagua = int.Parse(ws.Cells["N" + fila6].Value.ToString());
+                int remuneracionesIndirectosMelipilla = int.Parse(ws.Cells["N" + fila7].Value.ToString());
+                int remuneracionesIndirectosSanAntonio = int.Parse(ws.Cells["N" + fila8].Value.ToString());
+                int remuneracionesIndirectosIllapel = int.Parse(ws.Cells["N" + fila9].Value.ToString());
+                int remuneracionesIndirectosSantiago = int.Parse(ws.Cells["N" + fila10].Value.ToString());
+
+
+                int sumaDeDirectos = remuneracionesDirectosCurico + remuneracionesDirectosRancagua + remuneracionesDirectosMelipilla + remuneracionesDirectosSanAntonio + remuneracionesDirectosIllapel + remuneracionesDirectosSantiago;
+                int sumaDeIndirectos = remuneracionesIndirectosCurico + remuneracionesIndirectosRancagua + remuneracionesIndirectosMelipilla + remuneracionesIndirectosSanAntonio + remuneracionesIndirectosIllapel + remuneracionesIndirectosSantiago;
+
+
+                //valores de modelo tradicional (directos e indirectos)
+                ws.Cells["R" + fila8].Value = sumaDeDirectos;
+                ws.Cells["R" + fila9].Value = sumaDeIndirectos;
+                //valor de cuadro resumen (administracion)
+                ws.Cells["R" + fila10].Value = ws.Cells["O" + fila13].Value;
+
+                //valor de celda de totales
+                ws.Cells["R" + fila11].Value = sumaDeDirectos + sumaDeIndirectos + int.Parse(ws.Cells["R" + fila10].Value.ToString()) + int.Parse(ws.Cells["R" + fila5].Value.ToString()) + int.Parse(ws.Cells["R" + fila6].Value.ToString()) + int.Parse(ws.Cells["R" + fila7].Value.ToString());
+
+
+                //formatear como numero usando comas como separadores de decimales
+                ws.Cells["L" + fila4 + ":O" + fila14].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                ws.Cells["R" + fila5 + ":R" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+
+                //formatear celdas de centros y de Totales en negrita
+                ws.Cells["A"+fila4+":A"+fila14].Style.Font.Bold = true;
+
+                //quitar bordes hacia la derecha de la segunda fila de cada tabla (aparentemente no funciona)
+                ws.Cells["H"+fila3+":N"+fila3].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
+                ws.Cells["H" + fila3 + ":O" + fila3].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
+
+                
+
+
+                fila2 = fila2 + 14;
+                fila3 = fila3 + 14;
+                fila14 = fila14 + 14;
+                fila15 = fila15 + 14;
+
+                fila4 = fila4 + 14;
+                fila5 = fila5 + 14;
+                fila6 = fila6 + 14;
+                fila7 = fila7 + 14;
+                fila8 = fila8 + 14;
+                fila9 = fila9 + 14;
+                fila10 = fila10 + 14;
+                fila11 = fila11 + 14;
+                fila12 = fila12 + 14;
+                fila13 = fila13 + 14;
+
+            }
 
 
             range.AutoFitColumns();
