@@ -228,6 +228,8 @@ namespace DeIntranetARex
 
 
 
+
+
             int fila2 = 2;
             int fila3 = 3;
             int fila4 = 4;
@@ -249,6 +251,7 @@ namespace DeIntranetARex
             for (int i = 1; i < 13; i++)
             {
 
+                
                 
                 // agregar  bordes a tabla
                 ws.Cells["A"+fila2+":O"+fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
@@ -430,7 +433,7 @@ namespace DeIntranetARex
                 ws.Cells["E" + fila14].Value = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
                 ws.Cells["F" + fila14].Value = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
                 ws.Cells["G" + fila14].Value = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
-
+                
                 ws.Cells["O" + fila14].Value = int.Parse(ws.Cells["O" + fila4].Value.ToString()) + int.Parse(ws.Cells["O" + fila5].Value.ToString()) + int.Parse(ws.Cells["O" + fila6].Value.ToString()) + int.Parse(ws.Cells["O" + fila7].Value.ToString()) + int.Parse(ws.Cells["O" + fila8].Value.ToString()) + int.Parse(ws.Cells["O" + fila9].Value.ToString()) + int.Parse(ws.Cells["O" + fila10].Value.ToString()) + int.Parse(ws.Cells["O" + fila11].Value.ToString()) + int.Parse(ws.Cells["O" + fila12].Value.ToString()) + int.Parse(ws.Cells["O" + fila13].Value.ToString());
 
                 //cuadro sub resumen
@@ -473,8 +476,10 @@ namespace DeIntranetARex
                 ws.Cells["Q" + fila9].Style.Font.Bold = true;
                 ws.Cells["Q" + fila10].Value = "ADMINISTRACION";
                 ws.Cells["Q" + fila10].Style.Font.Bold = true;
-                ws.Cells["Q" + fila11].Value = "TOTAL";
+                ws.Cells["Q" + fila11].Value = "$ TOTAL ";
                 ws.Cells["Q" + fila11].Style.Font.Bold = true;
+                ws.Cells["Q" + fila12].Value = "TOTAL TRABAJADORES";
+                ws.Cells["Q" + fila12].Style.Font.Bold = true;
 
 
                 //valores de cuadro resumen (interplanta, movilizadores y emprendedores)
@@ -518,6 +523,16 @@ namespace DeIntranetARex
                 ws.Cells["L" + fila4 + ":O" + fila14].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
                 ws.Cells["R" + fila5 + ":R" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
 
+                //total de trabajadores
+
+                int conductoresActivos = int.Parse(ws.Cells["B" + fila4].Value.ToString()) + int.Parse(ws.Cells["B" + fila5].Value.ToString()) + int.Parse(ws.Cells["B" + fila6].Value.ToString()) + int.Parse(ws.Cells["B" + fila7].Value.ToString()) + int.Parse(ws.Cells["B" + fila8].Value.ToString()) + int.Parse(ws.Cells["B" + fila9].Value.ToString()) + int.Parse(ws.Cells["B" + fila10].Value.ToString()) + int.Parse(ws.Cells["B" + fila11].Value.ToString()) + int.Parse(ws.Cells["B" + fila12].Value.ToString()) + int.Parse(ws.Cells["B" + fila13].Value.ToString());
+                int conductoresDeLicencia = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
+                int ayudantesActivos = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
+                int ayudantesDeLicencia = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
+                int apoyosActivos = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
+                int apoyosDeLicencia = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
+                ws.Cells["R" + fila12].Value = conductoresActivos + conductoresDeLicencia + ayudantesActivos + ayudantesDeLicencia + apoyosActivos + apoyosDeLicencia;
+                
                 //formatear celdas de centros y de Totales en negrita
                 ws.Cells["A"+fila4+":A"+fila14].Style.Font.Bold = true;
 
@@ -525,14 +540,12 @@ namespace DeIntranetARex
                 ws.Cells["H"+fila3+":N"+fila3].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
                 ws.Cells["H" + fila3 + ":O" + fila3].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
 
-                
+                ws.Cells["A"+fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                ws.Cells["A"+fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
 
 
                 fila2 = fila2 + 14;
                 fila3 = fila3 + 14;
-                fila14 = fila14 + 14;
-                fila15 = fila15 + 14;
-
                 fila4 = fila4 + 14;
                 fila5 = fila5 + 14;
                 fila6 = fila6 + 14;
@@ -543,6 +556,8 @@ namespace DeIntranetARex
                 fila11 = fila11 + 14;
                 fila12 = fila12 + 14;
                 fila13 = fila13 + 14;
+                fila14 = fila14 + 14;
+                fila15 = fila15 + 14;
 
             }
 

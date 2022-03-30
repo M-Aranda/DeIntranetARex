@@ -42,3 +42,47 @@ C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.CopyComple
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.exe
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.pdb
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.SuggestedBindingRedirects.cache
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\DeIntranetARex.exe.config
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\DeIntranetARex.exe
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\DeIntranetARex.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\EPPlus.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Buffers.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Memory.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.Diagnostics.Eventing.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.Foundation.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.Foundation.Logging.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.Composition.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.Dispatching.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.v1.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.v2.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.Toolkit.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.Xaml.dll
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\EPPlus.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Buffers.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Memory.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.Diagnostics.Eventing.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.v1.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.FluentTheme.v2.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\bin\Debug\Uno.UI.Toolkit.pdb
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.AssemblyReference.cache
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.SuggestedBindingRedirects.cache
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.Form1.resources
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.Properties.Resources.resources
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.GenerateResource.cache
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.CoreCompileInputs.cache
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.CopyComplete
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.exe
+C:\Users\Chelo\Desktop\probar esto\DeIntranetARex\obj\Debug\DeIntranetARex.pdb
