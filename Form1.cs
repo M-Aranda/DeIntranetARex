@@ -375,6 +375,7 @@ namespace DeIntranetARex
                 ws.Cells["O"+fila3].Value = "";
                 ws.Cells["O"+fila14].Value = "";
                 ws.Cells["O"+fila15].Value = "";
+                //agrego esto
 
                 //agregar titulos en cada proceso
                 ws.Cells["B" + fila2].Value = "# de Conductores";
@@ -399,6 +400,7 @@ namespace DeIntranetARex
                 ws.Cells["M" + fila2].Value = "$ Ayudantes";
                 ws.Cells["N" + fila2].Value = "$ Otros";
                 ws.Cells["O" + fila2].Value = "Total";
+
 
                 ws.Cells["B" + fila2].Style.Font.Bold = true;
                 ws.Cells["D" + fila2].Style.Font.Bold = true;
