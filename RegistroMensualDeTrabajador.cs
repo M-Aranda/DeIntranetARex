@@ -20,12 +20,13 @@ namespace DeIntranetARex
         private String proceso;
         private String imponible_sin_tope;
         private String total_exento;
+        private String total_aportes;
 
         public RegistroMensualDeTrabajador()
         {
         }
 
-        public RegistroMensualDeTrabajador(string empleado, string nombre, string apellidoPate, string apellidoMate, string fechaNaci, string nombre_empresa, string nombre_cargo, string nombre_centro_costo, string proceso, string imponible_sin_tope, string total_exento)
+        public RegistroMensualDeTrabajador(string empleado, string nombre, string apellidoPate, string apellidoMate, string fechaNaci, string nombre_empresa, string nombre_cargo, string nombre_centro_costo, string proceso, string imponible_sin_tope, string total_exento, string total_aportes)
         {
             this.Empleado = empleado;
             this.Nombre = nombre;
@@ -38,6 +39,8 @@ namespace DeIntranetARex
             this.Proceso = proceso;
             this.Imponible_sin_tope = imponible_sin_tope;
             this.Total_exento = total_exento;
+            Total_aportes = total_aportes;
+
         }
 
         public string Empleado { get => empleado; set => empleado = value; }
@@ -51,5 +54,7 @@ namespace DeIntranetARex
         public string Proceso { get => proceso; set => proceso = value; }
         public string Imponible_sin_tope { get => imponible_sin_tope; set => imponible_sin_tope = value; }
         public string Total_exento { get => total_exento; set => total_exento = value; }
+
+        public string Total_aportes { get => total_aportes; set => total_aportes = value; }
     }
 }

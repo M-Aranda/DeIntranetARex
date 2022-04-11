@@ -831,6 +831,43 @@ namespace DeIntranetARex
 
         }
 
+        private List<MontoPorConcepto> leerHojaDeConceptos(string FilePath, int hoja)
+        {
+            List<MontoPorConcepto> listadoDeMontosPorConceptos= new List<MontoPorConcepto>();
+
+            FileInfo existingFile = new FileInfo(FilePath);
+            using (ExcelPackage package = new ExcelPackage(existingFile))
+            {
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[hoja];
+                int colCount = worksheet.Dimension.End.Column; 
+                int rowCount = worksheet.Dimension.End.Row;     
+
+
+
+                for (int row = 1; row <= rowCount; row++)
+                {
+                    String columnaDeNombre = worksheet.Cells[row, 1].Value?.ToString().Trim();
+                    if (columnaDeNombre != "" && (columnaDeNombre == "Bono Tiempo Espera R" || columnaDeNombre == "Bono estacional R" || columnaDeNombre == "Btn I R"))
+                    {
+                        MontoPorConcepto mpc = new MontoPorConcepto();
+
+
+                        listadoDeMontosPorConceptos.Add(mpc);
+                    }
+
+
+
+                }
+            }
+
+
+
+
+
+            return listadoDeMontosPorConceptos;
+        }
+
+
         private List<RegistroMensualDeTrabajador> leerExcelDeRegistroDeTrabajadores(string FilePath)
         {
             List<RegistroMensualDeTrabajador> registrosMensualesDeTrabajadores = new List<RegistroMensualDeTrabajador>();
@@ -861,6 +898,7 @@ namespace DeIntranetARex
                         r.Proceso = worksheet.Cells[row, 9].Value?.ToString().Trim();
                         r.Imponible_sin_tope = worksheet.Cells[row, 10].Value?.ToString().Trim();
                         r.Total_exento = worksheet.Cells[row, 11].Value?.ToString().Trim();
+                        r.Total_aportes= worksheet.Cells[row, 12].Value?.ToString().Trim();
 
                         registrosMensualesDeTrabajadores.Add(r);
                     }
