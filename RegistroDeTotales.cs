@@ -23,6 +23,10 @@ namespace DeIntranetARex
         private int totalRemuneracionesConductores;
         private int totalRemuneracionesAyudantes;
         private int totalRemuneracionesOtros;
+        private int totalR;
+        private int totalBonoTiempoEsperaR;
+        private int totalBonoEstacionalR;
+        private int totalBtnLR;
         private int totalRemuneracionesDeTodosLosTrabajadores;
         
 
@@ -31,8 +35,7 @@ namespace DeIntranetARex
            
         }
 
-
-        public RegistroDeTotales(string centro, int cantidadDeConductoresActivos, int cantidadDeConductoresDeLicencia, int cantidadDeAyudantesActivos, int cantidadDeAyudantesDeLicencia, int cantidadDeApoyosActivos, int cantidadDeApoyosDeLicencia, int totalConductores, int totalAyudantes, int totalApoyos, int totalDotacion, int totalRemuneracionesConductores, int totalRemuneracionesAyudantes, int totalRemuneracionesOtros, int totalRemuneracionesDeTodosLosTrabajadores)
+        public RegistroDeTotales(string centro, int cantidadDeConductoresActivos, int cantidadDeConductoresDeLicencia, int cantidadDeAyudantesActivos, int cantidadDeAyudantesDeLicencia, int cantidadDeApoyosActivos, int cantidadDeApoyosDeLicencia, int totalConductores, int totalAyudantes, int totalApoyos, int totalDotacion, int totalRemuneracionesConductores, int totalRemuneracionesAyudantes, int totalRemuneracionesOtros, int totalR, int totalBonoTiempoEsperaR, int totalBonoEstacionalR, int totalBtnLR, int totalRemuneracionesDeTodosLosTrabajadores)
         {
             this.Centro = centro;
             this.CantidadDeConductoresActivos = cantidadDeConductoresActivos;
@@ -48,6 +51,10 @@ namespace DeIntranetARex
             this.TotalRemuneracionesConductores = totalRemuneracionesConductores;
             this.TotalRemuneracionesAyudantes = totalRemuneracionesAyudantes;
             this.TotalRemuneracionesOtros = totalRemuneracionesOtros;
+            this.TotalR = totalR;
+            this.TotalBonoTiempoEsperaR = totalBonoTiempoEsperaR;
+            this.TotalBonoEstacionalR = totalBonoEstacionalR;
+            this.TotalBtnLR = totalBtnLR;
             this.TotalRemuneracionesDeTodosLosTrabajadores = totalRemuneracionesDeTodosLosTrabajadores;
         }
 
@@ -65,6 +72,10 @@ namespace DeIntranetARex
         public int TotalRemuneracionesConductores { get => totalRemuneracionesConductores; set => totalRemuneracionesConductores = value; }
         public int TotalRemuneracionesAyudantes { get => totalRemuneracionesAyudantes; set => totalRemuneracionesAyudantes = value; }
         public int TotalRemuneracionesOtros { get => totalRemuneracionesOtros; set => totalRemuneracionesOtros = value; }
+        public int TotalR { get => totalR; set => totalR = value; }
+        public int TotalBonoTiempoEsperaR { get => totalBonoTiempoEsperaR; set => totalBonoTiempoEsperaR = value; }
+        public int TotalBonoEstacionalR { get => totalBonoEstacionalR; set => totalBonoEstacionalR = value; }
+        public int TotalBtnLR { get => totalBtnLR; set => totalBtnLR = value; }
         public int TotalRemuneracionesDeTodosLosTrabajadores { get => totalRemuneracionesDeTodosLosTrabajadores; set => totalRemuneracionesDeTodosLosTrabajadores = value; }
     }
 }

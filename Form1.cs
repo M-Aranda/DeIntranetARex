@@ -21,6 +21,7 @@ namespace DeIntranetARex
 
     {
         private bool esArchivoDeAyudantes = true;
+        private string mesDeBonos = "";
 
         public Form1()
         {
@@ -189,8 +190,14 @@ namespace DeIntranetARex
             ws.Cells["M1"].Value = "";
             ws.Cells["N1"].Value = "";
             ws.Cells["O1"].Value = "";
-
-
+            ws.Cells["P1"].Value = "";
+            ws.Cells["Q1"].Value = "";
+            ws.Cells["R1"].Value = "";
+            ws.Cells["S1"].Value = "";
+            ws.Cells["T1"].Value = "";
+            ws.Cells["U1"].Value = "";
+            ws.Cells["V1"].Value = "";
+            ws.Cells["W1"].Value = "";
 
 
 
@@ -227,9 +234,6 @@ namespace DeIntranetARex
             //ws.Cells["O1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
 
 
-
-
-
             int fila2 = 2;
             int fila3 = 3;
             int fila4 = 4;
@@ -247,17 +251,17 @@ namespace DeIntranetARex
 
 
 
-            //quitar 0's sobrantes
+            //quitar 0's sobrantes y formatear tabla
             for (int i = 1; i < 13; i++)
             {
 
                 
                 
                 // agregar  bordes a tabla
-                ws.Cells["A"+fila2+":O"+fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":O" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A"+fila2+":S"+fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":S" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":S" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila2 + ":S" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
 
                 ws.Cells["H" + fila2 + ":N" + fila2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
 
@@ -276,6 +280,10 @@ namespace DeIntranetARex
                 ws.Cells["M" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["N" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["O" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["P" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
                 ////izquierda
                 ws.Cells["B" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
@@ -304,21 +312,26 @@ namespace DeIntranetARex
                 ws.Cells["M" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["N" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["P" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["Q" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["R" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 ////derecha
-                ws.Cells["O" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila11].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila11].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["S" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
+                //quitar ceros de los alrededores
                 ws.Cells["B" + fila2].Value = "";
                 ws.Cells["B" + fila3].Value = "";
                 ws.Cells["B" + fila14].Value = "";
@@ -375,7 +388,45 @@ namespace DeIntranetARex
                 ws.Cells["O"+fila3].Value = "";
                 ws.Cells["O"+fila14].Value = "";
                 ws.Cells["O"+fila15].Value = "";
-                //agrego esto
+                ws.Cells["P" + fila2].Value = "";
+                ws.Cells["P" + fila3].Value = "";
+                ws.Cells["P" + fila14].Value = "";
+                ws.Cells["P" + fila15].Value = "";
+                ws.Cells["Q" + fila2].Value = "";
+                ws.Cells["Q" + fila3].Value = "";
+                ws.Cells["Q" + fila14].Value = "";
+                ws.Cells["Q" + fila15].Value = "";
+                ws.Cells["R" + fila2].Value = "";
+                ws.Cells["R" + fila3].Value = "";
+                ws.Cells["R" + fila14].Value = "";
+                ws.Cells["R" + fila15].Value = "";
+                ws.Cells["S" + fila2].Value = "";
+                ws.Cells["S" + fila3].Value = "";
+                ws.Cells["S" + fila14].Value = "";
+                ws.Cells["S" + fila15].Value = "";
+
+                ws.Cells["T" + fila3].Value = "";
+                ws.Cells["T" + fila14].Value = "";
+                ws.Cells["T" + fila15].Value = "";
+
+
+
+                ws.Cells["U" + fila2].Value = "";
+                ws.Cells["U" + fila3].Value = "";
+                ws.Cells["U" + fila14].Value = "";
+                ws.Cells["U" + fila15].Value = "";
+
+                ws.Cells["V" + fila2].Value = "";
+                ws.Cells["V" + fila3].Value = "";
+                ws.Cells["V" + fila14].Value = "";
+                ws.Cells["V" + fila15].Value = "";
+
+
+                ws.Cells["W" + fila2].Value = "";
+                ws.Cells["W" + fila3].Value = "";
+                ws.Cells["W" + fila14].Value = "";
+                ws.Cells["W" + fila15].Value = "";
+
 
                 //agregar titulos en cada proceso
                 ws.Cells["B" + fila2].Value = "# de Conductores";
@@ -400,6 +451,13 @@ namespace DeIntranetARex
                 ws.Cells["M" + fila2].Value = "$ Ayudantes";
                 ws.Cells["N" + fila2].Value = "$ Otros";
                 ws.Cells["O" + fila2].Value = "Total";
+                ws.Cells["P" + fila2].Value = "Total a recuperar";
+
+                ws.Cells["Q" + fila2].Value = "Total bono tiempo de espera";
+                ws.Cells["R" + fila2].Value = "Total bono estacional";
+                ws.Cells["S" + fila2].Value = "Total Btn L";
+                ws.Cells["T" + fila2].Value = "";
+
 
 
                 ws.Cells["B" + fila2].Style.Font.Bold = true;
@@ -413,6 +471,10 @@ namespace DeIntranetARex
                 ws.Cells["M" + fila2].Style.Font.Bold = true;
                 ws.Cells["N" + fila2].Style.Font.Bold = true;
                 ws.Cells["O" + fila2].Style.Font.Bold = true;
+                ws.Cells["P" + fila2].Style.Font.Bold = true;
+                ws.Cells["Q" + fila2].Style.Font.Bold = true;
+                ws.Cells["R" + fila2].Style.Font.Bold = true;
+                ws.Cells["S" + fila2].Style.Font.Bold = true;
 
                 ws.Cells["B" + fila3].Style.Font.Italic = true;
                 ws.Cells["C" + fila3].Style.Font.Italic = true;
@@ -438,56 +500,196 @@ namespace DeIntranetARex
                 
                 ws.Cells["O" + fila14].Value = int.Parse(ws.Cells["O" + fila4].Value.ToString()) + int.Parse(ws.Cells["O" + fila5].Value.ToString()) + int.Parse(ws.Cells["O" + fila6].Value.ToString()) + int.Parse(ws.Cells["O" + fila7].Value.ToString()) + int.Parse(ws.Cells["O" + fila8].Value.ToString()) + int.Parse(ws.Cells["O" + fila9].Value.ToString()) + int.Parse(ws.Cells["O" + fila10].Value.ToString()) + int.Parse(ws.Cells["O" + fila11].Value.ToString()) + int.Parse(ws.Cells["O" + fila12].Value.ToString()) + int.Parse(ws.Cells["O" + fila13].Value.ToString());
 
+
+
+                //valores de bonos
+
+                if (ws.Cells["A" + fila2].Value.ToString() == "2022-03")
+                {
+                    ws.Cells["Q" + fila4].Value = ws.Cells["R" + fila4].Value;
+                    ws.Cells["Q" + fila5].Value = ws.Cells["R" + fila5].Value;
+                    ws.Cells["Q" + fila6].Value = ws.Cells["R" + fila6].Value;
+                    ws.Cells["Q" + fila7].Value = ws.Cells["R" + fila7].Value;
+                    ws.Cells["Q" + fila8].Value = ws.Cells["R" + fila8].Value;
+                    ws.Cells["Q" + fila9].Value = ws.Cells["R" + fila9].Value;
+                    ws.Cells["Q" + fila10].Value = ws.Cells["R" + fila10].Value;
+                    ws.Cells["Q" + fila11].Value = ws.Cells["R" + fila11].Value;
+                    ws.Cells["Q" + fila12].Value = ws.Cells["R" + fila12].Value;
+                    ws.Cells["Q" + fila13].Value = ws.Cells["R" + fila13].Value;
+
+
+
+                    ws.Cells["R" + fila4].Value = ws.Cells["T" + fila4].Value;
+                    ws.Cells["R" + fila5].Value = ws.Cells["T" + fila5].Value;
+                    ws.Cells["R" + fila6].Value = ws.Cells["T" + fila6].Value;
+                    ws.Cells["R" + fila7].Value = ws.Cells["T" + fila7].Value;
+                    ws.Cells["R" + fila8].Value = ws.Cells["T" + fila8].Value;
+                    ws.Cells["R" + fila9].Value = ws.Cells["T" + fila9].Value;
+                    ws.Cells["R" + fila10].Value = ws.Cells["T" + fila10].Value;
+                    ws.Cells["R" + fila11].Value = ws.Cells["T" + fila11].Value;
+                    ws.Cells["R" + fila12].Value = ws.Cells["T" + fila12].Value;
+                    ws.Cells["R" + fila13].Value = ws.Cells["T" + fila13].Value;
+
+                    ws.Cells["T" + fila4].Value = "";
+                    ws.Cells["T" + fila5].Value = "";
+                    ws.Cells["T" + fila6].Value = "";
+                    ws.Cells["T" + fila7].Value = "";
+                    ws.Cells["T" + fila8].Value = "";
+                    ws.Cells["T" + fila9].Value = "";
+                    ws.Cells["T" + fila10].Value = "";
+                    ws.Cells["T" + fila11].Value = "";
+                    ws.Cells["T" + fila12].Value = "";
+                    ws.Cells["T" + fila13].Value = "";
+
+                    ws.Cells["S" + fila4].Value = ws.Cells["V" + fila4].Value;
+                    ws.Cells["S" + fila5].Value = ws.Cells["V" + fila5].Value;
+                    ws.Cells["S" + fila6].Value = ws.Cells["V" + fila6].Value;
+                    ws.Cells["S" + fila7].Value = ws.Cells["V" + fila7].Value;
+                    ws.Cells["S" + fila8].Value = ws.Cells["V" + fila8].Value;
+                    ws.Cells["S" + fila9].Value = ws.Cells["V" + fila9].Value;
+                    ws.Cells["S" + fila10].Value = ws.Cells["V" + fila10].Value;
+                    ws.Cells["S" + fila11].Value = ws.Cells["V" + fila11].Value;
+                    ws.Cells["S" + fila12].Value = ws.Cells["V" + fila12].Value;
+                    ws.Cells["S" + fila13].Value = ws.Cells["V" + fila13].Value;
+
+                    ws.Cells["V" + fila4].Value = "";
+                    ws.Cells["V" + fila5].Value = "";
+                    ws.Cells["V" + fila6].Value = "";
+                    ws.Cells["V" + fila7].Value = "";
+                    ws.Cells["V" + fila8].Value = "";
+                    ws.Cells["V" + fila9].Value = "";
+                    ws.Cells["V" + fila10].Value = "";
+                    ws.Cells["V" + fila11].Value = "";
+                    ws.Cells["V" + fila12].Value = "";
+                    ws.Cells["V" + fila13].Value = "";
+                }
+                else
+                {
+                    ws.Cells["Q" + fila4].Value = 0;
+                    ws.Cells["Q" + fila5].Value = 0;
+                    ws.Cells["Q" + fila6].Value = 0;
+                    ws.Cells["Q" + fila7].Value = 0;
+                    ws.Cells["Q" + fila8].Value = 0;
+                    ws.Cells["Q" + fila9].Value = 0;
+                    ws.Cells["Q" + fila10].Value = 0;
+                    ws.Cells["Q" + fila11].Value = 0;
+                    ws.Cells["Q" + fila12].Value = 0;
+                    ws.Cells["Q" + fila13].Value = 0;
+
+
+
+                    ws.Cells["R" + fila4].Value = 0;
+                    ws.Cells["R" + fila5].Value = 0;
+                    ws.Cells["R" + fila6].Value = 0;
+                    ws.Cells["R" + fila7].Value = 0;
+                    ws.Cells["R" + fila8].Value = 0;
+                    ws.Cells["R" + fila9].Value = 0;
+                    ws.Cells["R" + fila10].Value = 0;
+                    ws.Cells["R" + fila11].Value = 0;
+                    ws.Cells["R" + fila12].Value = 0;
+                    ws.Cells["R" + fila13].Value = 0;
+
+                    ws.Cells["T" + fila4].Value = "";
+                    ws.Cells["T" + fila5].Value = "";
+                    ws.Cells["T" + fila6].Value = "";
+                    ws.Cells["T" + fila7].Value = "";
+                    ws.Cells["T" + fila8].Value = "";
+                    ws.Cells["T" + fila9].Value = "";
+                    ws.Cells["T" + fila10].Value = "";
+                    ws.Cells["T" + fila11].Value = "";
+                    ws.Cells["T" + fila12].Value = "";
+                    ws.Cells["T" + fila13].Value = "";
+
+                    ws.Cells["S" + fila4].Value = 0;
+                    ws.Cells["S" + fila5].Value = 0;
+                    ws.Cells["S" + fila6].Value = 0;
+                    ws.Cells["S" + fila7].Value = 0;
+                    ws.Cells["S" + fila8].Value = 0;
+                    ws.Cells["S" + fila9].Value = 0;
+                    ws.Cells["S" + fila10].Value = 0;
+                    ws.Cells["S" + fila11].Value = 0;
+                    ws.Cells["S" + fila12].Value = 0;
+                    ws.Cells["S" + fila13].Value = 0;
+
+                    ws.Cells["V" + fila4].Value = "";
+                    ws.Cells["V" + fila5].Value = 0;
+                    ws.Cells["V" + fila6].Value = 0;
+                    ws.Cells["V" + fila7].Value = 0;
+                    ws.Cells["V" + fila8].Value = 0;
+                    ws.Cells["V" + fila9].Value = 0;
+                    ws.Cells["V" + fila10].Value = 0;
+                    ws.Cells["V" + fila11].Value = 0;
+                    ws.Cells["V" + fila12].Value = 0;
+                    ws.Cells["V" + fila13].Value = "";
+
+
+
+                    ws.Cells["P" + fila4].Value = 0;
+                    ws.Cells["P" + fila5].Value = 0;
+                    ws.Cells["P" + fila6].Value = 0;
+                    ws.Cells["P" + fila7].Value = 0;
+                    ws.Cells["P" + fila8].Value = 0;
+                    ws.Cells["P" + fila9].Value = 0;
+                    ws.Cells["P" + fila10].Value = 0;
+                    ws.Cells["P" + fila11].Value = 0;
+                    ws.Cells["P" + fila12].Value = 0;
+                    ws.Cells["P" + fila13].Value = 0;
+                }
+                
+
+               
+
+
+
                 //cuadro sub resumen
-                ws.Cells["Q" + fila4].Value = "RESUMEN DE MODELOS";
+                ws.Cells["U" + fila4].Value = "RESUMEN DE MODELOS";
 
-                ws.Cells["Q" + fila4].Style.Border.Left.Style= OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila4].Style.Border.Left.Style= OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
-                ws.Cells["Q" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["U" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
-                ws.Cells["R" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 // titulos de cuadro resumen
-                ws.Cells["Q" + fila5].Value = "INTERPLANTAS";
-                ws.Cells["Q" + fila5].Style.Font.Bold = true;
-                ws.Cells["Q" + fila6].Value = "MOVILIZADORES";
-                ws.Cells["Q" + fila6].Style.Font.Bold = true;
-                ws.Cells["Q" + fila7].Value = "EMPRENDEDORES";
-                ws.Cells["Q" + fila7].Style.Font.Bold = true;
-                ws.Cells["Q" + fila8].Value = "DIRECTOS";
-                ws.Cells["Q" + fila8].Style.Font.Bold = true;
-                ws.Cells["Q" + fila9].Value = "INDIRECTOS";
-                ws.Cells["Q" + fila9].Style.Font.Bold = true;
-                ws.Cells["Q" + fila10].Value = "ADMINISTRACION";
-                ws.Cells["Q" + fila10].Style.Font.Bold = true;
-                ws.Cells["Q" + fila11].Value = "$ TOTAL ";
-                ws.Cells["Q" + fila11].Style.Font.Bold = true;
-                ws.Cells["Q" + fila12].Value = "TOTAL TRABAJADORES";
-                ws.Cells["Q" + fila12].Style.Font.Bold = true;
-
+                ws.Cells["U" + fila5].Value = "INTERPLANTAS";
+                ws.Cells["U" + fila5].Style.Font.Bold = true;
+                ws.Cells["U" + fila6].Value = "MOVILIZADORES";
+                ws.Cells["U" + fila6].Style.Font.Bold = true;
+                ws.Cells["U" + fila7].Value = "EMPRENDEDORES";
+                ws.Cells["U" + fila7].Style.Font.Bold = true;
+                ws.Cells["U" + fila8].Value = "DIRECTOS";
+                ws.Cells["U" + fila8].Style.Font.Bold = true;
+                ws.Cells["U" + fila9].Value = "INDIRECTOS";
+                ws.Cells["U" + fila9].Style.Font.Bold = true;
+                ws.Cells["U" + fila10].Value = "ADMINISTRACION";
+                ws.Cells["U" + fila10].Style.Font.Bold = true;
+                ws.Cells["U" + fila11].Value = "$ TOTAL ";
+                ws.Cells["U" + fila11].Style.Font.Bold = true;
+                ws.Cells["U" + fila12].Value = "TOTAL TRABAJADORES";
+                ws.Cells["U" + fila12].Style.Font.Bold = true;
 
                 //valores de cuadro resumen (interplanta, movilizadores y emprendedores)
-                ws.Cells["R" + fila5].Value = ws.Cells["O" + fila5].Value;
-                ws.Cells["R" + fila6].Value = ws.Cells["O" + fila11].Value;
-                ws.Cells["R" + fila7].Value = ws.Cells["O" + fila12].Value;
+                ws.Cells["V" + fila5].Value = ws.Cells["O" + fila5].Value;
+                ws.Cells["V" + fila6].Value = ws.Cells["O" + fila11].Value;
+                ws.Cells["V" + fila7].Value = ws.Cells["O" + fila12].Value;
 
 
 
@@ -512,18 +714,18 @@ namespace DeIntranetARex
 
 
                 //valores de modelo tradicional (directos e indirectos)
-                ws.Cells["R" + fila8].Value = sumaDeDirectos;
-                ws.Cells["R" + fila9].Value = sumaDeIndirectos;
+                ws.Cells["V" + fila8].Value = sumaDeDirectos;
+                ws.Cells["V" + fila9].Value = sumaDeIndirectos;
                 //valor de cuadro resumen (administracion)
-                ws.Cells["R" + fila10].Value = ws.Cells["O" + fila13].Value;
+                ws.Cells["V" + fila10].Value = ws.Cells["O" + fila13].Value;
 
                 //valor de celda de totales
-                ws.Cells["R" + fila11].Value = sumaDeDirectos + sumaDeIndirectos + int.Parse(ws.Cells["R" + fila10].Value.ToString()) + int.Parse(ws.Cells["R" + fila5].Value.ToString()) + int.Parse(ws.Cells["R" + fila6].Value.ToString()) + int.Parse(ws.Cells["R" + fila7].Value.ToString());
+                ws.Cells["V" + fila11].Value = sumaDeDirectos + sumaDeIndirectos + int.Parse(ws.Cells["V" + fila10].Value.ToString()) + int.Parse(ws.Cells["V" + fila5].Value.ToString()) + int.Parse(ws.Cells["V" + fila6].Value.ToString()) + int.Parse(ws.Cells["V" + fila7].Value.ToString());
 
 
                 //formatear como numero usando comas como separadores de decimales
-                ws.Cells["L" + fila4 + ":O" + fila14].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
-                ws.Cells["R" + fila5 + ":R" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                ws.Cells["L" + fila4 + ":S" + fila14].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                ws.Cells["V" + fila5 + ":V" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
 
                 //total de trabajadores
 
@@ -533,7 +735,7 @@ namespace DeIntranetARex
                 int ayudantesDeLicencia = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
                 int apoyosActivos = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
                 int apoyosDeLicencia = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
-                ws.Cells["R" + fila12].Value = conductoresActivos + conductoresDeLicencia + ayudantesActivos + ayudantesDeLicencia + apoyosActivos + apoyosDeLicencia;
+                ws.Cells["V" + fila12].Value = conductoresActivos + conductoresDeLicencia + ayudantesActivos + ayudantesDeLicencia + apoyosActivos + apoyosDeLicencia;
                 
                 //formatear celdas de centros y de Totales en negrita
                 ws.Cells["A"+fila4+":A"+fila14].Style.Font.Bold = true;
@@ -544,6 +746,9 @@ namespace DeIntranetARex
 
                 ws.Cells["A"+fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells["A"+fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+
+
+
 
 
                 fila2 = fila2 + 14;
@@ -831,6 +1036,8 @@ namespace DeIntranetARex
 
         }
 
+
+
         private List<MontoPorConcepto> leerHojaDeConceptos(string FilePath, int hoja)
         {
             List<MontoPorConcepto> listadoDeMontosPorConceptos= new List<MontoPorConcepto>();
@@ -840,17 +1047,65 @@ namespace DeIntranetARex
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[hoja];
                 int colCount = worksheet.Dimension.End.Column; 
-                int rowCount = worksheet.Dimension.End.Row;     
+                int rowCount = worksheet.Dimension.End.Row;
 
 
+                switch (worksheet.Cells["A1"].Value?.ToString().Trim())
+                {
+                    case "Montos por Conceptos de Enero-2022.xls":
+                        mesDeBonos = "2022-01";
+                        break;
+                    case "Montos por Conceptos de Febrero-2022.xls":
+                        mesDeBonos = "2022-02";
+                        break;
+                    case "Montos por Conceptos de Marzo-2022.xls":
+                        mesDeBonos = "2022-03";
+                        break;
+                    case "Montos por Conceptos de Abril-2022.xls":
+                        mesDeBonos = "2022-04";
+                        break;
+                    case "Montos por Conceptos de Mayo-2022.xls":
+                        mesDeBonos = "2022-05";
+                        break;
+                    case "Montos por Conceptos de Junio-2022.xls":
+                        mesDeBonos = "2022-06";
+                        break;
+                    case "Montos por Conceptos de Julio-2022.xls":
+                        mesDeBonos = "2022-07";
+                        break;
+                    case "Montos por Conceptos de Agosto-2022.xls":
+                        mesDeBonos = "2022-08";
+                        break;
+                    case "Montos por Conceptos de Septiembre-2022.xls":
+                        mesDeBonos = "2022-09";
+                        break;
+                    case "Montos por Conceptos de Octubre-2022.xls":
+                        mesDeBonos = "2022-10";
+                        break;
+                    case "Montos por Conceptos de Noviembre-2022.xls":
+                        mesDeBonos = "2022-11";
+                        break;
+                    case "Montos por Conceptos de Diciembre-2022.xls":
+                        mesDeBonos = "2022-12";
+                        break;
+                    default:
+                        break;
+                }
 
                 for (int row = 1; row <= rowCount; row++)
                 {
+
+              
+
                     String columnaDeNombre = worksheet.Cells[row, 1].Value?.ToString().Trim();
                     if (columnaDeNombre != "" && (columnaDeNombre == "Bono Tiempo Espera R" || columnaDeNombre == "Bono estacional R" || columnaDeNombre == "Btn I R"))
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
-
+                        mpc.Concepto = worksheet.Cells[row, 1].Value?.ToString().Trim();
+                        mpc.Empleado = worksheet.Cells[row, 2].Value?.ToString().Trim();
+                        mpc.Id = worksheet.Cells[row, 3].Value?.ToString().Trim();
+                        mpc.Contrato = worksheet.Cells[row, 4].Value?.ToString().Trim();
+                        mpc.Monto = int.Parse(worksheet.Cells[row, 5].Value?.ToString().Trim());
 
                         listadoDeMontosPorConceptos.Add(mpc);
                     }
@@ -859,9 +1114,6 @@ namespace DeIntranetARex
 
                 }
             }
-
-
-
 
 
             return listadoDeMontosPorConceptos;
@@ -956,7 +1208,7 @@ namespace DeIntranetARex
             return comision;
         }
 
-        private List<RegistroTotalesComoString> procesarRegistrosMensuales(List<RegistroMensualDeTrabajador> registrosMensualesDeTrabajadores)
+        private List<RegistroTotalesComoString> procesarRegistrosMensuales(List<RegistroMensualDeTrabajador> registrosMensualesDeTrabajadores, string FilePath)
         {
 
             List<RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
@@ -979,47 +1231,76 @@ namespace DeIntranetARex
             }
 
 
+
+
+
             foreach (var procesoActual in procesos)
             {
-                
-            
 
-            //List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
-
-            //un registro de totales por centro
-
-            RegistroDeTotales registroProceso = new RegistroDeTotales(procesoActual, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroCurico = new RegistroDeTotales("Curico",0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-            RegistroDeTotales registroInterplanta = new RegistroDeTotales("Interplanta", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroRancagua = new RegistroDeTotales("Rancagua", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroTaller = new RegistroDeTotales("Taller", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);// taller serian todos los trabajadores que sean nocheros o mecanicos, independiente del centro 
-            RegistroDeTotales registroMelipilla = new RegistroDeTotales("Melipilla", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroSanAntonio = new RegistroDeTotales("San Antonio", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroIllapel = new RegistroDeTotales("Illapel", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroSantiago = new RegistroDeTotales("Santiago", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroMovilizadores = new RegistroDeTotales("Movilizadores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroAdministracion = new RegistroDeTotales("Administracion", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEmprendedores = new RegistroDeTotales("Emprendedores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
-     
+                List<MontoPorConcepto> sincoflet = leerHojaDeConceptos(FilePath, 1);
+                List<MontoPorConcepto> filialTalca = leerHojaDeConceptos(FilePath, 2);
+                List<MontoPorConcepto> talcaRancagua = leerHojaDeConceptos(FilePath, 3);
 
 
+                //List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
 
-              
+                //un registro de totales por centro
+
+            RegistroDeTotales registroProceso = new RegistroDeTotales(procesoActual, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroCurico = new RegistroDeTotales("Curico",0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0, 0, 0, 0);
+            RegistroDeTotales registroInterplanta = new RegistroDeTotales("Interplanta", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0);
+            RegistroDeTotales registroRancagua = new RegistroDeTotales("Rancagua", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroTaller = new RegistroDeTotales("Taller", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);// taller serian todos los trabajadores que sean nocheros o mecanicos, independiente del centro 
+            RegistroDeTotales registroMelipilla = new RegistroDeTotales("Melipilla", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroSanAntonio = new RegistroDeTotales("San Antonio", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroIllapel = new RegistroDeTotales("Illapel", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroSantiago = new RegistroDeTotales("Santiago", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroMovilizadores = new RegistroDeTotales("Movilizadores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroAdministracion = new RegistroDeTotales("Administracion", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEmprendedores = new RegistroDeTotales("Emprendedores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 
 
-            foreach (var item in registrosMensualesDeTrabajadores)
+                foreach (var item in registrosMensualesDeTrabajadores)
             {
 
                     if (item.Proceso == procesoActual)
                     {
 
-                        if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
+                       if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
                         {
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBonoTiempoEsperaR= registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroCurico.TotalR = registroCurico.TotalR + mpcFilialTalca.Monto;
+                                    registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroCurico.TotalR = registroCurico.TotalR + mpcTalcaRancagua.Monto;
+                                    registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
+
+
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1036,8 +1317,9 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    
+                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) +int.Parse(item.Total_aportes));      
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1054,8 +1336,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
@@ -1071,8 +1353,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroCurico.TotalConductores = registroCurico.TotalConductores + 1;
@@ -1088,8 +1370,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                            
                              
@@ -1107,8 +1389,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroCurico.TotalRemuneracionesOtros = registroCurico.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroCurico.TotalRemuneracionesOtros = registroCurico.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1118,6 +1400,31 @@ namespace DeIntranetARex
 
                         if (item.Nombre_centro_costo == "ILLAPEL")
                         {
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
+                                    registroIllapel.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcFilialTalca.Monto;
+                                    registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcTalcaRancagua.Monto;
+                                    registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1134,8 +1441,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1152,8 +1459,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
@@ -1169,8 +1476,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroIllapel.TotalConductores = registroIllapel.TotalConductores + 1;
@@ -1186,8 +1493,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                               
                              
@@ -1205,8 +1512,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroIllapel.TotalRemuneracionesOtros = registroIllapel.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroIllapel.TotalRemuneracionesOtros = registroIllapel.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1215,7 +1522,32 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "INTERPLANTA" || item.Nombre_centro_costo == "INTERPLANTA E2")
                         {
-                            
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
+                                    registroInterplanta.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcFilialTalca.Monto;
+                                    registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcTalcaRancagua.Monto;
+                                    registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
 
                             switch (item.Nombre_cargo)
                             {
@@ -1234,8 +1566,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1253,8 +1585,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
@@ -1271,8 +1603,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
@@ -1289,8 +1621,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                               
                               
@@ -1311,8 +1643,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroInterplanta.TotalRemuneracionesOtros = registroInterplanta.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroInterplanta.TotalRemuneracionesOtros = registroInterplanta.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1323,6 +1655,33 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "MELIPILLA" || item.Nombre_centro_costo == "MELIPILLA E2")
                         {
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
+                                    registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcFilialTalca.Monto;
+                                    registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcTalcaRancagua.Monto;
+                                    registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1339,8 +1698,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1357,8 +1716,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
@@ -1374,8 +1733,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroMelipilla.TotalConductores = registroMelipilla.TotalConductores + 1;
@@ -1391,8 +1750,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                               
                                 
@@ -1410,8 +1769,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMelipilla.TotalRemuneracionesOtros = registroMelipilla.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMelipilla.TotalRemuneracionesOtros = registroMelipilla.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1421,7 +1780,33 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "RANCAGUA" || item.Nombre_centro_costo == "RANCAGUA  E2")
                         {
-                            //Console.WriteLine("Empleado de Rancagua en el proceso"+item.Proceso);
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
+                                    registroRancagua.TotalBonoTiempoEsperaR = registroRancagua.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcFilialTalca.Monto;
+                                    registroRancagua.TotalBonoEstacionalR = registroRancagua.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcTalcaRancagua.Monto;
+                                    registroRancagua.TotalBtnLR = registroRancagua.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
+
 
                             registroRancagua.TotalDotacion = registroRancagua.TotalDotacion + 1;
 
@@ -1441,8 +1826,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1459,8 +1844,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
@@ -1476,8 +1861,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroRancagua.TotalConductores = registroRancagua.TotalConductores + 1;
@@ -1493,8 +1878,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                              
                               //el trabajador esta en rancagua y su cargo es jefe de mantencion = se asigna a taller
@@ -1532,8 +1917,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroRancagua.TotalRemuneracionesOtros = registroRancagua.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroRancagua.TotalRemuneracionesOtros = registroRancagua.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1541,6 +1926,32 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "SAN ANTONIO" || item.Nombre_centro_costo == "SAN ANTONIO E2")
                         {
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
+                                    registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcFilialTalca.Monto;
+                                    registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcTalcaRancagua.Monto;
+                                    registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1557,8 +1968,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1575,8 +1986,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
@@ -1592,8 +2003,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroSanAntonio.TotalConductores = registroSanAntonio.TotalConductores + 1;
@@ -1609,8 +2020,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                            
                                
@@ -1628,8 +2039,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSanAntonio.TotalRemuneracionesOtros = registroSanAntonio.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSanAntonio.TotalRemuneracionesOtros = registroSanAntonio.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1653,8 +2064,33 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1671,8 +2107,34 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
+
                                     break;
                                 case "CHOFER PORTEO":
                                     registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
@@ -1688,8 +2150,34 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
+
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroSantiago.TotalConductores = registroSantiago.TotalConductores + 1;
@@ -1705,8 +2193,34 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
+
                                     break;
                                     //el trabajador esta en santiago y es un movilizador = se asigna a movilizadores
                                 case "MOVILIZADOR":
@@ -1723,8 +2237,35 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcFilialTalca.Monto;
+                                            registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcTalcaRancagua.Monto;
+                                            registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
+
+
                                     break;
                                
                                 default:
@@ -1741,8 +2282,33 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    foreach (var mpcSincoFlet in sincoflet)
+                                    {
+                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcFilialTalca in filialTalca)
+                                    {
+                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                        }
+                                    }
+                                    foreach (var mpcTalcaRancagua in talcaRancagua)
+                                    {
+                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                        }
+                                    }
 
                                     break;
                             }
@@ -1750,6 +2316,33 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "CENTRAL" || item.Nombre_centro_costo == "CENTRAL E2")
                         {
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
+                                    registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcFilialTalca.Monto;
+                                    registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcTalcaRancagua.Monto;
+                                    registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1766,7 +2359,7 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
 
                                     break;
@@ -1784,8 +2377,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
@@ -1801,8 +2394,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroAdministracion.TotalConductores = registroAdministracion.TotalConductores + 1;
@@ -1818,8 +2411,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                     
                                     //el trabajador esta en central y es nochero = se asigna a taller
@@ -1839,8 +2432,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                             
 
                                     break;
@@ -1858,8 +2451,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -1867,6 +2460,32 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "EMPRENDEDORES")
                         {
+
+                            foreach (var mpcSincoFlet in sincoflet)
+                            {
+                                if (item.Empleado == mpcSincoFlet.Id)
+                                {
+                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
+                                    registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                            }
+                            foreach (var mpcFilialTalca in filialTalca)
+                            {
+                                if (item.Empleado == mpcFilialTalca.Id)
+                                {
+                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcFilialTalca.Monto;
+                                    registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
+                                }
+                            }
+                            foreach (var mpcTalcaRancagua in talcaRancagua)
+                            {
+                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                {
+                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcTalcaRancagua.Monto;
+                                    registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcTalcaRancagua.Monto;
+                                }
+                            }
+
                             switch (item.Nombre_cargo)
                             {
                                 case "AYUDANTE CHOFER":
@@ -1883,8 +2502,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -1901,8 +2520,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO":
                                     registroEmprendedores.TotalConductores = registroEmprendedores.TotalConductores + 1;
@@ -1918,8 +2537,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                                 case "CHOFER PORTEO E2":
                                     registroEmprendedores.TotalConductores = registroEmprendedores.TotalConductores + 1;
@@ -1935,8 +2554,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     break;
                              
                                
@@ -1954,8 +2573,8 @@ namespace DeIntranetARex
 
                                     }
 
-                                    registroEmprendedores.TotalRemuneracionesOtros = registroEmprendedores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
-                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento));
+                                    registroEmprendedores.TotalRemuneracionesOtros = registroEmprendedores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
                                     break;
                             }
@@ -2050,7 +2669,7 @@ namespace DeIntranetARex
             var username = array[2];
             string downloads = @"C:\Users\" + username + @"\Downloads";
             
-           List<RegistroTotalesComoString> registrosDeTotales = procesarRegistrosMensuales(registros);
+           List<RegistroTotalesComoString> registrosDeTotales = procesarRegistrosMensuales(registros, sFileName);
 
 
             var archivo = new FileInfo(downloads + @"\Registro de totales.xlsx");

@@ -24,7 +24,12 @@ namespace DeIntranetARex
         private int totalRemuneracionesConductores;
         private int totalRemuneracionesAyudantes;
         private int totalRemuneracionesOtros;
+        private int totalR;
+        private int totalBonoTiempoEsperaR;
+        private int totalBonoEstacionalR;
+        private int totalBtnLR;
         private int totalRemuneracionesDeTodosLosTrabajadores;
+
 
 
         private String cantidadDeConductoresActivosComoString;
@@ -40,6 +45,10 @@ namespace DeIntranetARex
         private String totalRemuneracionesConductoresComoString;
         private String totalRemuneracionesAyudantesComoString;
         private String totalRemuneracionesOtrosComoString;
+        private String totalBonoTiempoEsperaRComoString;
+        private String totalBonoEstacionalRComoString;
+        private String totalBtnLRComoString;
+        private String totalRComoString;
         private String totalRemuneracionesDeTodosLosTrabajadoresComoString;
 
 
@@ -65,6 +74,11 @@ namespace DeIntranetARex
             this.TotalRemuneracionesConductores = r.TotalRemuneracionesConductores;//.ToString();
             this.TotalRemuneracionesAyudantes = r.TotalRemuneracionesAyudantes;//.ToString();
             this.TotalRemuneracionesOtros = r.TotalRemuneracionesOtros;//.ToString();
+            this.TotalBonoTiempoEsperaR = r.TotalBonoTiempoEsperaR;
+            this.TotalBonoEstacionalR = r.TotalBonoEstacionalR;
+            this.TotalBtnLR = r.TotalBtnLR;
+
+            this.TotalR = r.TotalR;
             this.TotalRemuneracionesDeTodosLosTrabajadores = r.TotalRemuneracionesDeTodosLosTrabajadores;//.ToString();
         }
 
@@ -87,6 +101,10 @@ namespace DeIntranetARex
             this.totalRemuneracionesConductoresComoString = r.TotalRemuneracionesConductores.ToString();
             this.totalRemuneracionesAyudantesComoString = r.TotalRemuneracionesAyudantes.ToString();
             this.totalRemuneracionesOtrosComoString = r.TotalRemuneracionesOtros.ToString();
+            this.TotalBonoTiempoEsperaRComoString = r.TotalBonoTiempoEsperaR.ToString();
+            this.TotalBonoEstacionalRComoString = r.TotalBonoEstacionalR.ToString();
+            this.TotalBtnLRComoString = r.TotalBtnLR.ToString();
+            this.totalRComoString = r.TotalR.ToString();
             this.totalRemuneracionesDeTodosLosTrabajadoresComoString = r.TotalRemuneracionesDeTodosLosTrabajadores.ToString();
         }
 
@@ -131,5 +149,26 @@ namespace DeIntranetARex
         public int TotalRemuneracionesAyudantes { get => totalRemuneracionesAyudantes; set => totalRemuneracionesAyudantes = value; }
         public int TotalRemuneracionesOtros { get => totalRemuneracionesOtros; set => totalRemuneracionesOtros = value; }
         public int TotalRemuneracionesDeTodosLosTrabajadores { get => totalRemuneracionesDeTodosLosTrabajadores; set => totalRemuneracionesDeTodosLosTrabajadores = value; }
+
+        public int TotalR { get => totalR; set => totalR = value; }
+        public string TotalRComoString { get => totalRComoString; set => totalRComoString = value; }
+
+
+        public int TotalBonoTiempoEsperaR { get => totalBonoTiempoEsperaR; set => totalBonoTiempoEsperaR = value; }
+
+        public string TotalBonoTiempoEsperaRComoString { get => totalBonoTiempoEsperaRComoString; set => totalBonoTiempoEsperaRComoString = value; }
+
+        public int TotalBonoEstacionalR { get => totalBonoEstacionalR; set => totalBonoEstacionalR = value; }
+
+        public string TotalBonoEstacionalRComoString { get => totalBonoEstacionalRComoString; set => totalBonoEstacionalRComoString = value; }
+
+        public int TotalBtnLR { get => totalBtnLR; set => totalBtnLR = value; }
+
+        public string TotalBtnLRComoString { get => totalBtnLRComoString; set => totalBtnLRComoString = value; }
+
+
+
+
+
     }
 }
