@@ -644,6 +644,10 @@ namespace DeIntranetARex
                 //cuadro sub resumen
                 ws.Cells["U" + fila4].Value = "RESUMEN DE MODELOS";
 
+                ws.Cells["V" + fila4].Value = "Total";
+                ws.Cells["W" + fila4].Value = "Por Cobrar a CCU";
+                ws.Cells["X" + fila4].Value = "Total Mes";
+
                 ws.Cells["U" + fila4].Style.Border.Left.Style= OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["U" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["U" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
@@ -658,14 +662,14 @@ namespace DeIntranetARex
                 ws.Cells["U" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["U" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
-                ws.Cells["V" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["V" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 // titulos de cuadro resumen
@@ -746,10 +750,6 @@ namespace DeIntranetARex
 
                 ws.Cells["A"+fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells["A"+fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
-
-
-
-
 
                 fila2 = fila2 + 14;
                 fila3 = fila3 + 14;
