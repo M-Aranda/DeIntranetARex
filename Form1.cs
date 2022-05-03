@@ -652,6 +652,8 @@ namespace DeIntranetARex
                 ws.Cells["U" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["U" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["U" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["V" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["W" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 ws.Cells["U" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
@@ -670,6 +672,9 @@ namespace DeIntranetARex
                 ws.Cells["X" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["X" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                ws.Cells["V" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["W" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 // titulos de cuadro resumen
@@ -729,7 +734,7 @@ namespace DeIntranetARex
 
                 //formatear como numero usando comas como separadores de decimales
                 ws.Cells["L" + fila4 + ":S" + fila14].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
-                ws.Cells["V" + fila5 + ":V" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                ws.Cells["V" + fila5 + ":X" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
 
                 //total de trabajadores
 
@@ -750,6 +755,35 @@ namespace DeIntranetARex
 
                 ws.Cells["A"+fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                 ws.Cells["A"+fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+
+
+                ws.Cells["W" + fila6].Value = ws.Cells["P" + fila11].Value;
+
+                ws.Cells["W" + fila8].Value = int.Parse(ws.Cells["P" + fila4].Value.ToString()) + int.Parse(ws.Cells["P" + fila5].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila6].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila7].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila8].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila9].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila10].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila12].Value.ToString()) +
+                    int.Parse(ws.Cells["P" + fila13].Value.ToString());
+
+                ws.Cells["W" + fila5].Value = 0;
+                ws.Cells["W" + fila7].Value = 0;
+                ws.Cells["W" + fila9].Value = 0;
+                ws.Cells["W" + fila10].Value = 0;
+                ws.Cells["W" + fila11].Value = int.Parse(ws.Cells["W" + fila6].Value.ToString()) + int.Parse(ws.Cells["W" + fila8].Value.ToString());
+
+                ws.Cells["X" + fila5].Value = int.Parse(ws.Cells["V" + fila5].Value.ToString()) + int.Parse(ws.Cells["W" + fila5].Value.ToString());
+                ws.Cells["X" + fila6].Value = int.Parse(ws.Cells["V" + fila6].Value.ToString())  + int.Parse(ws.Cells["W" + fila6].Value.ToString());
+                ws.Cells["X" + fila7].Value = int.Parse(ws.Cells["V" + fila7].Value.ToString()) + int.Parse(ws.Cells["W" + fila7].Value.ToString());
+                ws.Cells["X" + fila8].Value = int.Parse(ws.Cells["V" + fila8].Value.ToString()) + int.Parse(ws.Cells["W" + fila8].Value.ToString());
+                ws.Cells["X" + fila9].Value = int.Parse(ws.Cells["V" + fila9].Value.ToString()) + int.Parse(ws.Cells["W" + fila9].Value.ToString());
+                ws.Cells["X" + fila10].Value = int.Parse(ws.Cells["V" + fila10].Value.ToString()) + int.Parse(ws.Cells["W" + fila10].Value.ToString());
+                ws.Cells["X" + fila11].Value = int.Parse(ws.Cells["V" + fila11].Value.ToString()) + int.Parse(ws.Cells["W" + fila11].Value.ToString());
+                
+
+
 
                 fila2 = fila2 + 14;
                 fila3 = fila3 + 14;
