@@ -9,32 +9,28 @@ namespace DeIntranetARex
     internal class MontoPorConcepto
     {
         private String concepto;
-        private String empleado;
-        private String id;
-        private String contrato;
+        private String nombreDeEmpleado;
+        private String rut;
+        private String mesDeProceso;
         private int monto;
-
-
-        public MontoPorConcepto(string concepto, string empleado, string id, string contrato, int monto)
-        {
-            this.Concepto = concepto;
-            this.Empleado = empleado;
-            this.Id = id;
-            this.Contrato = contrato;
-            this.Monto = monto;
-        }
 
         public MontoPorConcepto()
         {
         }
 
+        public MontoPorConcepto(string concepto, string nombreDeEmpleado, string rut, string mesDeProceso, int monto)
+        {
+            this.Concepto = concepto;
+            this.NombreDeEmpleado = nombreDeEmpleado;
+            this.Rut = rut;
+            this.MesDeProceso = mesDeProceso;
+            this.Monto = monto;
+        }
+
         public string Concepto { get => concepto; set => concepto = value; }
-        public string Empleado { get => empleado; set => empleado = value; }
-        public string Id { get => id; set => id = value; }
-        public string Contrato { get => contrato; set => contrato = value; }
+        public string NombreDeEmpleado { get => nombreDeEmpleado; set => nombreDeEmpleado = value; }
+        public string Rut { get => rut; set => rut = value; }
+        public string MesDeProceso { get => mesDeProceso; set => mesDeProceso = value; }
         public int Monto { get => monto; set => monto = value; }
-
-
-
     }
 }

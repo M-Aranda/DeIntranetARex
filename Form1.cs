@@ -985,6 +985,9 @@ namespace DeIntranetARex
                         Comision comisionBonificado = retornarComisionConConcepto(c, "BOCARGBONI", worksheet.Cells[row, 22].Value?.ToString().Trim());
                         Comision comisionBonoAsistencia = retornarComisionConConcepto(c, "BonoAsis", worksheet.Cells[row, 24].Value?.ToString().Trim());
                         Comision comisionRecargue = retornarComisionConConcepto(c, "VIATICOREC", worksheet.Cells[row, 25].Value?.ToString().Trim());
+                        //05-05-2022 se agrega comision de BONODISPONIBILIDAD, para los ayudantes
+                        Comision comisionBonoDisponibilidad = retornarComisionConConcepto(c, "BONODISPONIBILIDAD", worksheet.Cells[row, 27].Value?.ToString().Trim());
+
 
                         comisionesTemporales.Add(comisionPrimeraVuelta);
                         comisionesTemporales.Add(comisionSegundaVuelta);
@@ -996,6 +999,7 @@ namespace DeIntranetARex
                         comisionesTemporales.Add(comisionBonificado);
                         comisionesTemporales.Add(comisionBonoAsistencia);
                         comisionesTemporales.Add(comisionRecargue);
+                        comisionesTemporales.Add(comisionBonoDisponibilidad);
 
                     }
                     else
@@ -1084,62 +1088,62 @@ namespace DeIntranetARex
                 int rowCount = worksheet.Dimension.End.Row;
 
                 //para identificar el mes del proceso de las hojas 2, 3 y 4
-                switch (worksheet.Cells["A1"].Value?.ToString().Trim())
-                {
-                    case "Montos por Conceptos de Enero-2022.xls":
-                        mesDeBonos = "2022-01";
-                        break;
-                    case "Montos por Conceptos de Febrero-2022.xls":
-                        mesDeBonos = "2022-02";
-                        break;
-                    case "Montos por Conceptos de Marzo-2022.xls":
-                        mesDeBonos = "2022-03";
-                        break;
-                    case "Montos por Conceptos de Abril-2022.xls":
-                        mesDeBonos = "2022-04";
-                        break;
-                    case "Montos por Conceptos de Mayo-2022.xls":
-                        mesDeBonos = "2022-05";
-                        break;
-                    case "Montos por Conceptos de Junio-2022.xls":
-                        mesDeBonos = "2022-06";
-                        break;
-                    case "Montos por Conceptos de Julio-2022.xls":
-                        mesDeBonos = "2022-07";
-                        break;
-                    case "Montos por Conceptos de Agosto-2022.xls":
-                        mesDeBonos = "2022-08";
-                        break;
-                    case "Montos por Conceptos de Septiembre-2022.xls":
-                        mesDeBonos = "2022-09";
-                        break;
-                    case "Montos por Conceptos de Octubre-2022.xls":
-                        mesDeBonos = "2022-10";
-                        break;
-                    case "Montos por Conceptos de Noviembre-2022.xls":
-                        mesDeBonos = "2022-11";
-                        break;
-                    case "Montos por Conceptos de Diciembre-2022.xls":
-                        mesDeBonos = "2022-12";
-                        break;
-                    default:
-                        break;
-                }
+                //switch (worksheet.Cells["A1"].Value?.ToString().Trim())
+                //{
+                //    case "Montos por Conceptos de Enero-2022.xls":
+                //        mesDeBonos = "2022-01";
+                //        break;
+                //    case "Montos por Conceptos de Febrero-2022.xls":
+                //        mesDeBonos = "2022-02";
+                //        break;
+                //    case "Montos por Conceptos de Marzo-2022.xls":
+                //        mesDeBonos = "2022-03";
+                //        break;
+                //    case "Montos por Conceptos de Abril-2022.xls":
+                //        mesDeBonos = "2022-04";
+                //        break;
+                //    case "Montos por Conceptos de Mayo-2022.xls":
+                //        mesDeBonos = "2022-05";
+                //        break;
+                //    case "Montos por Conceptos de Junio-2022.xls":
+                //        mesDeBonos = "2022-06";
+                //        break;
+                //    case "Montos por Conceptos de Julio-2022.xls":
+                //        mesDeBonos = "2022-07";
+                //        break;
+                //    case "Montos por Conceptos de Agosto-2022.xls":
+                //        mesDeBonos = "2022-08";
+                //        break;
+                //    case "Montos por Conceptos de Septiembre-2022.xls":
+                //        mesDeBonos = "2022-09";
+                //        break;
+                //    case "Montos por Conceptos de Octubre-2022.xls":
+                //        mesDeBonos = "2022-10";
+                //        break;
+                //    case "Montos por Conceptos de Noviembre-2022.xls":
+                //        mesDeBonos = "2022-11";
+                //        break;
+                //    case "Montos por Conceptos de Diciembre-2022.xls":
+                //        mesDeBonos = "2022-12";
+                //        break;
+                //    default:
+                //        break;
+                //}
 
-                for (int row = 1; row <= rowCount; row++)
+                for (int row = 3; row <= rowCount; row++)//row solia ser 1
                 {
 
               
 
-                    String columnaDeNombre = worksheet.Cells[row, 1].Value?.ToString().Trim();
+                    String columnaDeNombre = worksheet.Cells[row, 9].Value?.ToString().Trim();
                     if (columnaDeNombre != "" && (columnaDeNombre == "Bono Tiempo Espera R" || columnaDeNombre == "Bono estacional R" || columnaDeNombre == "Btn I R"))
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
-                        mpc.Concepto = worksheet.Cells[row, 1].Value?.ToString().Trim();
-                        mpc.Empleado = worksheet.Cells[row, 2].Value?.ToString().Trim();
-                        mpc.Id = worksheet.Cells[row, 3].Value?.ToString().Trim();
-                        mpc.Contrato = worksheet.Cells[row, 4].Value?.ToString().Trim();
-                        mpc.Monto = int.Parse(worksheet.Cells[row, 5].Value?.ToString().Trim());
+                        mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();
+                        mpc.NombreDeEmpleado = worksheet.Cells[row, 2].Value?.ToString().Trim();//nombre
+                        mpc.Rut = worksheet.Cells[row, 1].Value?.ToString().Trim();//rut
+                        mpc.MesDeProceso = worksheet.Cells[row, 8].Value?.ToString().Trim();//fechaProceso
+                        mpc.Monto = int.Parse(worksheet.Cells[row, 10].Value?.ToString().Trim());
 
                         listadoDeMontosPorConceptos.Add(mpc);
                     }
@@ -1303,13 +1307,14 @@ namespace DeIntranetARex
 
                     if (item.Proceso == procesoActual)
                     {
+                       
 
                        if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
                         {
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR= registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1317,7 +1322,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcFilialTalca.Monto;
                                     registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1325,7 +1330,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcTalcaRancagua.Monto;
                                     registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -1436,7 +1441,7 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1444,7 +1449,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcFilialTalca.Monto;
                                     registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1452,7 +1457,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcTalcaRancagua.Monto;
                                     registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -1559,7 +1564,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1567,7 +1572,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcFilialTalca.Monto;
                                     registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1575,7 +1580,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcTalcaRancagua.Monto;
                                     registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -1692,7 +1697,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1700,7 +1705,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcFilialTalca.Monto;
                                     registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1708,7 +1713,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcTalcaRancagua.Monto;
                                     registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -1817,7 +1822,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBonoTiempoEsperaR = registroRancagua.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1825,7 +1830,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcFilialTalca.Monto;
                                     registroRancagua.TotalBonoEstacionalR = registroRancagua.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1833,7 +1838,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcTalcaRancagua.Monto;
                                     registroRancagua.TotalBtnLR = registroRancagua.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -1963,7 +1968,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -1971,7 +1976,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcFilialTalca.Monto;
                                     registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -1979,7 +1984,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcTalcaRancagua.Monto;
                                     registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2103,7 +2108,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2111,7 +2116,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2119,7 +2124,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2146,7 +2151,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2154,7 +2159,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2162,7 +2167,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2189,7 +2194,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2197,7 +2202,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2205,7 +2210,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2232,7 +2237,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2240,7 +2245,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2248,7 +2253,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2276,7 +2281,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2284,7 +2289,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcFilialTalca.Monto;
                                             registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2292,7 +2297,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcTalcaRancagua.Monto;
                                             registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2321,7 +2326,7 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in sincoflet)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Id)
+                                        if (item.Empleado == mpcSincoFlet.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2329,7 +2334,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcFilialTalca in filialTalca)
                                     {
-                                        if (item.Empleado == mpcFilialTalca.Id)
+                                        if (item.Empleado == mpcFilialTalca.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2337,7 +2342,7 @@ namespace DeIntranetARex
                                     }
                                     foreach (var mpcTalcaRancagua in talcaRancagua)
                                     {
-                                        if (item.Empleado == mpcTalcaRancagua.Id)
+                                        if (item.Empleado == mpcTalcaRancagua.Rut)
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2353,7 +2358,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2361,7 +2366,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcFilialTalca.Monto;
                                     registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2369,7 +2374,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcTalcaRancagua.Monto;
                                     registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcTalcaRancagua.Monto;
@@ -2497,7 +2502,7 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in sincoflet)
                             {
-                                if (item.Empleado == mpcSincoFlet.Id)
+                                if (item.Empleado == mpcSincoFlet.Rut)
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
@@ -2505,7 +2510,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcFilialTalca in filialTalca)
                             {
-                                if (item.Empleado == mpcFilialTalca.Id)
+                                if (item.Empleado == mpcFilialTalca.Rut)
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcFilialTalca.Monto;
                                     registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
@@ -2513,7 +2518,7 @@ namespace DeIntranetARex
                             }
                             foreach (var mpcTalcaRancagua in talcaRancagua)
                             {
-                                if (item.Empleado == mpcTalcaRancagua.Id)
+                                if (item.Empleado == mpcTalcaRancagua.Rut)
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcTalcaRancagua.Monto;
                                     registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcTalcaRancagua.Monto;
