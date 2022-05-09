@@ -1275,9 +1275,8 @@ namespace DeIntranetARex
             foreach (var procesoActual in procesos)
             {
 
-                List<MontoPorConcepto> sincoflet = leerHojaDeConceptos(FilePath, 1);
-                List<MontoPorConcepto> filialTalca = leerHojaDeConceptos(FilePath, 2);
-                List<MontoPorConcepto> talcaRancagua = leerHojaDeConceptos(FilePath, 3);
+                List<MontoPorConcepto> listadoDeConceptosEnMasa = leerHojaDeConceptos(FilePath, 1);
+   
 
 
                 //List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
@@ -1312,7 +1311,7 @@ namespace DeIntranetARex
                        if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1320,22 +1319,7 @@ namespace DeIntranetARex
                                     registroCurico.TotalBonoTiempoEsperaR= registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroCurico.TotalR = registroCurico.TotalR + mpcFilialTalca.Monto;
-                                    registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroCurico.TotalR = registroCurico.TotalR + mpcTalcaRancagua.Monto;
-                                    registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                           
 
 
 
@@ -1439,7 +1423,7 @@ namespace DeIntranetARex
 
                         if (item.Nombre_centro_costo == "ILLAPEL")
                         {
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1447,22 +1431,7 @@ namespace DeIntranetARex
                                     registroIllapel.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcFilialTalca.Monto;
-                                    registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcTalcaRancagua.Monto;
-                                    registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                     
 
                             switch (item.Nombre_cargo)
                             {
@@ -1562,7 +1531,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "INTERPLANTA" || item.Nombre_centro_costo == "INTERPLANTA E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1570,22 +1539,7 @@ namespace DeIntranetARex
                                     registroInterplanta.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcFilialTalca.Monto;
-                                    registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcTalcaRancagua.Monto;
-                                    registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+         
 
 
                             switch (item.Nombre_cargo)
@@ -1695,7 +1649,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "MELIPILLA" || item.Nombre_centro_costo == "MELIPILLA E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1703,22 +1657,7 @@ namespace DeIntranetARex
                                     registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcFilialTalca.Monto;
-                                    registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcTalcaRancagua.Monto;
-                                    registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                            
 
 
                             switch (item.Nombre_cargo)
@@ -1820,7 +1759,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "RANCAGUA" || item.Nombre_centro_costo == "RANCAGUA  E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1828,22 +1767,7 @@ namespace DeIntranetARex
                                     registroRancagua.TotalBonoTiempoEsperaR = registroRancagua.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcFilialTalca.Monto;
-                                    registroRancagua.TotalBonoEstacionalR = registroRancagua.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcTalcaRancagua.Monto;
-                                    registroRancagua.TotalBtnLR = registroRancagua.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                          
 
 
 
@@ -1966,7 +1890,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "SAN ANTONIO" || item.Nombre_centro_costo == "SAN ANTONIO E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -1974,22 +1898,7 @@ namespace DeIntranetARex
                                     registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcFilialTalca.Monto;
-                                    registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcTalcaRancagua.Monto;
-                                    registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                           
 
                             switch (item.Nombre_cargo)
                             {
@@ -2106,7 +2015,7 @@ namespace DeIntranetARex
                                     registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2114,22 +2023,7 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
-                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
-                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                   
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -2149,7 +2043,7 @@ namespace DeIntranetARex
                                     registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2157,22 +2051,7 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
-                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
-                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                 
 
                                     break;
                                 case "CHOFER PORTEO":
@@ -2192,7 +2071,7 @@ namespace DeIntranetARex
                                     registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2200,22 +2079,7 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
-                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
-                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                  
 
                                     break;
                                 case "CHOFER PORTEO E2":
@@ -2235,7 +2099,7 @@ namespace DeIntranetARex
                                     registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2243,22 +2107,7 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
-                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
-                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                   
 
                                     break;
                                     //el trabajador esta en santiago y es un movilizador = se asigna a movilizadores
@@ -2279,7 +2128,7 @@ namespace DeIntranetARex
                                     registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2287,22 +2136,7 @@ namespace DeIntranetARex
                                             registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcFilialTalca.Monto;
-                                            registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcTalcaRancagua.Monto;
-                                            registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                   
 
 
                                     break;
@@ -2324,7 +2158,7 @@ namespace DeIntranetARex
                                     registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
                                     registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in sincoflet)
+                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
                                         if (item.Empleado == mpcSincoFlet.Rut)
                                         {
@@ -2332,22 +2166,7 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
                                     }
-                                    foreach (var mpcFilialTalca in filialTalca)
-                                    {
-                                        if (item.Empleado == mpcFilialTalca.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcFilialTalca.Monto;
-                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                        }
-                                    }
-                                    foreach (var mpcTalcaRancagua in talcaRancagua)
-                                    {
-                                        if (item.Empleado == mpcTalcaRancagua.Rut)
-                                        {
-                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcTalcaRancagua.Monto;
-                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                        }
-                                    }
+                                   
 
                                     break;
                             }
@@ -2356,7 +2175,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "CENTRAL" || item.Nombre_centro_costo == "CENTRAL E2")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -2364,22 +2183,7 @@ namespace DeIntranetARex
                                     registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcFilialTalca.Monto;
-                                    registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcTalcaRancagua.Monto;
-                                    registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                         
 
 
                             switch (item.Nombre_cargo)
@@ -2500,7 +2304,7 @@ namespace DeIntranetARex
                         if (item.Nombre_centro_costo == "EMPRENDEDORES")
                         {
 
-                            foreach (var mpcSincoFlet in sincoflet)
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
                                 if (item.Empleado == mpcSincoFlet.Rut)
                                 {
@@ -2508,22 +2312,7 @@ namespace DeIntranetARex
                                     registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                             }
-                            foreach (var mpcFilialTalca in filialTalca)
-                            {
-                                if (item.Empleado == mpcFilialTalca.Rut)
-                                {
-                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcFilialTalca.Monto;
-                                    registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcFilialTalca.Monto;
-                                }
-                            }
-                            foreach (var mpcTalcaRancagua in talcaRancagua)
-                            {
-                                if (item.Empleado == mpcTalcaRancagua.Rut)
-                                {
-                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcTalcaRancagua.Monto;
-                                    registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcTalcaRancagua.Monto;
-                                }
-                            }
+                           
 
                             switch (item.Nombre_cargo)
                             {
