@@ -455,7 +455,7 @@ namespace DeIntranetARex
 
                 ws.Cells["Q" + fila2].Value = "Total bono tiempo de espera";
                 ws.Cells["R" + fila2].Value = "Total bono estacional";
-                ws.Cells["S" + fila2].Value = "Total Btn L";
+                ws.Cells["S" + fila2].Value = "Total Btn I";
                 ws.Cells["T" + fila2].Value = "";
 
 
@@ -1313,17 +1313,17 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;                           
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcSincoFlet.Monto;
@@ -1436,17 +1436,17 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcSincoFlet.Monto;
@@ -1555,17 +1555,17 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcSincoFlet.Monto;
@@ -1656,7 +1656,7 @@ namespace DeIntranetARex
                                     registroInterplanta.TotalDotacion = registroInterplanta.TotalDotacion + 1;
                                     registroInterplanta.TotalApoyos = registroInterplanta.TotalApoyos + 1;
 
-                                    Console.WriteLine(item.Nombre);
+                                    
 
                                     if (item.Imponible_sin_tope == "0")
                                     {
@@ -1684,17 +1684,17 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcSincoFlet.Monto;
@@ -1946,17 +1946,17 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2082,17 +2082,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2121,17 +2121,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2160,17 +2160,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2199,17 +2199,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2239,17 +2239,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2280,17 +2280,17 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2308,17 +2308,17 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2448,17 +2448,17 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcSincoFlet.Monto;
@@ -2612,7 +2612,8 @@ namespace DeIntranetARex
         private void mostrarAyuda()
         {
             MessageBox.Show("para subir asistencias a rex: * recibir excel de Francisco * copiar los datos que vienen filtrados en el excel, a un excel nuevo que tenga la cabecera(ese excel se descarga de rex) * Guardar el nuevo excel con los registros copiados como formato CSV * Enviar a las de remuneraciones para que ellas hagan la carga.", "Sobre la subida a Rex");
-            MessageBox.Show("Transformar registros a totales sigue la siguiente lógica: se toma el archivo excel de base, se filtra primero por mes y luego por Centro. Los montos y totales para cada centro se obtienen con esos 2 filtros, salvo 2 excpeciones. La primera es si un trabajador de SANTIAGO o SANTIAGO E2 es un movilizador, en cuyo caso se asigna al centro de movilizadores. La segunda es cuando el trabajador de central es un nochero, en cuyo caso se asigna a administración.", "Sobre el registro de totales");
+            MessageBox.Show("Transformar registros a totales sigue la siguiente lógica: se toma el archivo excel de base, se filtra primero por mes y luego por Centro. Los montos y totales para cada centro se obtienen con esos 2 filtros, salvo 2 excpeciones. La primera es si un trabajador de SANTIAGO o SANTIAGO E2 es un movilizador, en cuyo caso se asigna al centro de movilizadores. La segunda es cuando el trabajador de central es un nochero, en cuyo caso se asigna a administración.", "Sobre el registro de totales, parte 1");
+            MessageBox.Show("Desde Mayo del 2022, el programa también es capaz de filtrar valores de conceptos.", "Sobre el registro de totales, parte 2");
             MessageBox.Show("Programa creado por Marcelo Andrés Aranda Tatto, bajo ordenes de Antonio Alonso.", "Sobre el programa");
 
         }

@@ -32520,16 +32520,15 @@
             This is used as .NET and Excel does not measure font widths in pixels in a similar way.
             </summary>
         </member>
-        <member name="F:OfficeOpenXml.FontSize.FontHeightsOld">
+        <member name="F:OfficeOpenXml.FontSize.FontHeights">
             <summary>
             Dictionary containing Font Width and heights in pixels.
             You can add your own fonts and sizes here.
             </summary>
         </member>
-        <member name="F:OfficeOpenXml.FontSize.FontHeights">
+        <member name="M:OfficeOpenXml.FontSize.LazyLoadFont">
             <summary>
-            Dictionary containing Font Width and heights in pixels.
-            You can add your own fonts and sizes here.
+            Loads all build-in fonts to the fonts collection.
             </summary>
         </member>
         <member name="T:OfficeOpenXml.CalculationExtension">
@@ -32640,6 +32639,11 @@
             <param name="ws">The worksheet where the formula comes from</param>
             <param name="f">The cell function object</param>
             <param name="options">Calcultaiton options</param>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.FormulaCell.wsIndex">
+            <summary>
+            NOTE: This is the position in the ExcelWorksheets._worksheets collection. Cannot be used direcly with Worksheets[] indexer.
+            </summary>
         </member>
         <member name="T:OfficeOpenXml.FormulaParsing.ExcelAddressCache">
             <summary>
@@ -33672,6 +33676,21 @@
             <param name="function">An <see cref="T:OfficeOpenXml.FormulaParsing.Excel.Functions.ExcelFunction"/> that can execute the function</param>
             <returns></returns>
         </member>
+        <member name="T:OfficeOpenXml.FormulaParsing.FilterInfo">
+            <summary>
+            This class contains information of the usage of Filters on the worksheets of a workbook.
+            One area where this information is needed is when running the SUBTOTAL function. If
+            there is an active filter on the worksheet hidden cells should be ignored even if SUBTOTAL
+            is called with a single digit func num.
+            </summary>
+        </member>
+        <member name="M:OfficeOpenXml.FormulaParsing.FilterInfo.WorksheetHasFilter(System.String)">
+            <summary>
+            Returns true if there is an Autofilter with at least one column on the requested worksheet.
+            </summary>
+            <param name="worksheetName"></param>
+            <returns></returns>
+        </member>
         <member name="T:OfficeOpenXml.FormulaParsing.FormulaParser">
             <summary>
             Entry class for the formula calulation engine of EPPlus.
@@ -33695,6 +33714,11 @@
             This method enables configuration of the formula parser.
             </summary>
             <param name="configMethod">An instance of the </param>
+        </member>
+        <member name="P:OfficeOpenXml.FormulaParsing.FormulaParser.FilterInfo">
+            <summary>
+            Contains information about filters on a workbook's worksheets.
+            </summary>
         </member>
         <member name="M:OfficeOpenXml.FormulaParsing.FormulaParser.Parse(System.String,System.String)">
             <summary>
@@ -55225,6 +55249,11 @@
         <member name="P:OfficeOpenXml.Style.XmlAccess.ExcelXfs.VerticalAlignment">
             <summary>
             Vertical alignment
+            </summary>
+        </member>
+        <member name="P:OfficeOpenXml.Style.XmlAccess.ExcelXfs.JustifyLastLine">
+            <summary>
+            If the cells justified or distributed alignment should be used on the last line of text
             </summary>
         </member>
         <member name="P:OfficeOpenXml.Style.XmlAccess.ExcelXfs.WrapText">
