@@ -1081,6 +1081,9 @@ namespace DeIntranetARex
         private List<MontoPorConcepto> leerHojaDeConceptos(string FilePath, int hoja)
         {
             List<MontoPorConcepto> listadoDeMontosPorConceptos= new List<MontoPorConcepto>();
+            
+            //listado de nombresDeConceptos
+            List<String> nombresDeConceptos = new List<String>();
 
             FileInfo existingFile = new FileInfo(FilePath);
             using (ExcelPackage package = new ExcelPackage(existingFile))
@@ -1089,54 +1092,19 @@ namespace DeIntranetARex
                 int colCount = worksheet.Dimension.End.Column; 
                 int rowCount = worksheet.Dimension.End.Row;
 
-                //para identificar el mes del proceso de las hojas 2, 3 y 4
-                //switch (worksheet.Cells["A1"].Value?.ToString().Trim())
-                //{
-                //    case "Montos por Conceptos de Enero-2022.xls":
-                //        mesDeBonos = "2022-01";
-                //        break;
-                //    case "Montos por Conceptos de Febrero-2022.xls":
-                //        mesDeBonos = "2022-02";
-                //        break;
-                //    case "Montos por Conceptos de Marzo-2022.xls":
-                //        mesDeBonos = "2022-03";
-                //        break;
-                //    case "Montos por Conceptos de Abril-2022.xls":
-                //        mesDeBonos = "2022-04";
-                //        break;
-                //    case "Montos por Conceptos de Mayo-2022.xls":
-                //        mesDeBonos = "2022-05";
-                //        break;
-                //    case "Montos por Conceptos de Junio-2022.xls":
-                //        mesDeBonos = "2022-06";
-                //        break;
-                //    case "Montos por Conceptos de Julio-2022.xls":
-                //        mesDeBonos = "2022-07";
-                //        break;
-                //    case "Montos por Conceptos de Agosto-2022.xls":
-                //        mesDeBonos = "2022-08";
-                //        break;
-                //    case "Montos por Conceptos de Septiembre-2022.xls":
-                //        mesDeBonos = "2022-09";
-                //        break;
-                //    case "Montos por Conceptos de Octubre-2022.xls":
-                //        mesDeBonos = "2022-10";
-                //        break;
-                //    case "Montos por Conceptos de Noviembre-2022.xls":
-                //        mesDeBonos = "2022-11";
-                //        break;
-                //    case "Montos por Conceptos de Diciembre-2022.xls":
-                //        mesDeBonos = "2022-12";
-                //        break;
-                //    default:
-                //        break;
-                //}
+       
 
                 for (int row = 1; row <= rowCount; row++)//row solia ser 1
                 {
 
+                    nombresDeConceptos.Add(worksheet.Cells[row, 9].Value?.ToString().Trim());
+
+
                     String columnaDeNombre = worksheet.Cells[row, 9].Value?.ToString().Trim();
-                    if (columnaDeNombre != "" && (columnaDeNombre == "Bono Tiempo Espera R" || columnaDeNombre == "Bono estacional R" || columnaDeNombre == "Btn I R"))
+                    char ultimoCaracter = columnaDeNombre[columnaDeNombre.Length - 1];
+                    String ultimaLetra = ultimoCaracter.ToString();
+
+                    if (columnaDeNombre != "" && (ultimaLetra=="R"))
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
                         mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();
@@ -1151,6 +1119,14 @@ namespace DeIntranetARex
 
 
                 }
+
+                nombresDeConceptos= nombresDeConceptos.Distinct().ToList();
+
+                foreach (var item in nombresDeConceptos)
+                {
+                    Console.WriteLine(item);
+                }
+                MessageBox.Show("termino de proceso");
             }
 
 
@@ -1271,6 +1247,9 @@ namespace DeIntranetARex
             //Leer todos los conceptos UNA VEZ
             List<MontoPorConcepto> listadoDeConceptosEnMasa = leerHojaDeConceptos(FilePath, 1);
 
+            
+
+           
 
             foreach (var procesoActual in procesos)
             {
