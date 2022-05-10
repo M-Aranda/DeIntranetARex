@@ -504,7 +504,9 @@ namespace DeIntranetARex
 
                 //valores de bonos
 
-                if (ws.Cells["A" + fila2].Value.ToString() == "2022-03")
+                string valorDelProceso = ws.Cells["A" + fila2].Value.ToString();
+
+                if (valorDelProceso != "")
                 {
                     ws.Cells["Q" + fila4].Value = ws.Cells["R" + fila4].Value;
                     ws.Cells["Q" + fila5].Value = ws.Cells["R" + fila5].Value;
@@ -1130,10 +1132,8 @@ namespace DeIntranetARex
                 //        break;
                 //}
 
-                for (int row = 3; row <= rowCount; row++)//row solia ser 1
+                for (int row = 1; row <= rowCount; row++)//row solia ser 1
                 {
-
-              
 
                     String columnaDeNombre = worksheet.Cells[row, 9].Value?.ToString().Trim();
                     if (columnaDeNombre != "" && (columnaDeNombre == "Bono Tiempo Espera R" || columnaDeNombre == "Bono estacional R" || columnaDeNombre == "Btn I R"))
@@ -1268,14 +1268,14 @@ namespace DeIntranetARex
                 }
             }
 
-
-
+            //Leer todos los conceptos UNA VEZ
+            List<MontoPorConcepto> listadoDeConceptosEnMasa = leerHojaDeConceptos(FilePath, 1);
 
 
             foreach (var procesoActual in procesos)
             {
 
-                List<MontoPorConcepto> listadoDeConceptosEnMasa = leerHojaDeConceptos(FilePath, 1);
+                
    
 
 
@@ -1313,13 +1313,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
-                                    registroCurico.TotalBonoTiempoEsperaR= registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBonoTiempoEsperaR = registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;                           
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcSincoFlet.Monto;
+                                }              
+
                             }
-                           
+
 
 
 
@@ -1425,13 +1436,24 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
-                                    registroIllapel.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
+                                    registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
+                                    registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                     
+
 
                             switch (item.Nombre_cargo)
                             {
@@ -1533,13 +1555,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
-                                    registroInterplanta.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                    registroCurico.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
+                                    registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
+                                    registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-         
+
 
 
                             switch (item.Nombre_cargo)
@@ -1651,13 +1684,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
+                                    registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
+                                    registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                            
+
 
 
                             switch (item.Nombre_cargo)
@@ -1761,13 +1805,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Proceso==mpcSincoFlet.MesDeProceso &&  item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBonoTiempoEsperaR = registroRancagua.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
+                                    registroRancagua.TotalBonoEstacionalR = registroRancagua.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
+                                    registroRancagua.TotalBtnLR = registroRancagua.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                          
+
 
 
 
@@ -1889,16 +1944,26 @@ namespace DeIntranetARex
                         }
                         if (item.Nombre_centro_costo == "SAN ANTONIO" || item.Nombre_centro_costo == "SAN ANTONIO E2")
                         {
-
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
+                                    registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
+                                    registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                           
+
 
                             switch (item.Nombre_cargo)
                             {
@@ -2017,13 +2082,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                   
+
 
                                     break;
                                 case "AYUDANTE CHOFER E2":
@@ -2045,13 +2121,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                 
+
 
                                     break;
                                 case "CHOFER PORTEO":
@@ -2073,13 +2160,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                  
+
 
                                     break;
                                 case "CHOFER PORTEO E2":
@@ -2101,13 +2199,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                   
+
 
                                     break;
                                     //el trabajador esta en santiago y es un movilizador = se asigna a movilizadores
@@ -2130,13 +2239,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                   
+
 
 
                                     break;
@@ -2160,13 +2280,24 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Empleado == mpcSincoFlet.Rut)
+                                        if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                        }
+                                        else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        {
+                                            registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
+                                            registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
+                                        }
+
                                     }
-                                   
+
 
                                     break;
                             }
@@ -2177,13 +2308,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
+                                    registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
+                                    registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                         
+
 
 
                             switch (item.Nombre_cargo)
@@ -2306,13 +2448,24 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Empleado == mpcSincoFlet.Rut)
+                                if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
+                                    registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
+                                    registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+
                             }
-                           
+
 
                             switch (item.Nombre_cargo)
                             {
