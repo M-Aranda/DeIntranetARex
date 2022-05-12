@@ -28,6 +28,10 @@ namespace DeIntranetARex
         private int totalBonoTiempoEsperaR;
         private int totalBonoEstacionalR;
         private int totalBtnLR;
+
+        private int totalBonoSobreEsfuerzoR;
+        private int totalViaticoAhorroR;
+
         private int totalRemuneracionesDeTodosLosTrabajadores;
 
 
@@ -49,6 +53,10 @@ namespace DeIntranetARex
         private String totalBonoEstacionalRComoString;
         private String totalBtnLRComoString;
         private String totalRComoString;
+
+        private String totalBonoSobreEsfuerzoRComoString;
+        private String totalViaticoAhorroRComoString;
+
         private String totalRemuneracionesDeTodosLosTrabajadoresComoString;
 
 
@@ -78,6 +86,9 @@ namespace DeIntranetARex
             this.TotalBonoEstacionalR = r.TotalBonoEstacionalR;
             this.TotalBtnLR = r.TotalBtnLR;
 
+            this.totalBonoSobreEsfuerzoR = r.TotalBonoSobreEsfuerzoR;
+            this.totalViaticoAhorroR = r.TotalViaticoAhorroR;
+
             this.TotalR = r.TotalR;
             this.TotalRemuneracionesDeTodosLosTrabajadores = r.TotalRemuneracionesDeTodosLosTrabajadores;//.ToString();
         }
@@ -105,6 +116,10 @@ namespace DeIntranetARex
             this.TotalBonoEstacionalRComoString = r.TotalBonoEstacionalR.ToString();
             this.TotalBtnLRComoString = r.TotalBtnLR.ToString();
             this.totalRComoString = r.TotalR.ToString();
+            this.TotalBonoSobreEsfuerzoRComoString= r.TotalBonoSobreEsfuerzoR.ToString();
+            this.TotalViaticoAhorroRComoString = r.TotalViaticoAhorroR.ToString(); 
+
+
             this.totalRemuneracionesDeTodosLosTrabajadoresComoString = r.TotalRemuneracionesDeTodosLosTrabajadores.ToString();
         }
 
@@ -165,10 +180,9 @@ namespace DeIntranetARex
         public int TotalBtnLR { get => totalBtnLR; set => totalBtnLR = value; }
 
         public string TotalBtnLRComoString { get => totalBtnLRComoString; set => totalBtnLRComoString = value; }
-
-
-
-
-
+        public int TotalBonoSobreEsfuerzoR { get => totalBonoSobreEsfuerzoR; set => totalBonoSobreEsfuerzoR = value; }
+        public int TotalViaticoAhorroR { get => totalViaticoAhorroR; set => totalViaticoAhorroR = value; }
+        public string TotalBonoSobreEsfuerzoRComoString { get => totalBonoSobreEsfuerzoRComoString; set => totalBonoSobreEsfuerzoRComoString = value; }
+        public string TotalViaticoAhorroRComoString { get => totalViaticoAhorroRComoString; set => totalViaticoAhorroRComoString = value; }
     }
 }
