@@ -461,6 +461,7 @@ namespace DeIntranetARex
                 ws.Cells["Y" + fila12].Value = "";
                 ws.Cells["Y" + fila13].Value = "";
 
+             
 
 
                 //agregar titulos en cada proceso
@@ -708,15 +709,16 @@ namespace DeIntranetARex
                 ws.Cells["W" + fila4].Value = "RESUMEN DE MODELOS";
 
                 ws.Cells["X" + fila4].Value = "Total";
-                ws.Cells["Y" + fila4].Value = "Por Cobrar a CCU";
-                ws.Cells["Z" + fila4].Value = "Total Mes";
+                //extra agregado por el Francisco
+                //ws.Cells["Y" + fila4].Value = "Por Cobrar a CCU";
+                //ws.Cells["Z" + fila4].Value = "Total Mes";
 
                 ws.Cells["W" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["W" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["W" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["W" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["X" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Y" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //ws.Cells["Y" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 ws.Cells["W" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
@@ -727,17 +729,18 @@ namespace DeIntranetARex
                 ws.Cells["W" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
                 ws.Cells["W" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
-                ws.Cells["Z" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Z" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //era Z
+                ws.Cells["X" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
                 ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Y" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+               // ws.Cells["Y" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
 
 
                 //// titulos de cuadro resumen
@@ -822,24 +825,24 @@ namespace DeIntranetARex
 
 
 
-                //por cobrar a CCU
-                ws.Cells["Y" + fila5].Value = ws.Cells["P" + fila5].Value;//interplanta
-                ws.Cells["Y" + fila6].Value = ws.Cells["P" + fila11].Value;//movilizadores
-                ws.Cells["Y" + fila7].Value = ws.Cells["P" + fila12].Value;//emprendedores
+                ////por cobrar a CCU
+                //ws.Cells["Y" + fila5].Value = ws.Cells["P" + fila5].Value;//interplanta
+                //ws.Cells["Y" + fila6].Value = ws.Cells["P" + fila11].Value;//movilizadores
+                //ws.Cells["Y" + fila7].Value = ws.Cells["P" + fila12].Value;//emprendedores
 
-                ws.Cells["Y" + fila8].Value = int.Parse(ws.Cells["P" + fila4].Value.ToString()) +
-                    int.Parse(ws.Cells["P" + fila6].Value.ToString())+
-                    int.Parse(ws.Cells["P" + fila7].Value.ToString())+
-                    int.Parse(ws.Cells["P" + fila8].Value.ToString())+
-                    int.Parse(ws.Cells["P" + fila9].Value.ToString())+
-                    int.Parse(ws.Cells["P" + fila10].Value.ToString());//directos
+                //ws.Cells["Y" + fila8].Value = int.Parse(ws.Cells["P" + fila4].Value.ToString()) +
+                //    int.Parse(ws.Cells["P" + fila6].Value.ToString())+
+                //    int.Parse(ws.Cells["P" + fila7].Value.ToString())+
+                //    int.Parse(ws.Cells["P" + fila8].Value.ToString())+
+                //    int.Parse(ws.Cells["P" + fila9].Value.ToString())+
+                //    int.Parse(ws.Cells["P" + fila10].Value.ToString());//directos
 
-                ws.Cells["Y" + fila9].Value = int.Parse(ws.Cells["P" + fila5].Value.ToString()) +
-                    int.Parse(ws.Cells["P" + fila11].Value.ToString()) +
-                    int.Parse(ws.Cells["P" + fila12].Value.ToString()) +
-                    int.Parse(ws.Cells["P" + fila13].Value.ToString());//indirectos
+                //ws.Cells["Y" + fila9].Value = int.Parse(ws.Cells["P" + fila5].Value.ToString()) +
+                //    int.Parse(ws.Cells["P" + fila11].Value.ToString()) +
+                //    int.Parse(ws.Cells["P" + fila12].Value.ToString()) +
+                //    int.Parse(ws.Cells["P" + fila13].Value.ToString());//indirectos
 
-                ws.Cells["Y" + fila10].Value = ws.Cells["P" + fila13].Value;//administracion
+                //ws.Cells["Y" + fila10].Value = ws.Cells["P" + fila13].Value;//administracion
 
                 int bonoSobreEsfuerzoRFila13 = 0;
 
@@ -853,14 +856,25 @@ namespace DeIntranetARex
 
 
 
-                //total mes
-                ws.Cells["Z" + fila5].Value = int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["Y" + fila5].Value.ToString());
-                ws.Cells["Z" + fila6].Value = int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["Y" + fila6].Value.ToString());
-                ws.Cells["Z" + fila7].Value = int.Parse(ws.Cells["X" + fila7].Value.ToString()) + int.Parse(ws.Cells["Y" + fila7].Value.ToString());
-                ws.Cells["Z" + fila8].Value = int.Parse(ws.Cells["X" + fila8].Value.ToString()) + int.Parse(ws.Cells["Y" + fila8].Value.ToString());
-                ws.Cells["Z" + fila9].Value = int.Parse(ws.Cells["X" + fila9].Value.ToString()) + int.Parse(ws.Cells["Y" + fila9].Value.ToString());
-                ws.Cells["Z" + fila10].Value = int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["Y" + fila10].Value.ToString());
-                
+                ////total mes
+                //ws.Cells["Z" + fila5].Value = int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["Y" + fila5].Value.ToString());
+                //ws.Cells["Z" + fila6].Value = int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["Y" + fila6].Value.ToString());
+                //ws.Cells["Z" + fila7].Value = int.Parse(ws.Cells["X" + fila7].Value.ToString()) + int.Parse(ws.Cells["Y" + fila7].Value.ToString());
+                //ws.Cells["Z" + fila8].Value = int.Parse(ws.Cells["X" + fila8].Value.ToString()) + int.Parse(ws.Cells["Y" + fila8].Value.ToString());
+                //ws.Cells["Z" + fila9].Value = int.Parse(ws.Cells["X" + fila9].Value.ToString()) + int.Parse(ws.Cells["Y" + fila9].Value.ToString());
+                //ws.Cells["Z" + fila10].Value = int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["Y" + fila10].Value.ToString());
+
+
+
+                //quitando valores de por cobrar a CCU
+                ws.Cells["Y" + fila4].Value = "";
+                ws.Cells["Y" + fila5].Value = "";
+                ws.Cells["Y" + fila6].Value = "";
+                ws.Cells["Y" + fila7].Value = "";
+                ws.Cells["Y" + fila8].Value = "";
+                ws.Cells["Y" + fila9].Value = "";
+                ws.Cells["Y" + fila10].Value = "";
+
 
                 fila2 = fila2 + 14;
                 fila3 = fila3 + 14;
