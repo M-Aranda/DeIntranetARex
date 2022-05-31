@@ -177,6 +177,8 @@ namespace DeIntranetARex
 
             // ws.Cells["A1"].Value = "";
 
+
+
             ws.Cells["B1"].Value = "";
             ws.Cells["C1"].Value = "";
             ws.Cells["D1"].Value = "";
@@ -488,6 +490,16 @@ namespace DeIntranetARex
                 ws.Cells["N" + fila2].Value = "$ Otros";
                 ws.Cells["O" + fila2].Value = "Total";
                 ws.Cells["P" + fila2].Value = "Total a recuperar";
+
+
+
+                //30/05/2022, la estructura actual no es dinámica con los conceptos; incluir conceptos adicionales al proceso es imposible sin
+                //modificar el codigo fuente, el cual lamentablemente depende de la notacion A1 para el Excel. Se vuelve necesario entonces hacer uso de 
+                // la notacion R1C1.
+                //Además la cantidad de bonos es indeterminada; hay meses en las que hay 3 bonos, y en otras ocasiones hay 5, 8...  y así. La propiedad de la clase de registro mensual
+                //debiese cambiar para que haya una lista de comisiones y que por cada bono se genere una columna adicional.
+
+
 
                 ws.Cells["Q" + fila2].Value = "Total bono tiempo de espera";
                 ws.Cells["R" + fila2].Value = "Total bono estacional";
