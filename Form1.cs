@@ -3028,7 +3028,7 @@ namespace DeIntranetARex
 
                         }
 
-                        Console.WriteLine((totalesDeConceptos[0].MontoTotalDeConcepto.ToString());
+                        Console.WriteLine((totalesDeConceptos[0].MontoTotalDeConcepto.ToString()));
                    
 
 
