@@ -22,11 +22,13 @@ namespace DeIntranetARex
     {
         private bool esArchivoDeAyudantes = true;
         private string mesDeBonos = "";
+ 
 
         public Form1()
         {
             InitializeComponent();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            
             
         }
 
@@ -145,7 +147,8 @@ namespace DeIntranetARex
             var package = new ExcelPackage(file);
             var ws = package.Workbook.Worksheets.Add("Registros de totales");
 
-            var range = ws.Cells["A1"].LoadFromCollection(registrosDeTotales, true);
+            //  var range = ws.Cells["A1"].LoadFromCollection(registrosDeTotales, true);
+            //var range = ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + 1 + "C" + 1, 0, 0)].LoadFromCollection(registrosDeTotales, true);
 
             // 28/03/2022, Antonio Alonso pidio aplicar un formato al Excel
 
@@ -159,91 +162,17 @@ namespace DeIntranetARex
             //e indirectos (todos los que NO sean conductores, ayudantes o sean de administracion)
 
 
-            //fijar titulo de columnas
-            //ws.Cells["B1"].Value = "Cantidad de conductores activos";
-            //ws.Cells["C1"].Value = "Conductores de licencia";
-            //ws.Cells["D1"].Value = "Ayudantes activos";
-            //ws.Cells["E1"].Value = "Ayudantes de licencia";
-            //ws.Cells["F1"].Value = "Apoyos activos";
-            //ws.Cells["G1"].Value = "Apoyos de licencia";
-            //ws.Cells["H1"].Value = "Total de conductores";
-            //ws.Cells["I1"].Value = "Total de ayudantes";
-            //ws.Cells["J1"].Value = "Total de apoyos";
-            //ws.Cells["K1"].Value = "Total de trabajadores";
-            //ws.Cells["L1"].Value = "$ Conductores";
-            //ws.Cells["M1"].Value = "$ Ayudantes";
-            //ws.Cells["N1"].Value = "$ Apoyos";
-            //ws.Cells["O1"].Value = "Total";
-
-            // ws.Cells["A1"].Value = "";
+            ////fijar  estilo de letra
+            //ws.Cells["B1"].Style.Font.Bold = true;
+            //ws.Cells["C1"].Style.Font.Bold = true;
 
 
-
-            ws.Cells["B1"].Value = "";
-            ws.Cells["C1"].Value = "";
-            ws.Cells["D1"].Value = "";
-            ws.Cells["E1"].Value = "";
-            ws.Cells["F1"].Value = "";
-            ws.Cells["G1"].Value = "";
-            ws.Cells["H1"].Value = "";
-            ws.Cells["I1"].Value = "";
-            ws.Cells["J1"].Value = "";
-            ws.Cells["K1"].Value = "";
-            ws.Cells["L1"].Value = "";
-            ws.Cells["M1"].Value = "";
-            ws.Cells["N1"].Value = "";
-            ws.Cells["O1"].Value = "";
-            ws.Cells["P1"].Value = "";
-            ws.Cells["Q1"].Value = "";
-            ws.Cells["R1"].Value = "";
-            ws.Cells["S1"].Value = "";
-            ws.Cells["T1"].Value = "";
-            ws.Cells["U1"].Value = "";
-            ws.Cells["V1"].Value = "";
-            ws.Cells["W1"].Value = "";
-            ws.Cells["X1"].Value = "";
-            ws.Cells["Y1"].Value = "";
-            ws.Cells["Z1"].Value = "";
-            ws.Cells["AA1"].Value = "";
-            ws.Cells["W1"].Value = "";
-            ws.Cells["W1"].Value = "";
+            ////fijar color de fondo de ciertas celdas
+            ////ws.Cells["B1"].Style.Fill.BackgroundColor.SetColor(Color.Aqua);
+            ////ws.Cells["C1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
 
 
-     
-
-            //fijar  estilo de letra
-            ws.Cells["B1"].Style.Font.Bold = true;
-            ws.Cells["C1"].Style.Font.Bold = true;
-            ws.Cells["D1"].Style.Font.Bold = true;
-            ws.Cells["E1"].Style.Font.Bold = true;
-            ws.Cells["F1"].Style.Font.Bold = true;
-            ws.Cells["G1"].Style.Font.Bold = true;
-            ws.Cells["H1"].Style.Font.Bold = true;
-            ws.Cells["I1"].Style.Font.Bold = true;
-            ws.Cells["J1"].Style.Font.Bold = true;
-            ws.Cells["K1"].Style.Font.Bold = true;
-            ws.Cells["L1"].Style.Font.Bold = true;
-            ws.Cells["M1"].Style.Font.Bold = true;
-            ws.Cells["N1"].Style.Font.Bold = true;
-            ws.Cells["O1"].Style.Font.Bold = true;
-
-            //fijar color de fondo de ciertas celdas
-            //ws.Cells["B1"].Style.Fill.BackgroundColor.SetColor(Color.Aqua);
-            //ws.Cells["C1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["D1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["E1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["F1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["G1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["H1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["I1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["J1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["K1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["L1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["M1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["N1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-            //ws.Cells["O1"].Style.Fill.BackgroundColor.SetColor(Color.Aquamarine);
-
-
+            int fila1 = 1;
             int fila2 = 2;
             int fila3 = 3;
             int fila4 = 4;
@@ -259,635 +188,882 @@ namespace DeIntranetARex
             int fila14 = 14;
             int fila15 = 15;
 
+            int columna1 = 1;
+            int columna2 = 2;
+            int columna3 = 3;
+            int columna4 = 4;
+            int columna5 = 5;
+            int columna6 = 6;
+            int columna7 = 7;
+            int columna8 = 8;
+            int columna9 = 9;
+            int columna10 = 10;
+            int columna11 = 11;
+            int columna12 = 12;
+            int columna13 = 13;
+            int columna14 = 14;
+            int columna15 = 15;
 
 
-            //quitar 0's sobrantes y formatear tabla
+
+            ////quitar 0's sobrantes y formatear tabla
             for (int i = 1; i < 13; i++)
             {
-               
-                // agregar  bordes a tabla
-                ws.Cells["A"+fila2+":U"+fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":U" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":U" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-                ws.Cells["A" + fila2 + ":U" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-
-                ws.Cells["H" + fila2 + ":N" + fila2].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
-
-                //Arriba
-                ws.Cells["B" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["C" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["D" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["E" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["F" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["G" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["H" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["I" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["J" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["K" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["L" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["M" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["N" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["P" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["S" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["T" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-               
-
-                ////izquierda
-                ws.Cells["B" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila11].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila12].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["B" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-                ////abajo
-                ws.Cells["B" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["C" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["D" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["E" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["F" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["G" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["H" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["I" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["J" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["K" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["L" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["M" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["N" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["P" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["Q" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["R" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["S" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["T" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-               
-
-
-                ////derecha
-                ws.Cells["U" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila11].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["U" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-
-                //quitar ceros de los alrededores
-                ws.Cells["B" + fila2].Value = "";
-                ws.Cells["B" + fila3].Value = "";
-                ws.Cells["B" + fila14].Value = "";
-                ws.Cells["B" + fila15].Value = "";
-                ws.Cells["C"+fila2].Value = "";
-                ws.Cells["C"+fila3].Value = "";
-                ws.Cells["C"+fila14].Value = "";
-                ws.Cells["C"+fila15].Value = "";
-                ws.Cells["D"+fila2].Value = "";
-                ws.Cells["D"+fila3].Value = "";
-                ws.Cells["D"+fila14].Value = "";
-                ws.Cells["D"+fila15].Value = "";
-                ws.Cells["E"+fila2].Value = "";
-                ws.Cells["E"+fila3].Value = "";
-                ws.Cells["E"+fila14].Value = "";
-                ws.Cells["E"+fila15].Value = "";
-                ws.Cells["F"+fila2].Value = "";
-                ws.Cells["F"+fila3].Value = "";
-                ws.Cells["F"+fila14].Value = "";
-                ws.Cells["F"+fila15].Value = "";
-                ws.Cells["G"+fila2].Value = "";
-                ws.Cells["G"+fila3].Value = "";
-                ws.Cells["G"+fila14].Value = "";
-                ws.Cells["G"+fila15].Value = "";
-                ws.Cells["H"+fila2].Value = "";
-                ws.Cells["H"+fila3].Value = "";
-                ws.Cells["H"+fila14].Value = "";
-                ws.Cells["H"+fila15].Value = "";
-                ws.Cells["I"+fila2].Value = "";
-                ws.Cells["I"+fila3].Value = "";
-                ws.Cells["I"+fila14].Value = "";
-                ws.Cells["I"+fila15].Value = "";
-                ws.Cells["J"+fila2].Value = "";
-                ws.Cells["J"+fila3].Value = "";
-                ws.Cells["J"+fila14].Value = "";
-                ws.Cells["J"+fila15].Value = "";
-                ws.Cells["K"+fila2].Value = "";
-                ws.Cells["K"+fila3].Value = "";
-                ws.Cells["K"+fila14].Value = "";
-                ws.Cells["K"+fila15].Value = "";
-                ws.Cells["L"+fila2].Value = "";
-                ws.Cells["L"+fila3].Value = "";
-                ws.Cells["L"+fila14].Value = "";
-                ws.Cells["L"+fila15].Value = "";
-                ws.Cells["M"+fila2].Value = "";
-                ws.Cells["M"+fila3].Value = "";
-                ws.Cells["M"+fila14].Value = "";
-                ws.Cells["M"+fila15].Value = "";
-                ws.Cells["N"+fila2].Value = "";
-                ws.Cells["N"+fila3].Value = "";
-                ws.Cells["N"+fila14].Value = "";
-                ws.Cells["N"+fila15].Value = "";
-                ws.Cells["O"+fila2].Value = "";
-                ws.Cells["O"+fila3].Value = "";
-                ws.Cells["O"+fila14].Value = "";
-                ws.Cells["O"+fila15].Value = "";
-                ws.Cells["P" + fila2].Value = "";
-                ws.Cells["P" + fila3].Value = "";
-                ws.Cells["P" + fila14].Value = "";
-                ws.Cells["P" + fila15].Value = "";
-                ws.Cells["Q" + fila2].Value = "";
-                ws.Cells["Q" + fila3].Value = "";
-                ws.Cells["Q" + fila14].Value = "";
-                ws.Cells["Q" + fila15].Value = "";
-                ws.Cells["R" + fila2].Value = "";
-                ws.Cells["R" + fila3].Value = "";
-                ws.Cells["R" + fila14].Value = "";
-                ws.Cells["R" + fila15].Value = "";
-                ws.Cells["S" + fila2].Value = "";
-                ws.Cells["S" + fila3].Value = "";
-                ws.Cells["S" + fila14].Value = "";
-                ws.Cells["S" + fila15].Value = "";
-                ws.Cells["X" + fila2].Value = "";
-                ws.Cells["X" + fila3].Value = "";
-                ws.Cells["X" + fila14].Value = "";
-                ws.Cells["X" + fila15].Value = "";
-                ws.Cells["Y" + fila2].Value = "";
-                ws.Cells["Y" + fila3].Value = "";
-                ws.Cells["Y" + fila14].Value = "";
-                ws.Cells["Y" + fila15].Value = "";
-                ws.Cells["Z" + fila2].Value = "";
-                ws.Cells["Z" + fila3].Value = "";
-                ws.Cells["Z" + fila14].Value = "";
-                ws.Cells["Z" + fila15].Value = "";
-                ws.Cells["AA" + fila2].Value = "";
-                ws.Cells["AA" + fila3].Value = "";
-                ws.Cells["AA" + fila14].Value = "";
-                ws.Cells["AA" + fila15].Value = "";
-
-                ws.Cells["T" + fila3].Value = "";
-                ws.Cells["T" + fila14].Value = "";
-                ws.Cells["T" + fila15].Value = "";
-
-
-
-                ws.Cells["U" + fila2].Value = "";
-                ws.Cells["U" + fila3].Value = "";
-                ws.Cells["U" + fila14].Value = "";
-                ws.Cells["U" + fila15].Value = "";
-
-                ws.Cells["V" + fila2].Value = "";
-                ws.Cells["V" + fila3].Value = "";
-                ws.Cells["V" + fila14].Value = "";
-                ws.Cells["V" + fila15].Value = "";
-
-
-                ws.Cells["W" + fila2].Value = "";
-                ws.Cells["W" + fila3].Value = "";
-                ws.Cells["W" + fila14].Value = "";
-                ws.Cells["W" + fila15].Value = "";
-
-                ws.Cells["X" + fila13].Value = "";
-
-                ws.Cells["Y" + fila11].Value = "";
-                ws.Cells["Y" + fila12].Value = "";
-                ws.Cells["Y" + fila13].Value = "";
-
-             
-
-
-                //agregar titulos en cada proceso
-                ws.Cells["B" + fila2].Value = "# de Conductores";
-                ws.Cells["B" + fila3].Value = "Activos";
-                ws.Cells["C" + fila3].Value = "De licencia";
-
-                ws.Cells["D" + fila2].Value = "# de Ayudantes";
-                ws.Cells["D" + fila3].Value = "Activos";
-                ws.Cells["E" +fila3].Value = "De licencia";
-
-                ws.Cells["F" + fila2].Value = "# de Apoyos";
-                ws.Cells["F" + fila3].Value = "Activos";
-                ws.Cells["G" + fila3].Value = "De licencia";
-
-                //H, I, J, K
-                ws.Cells["H" + fila2].Value = "Total conductores";
-                ws.Cells["I" + fila2].Value = "Total ayudantes";
-                ws.Cells["J" + fila2].Value = "Total apoyos";
-                ws.Cells["K" + fila2].Value = "Total dotación";
-
-                ws.Cells["L" + fila2].Value = "$ Concuctores";
-                ws.Cells["M" + fila2].Value = "$ Ayudantes";
-                ws.Cells["N" + fila2].Value = "$ Otros";
-                ws.Cells["O" + fila2].Value = "Total";
-                ws.Cells["P" + fila2].Value = "Total a recuperar";
-
-
-
-                //30/05/2022, la estructura actual no es dinámica con los conceptos; incluir conceptos adicionales al proceso es imposible sin
-                //modificar el codigo fuente, el cual lamentablemente depende de la notacion A1 para el Excel. Se vuelve necesario entonces hacer uso de 
-                // la notacion R1C1.
-                //Además la cantidad de bonos es indeterminada; hay meses en las que hay 3 bonos, y en otras ocasiones hay 5, 8...  y así. La propiedad de la clase de registro mensual
-                //debiese cambiar para que haya una lista de comisiones y que por cada bono se genere una columna adicional.
-
-
-
-                ws.Cells["Q" + fila2].Value = "Total bono tiempo de espera";
-                ws.Cells["R" + fila2].Value = "Total bono estacional";
-                ws.Cells["S" + fila2].Value = "Total Btn I";
-                ws.Cells["T" + fila2].Value = "Bono Sobre Esfuerzo R";
-                ws.Cells["U" + fila2].Value = "Viatico Ahorro R";
-                ws.Cells["V" + fila2].Value = "";
-
-
-
-                ws.Cells["B" + fila2].Style.Font.Bold = true;
-                ws.Cells["D" + fila2].Style.Font.Bold = true;
-                ws.Cells["F" + fila2].Style.Font.Bold = true;
-                ws.Cells["H" + fila2].Style.Font.Bold = true;
-                ws.Cells["I" + fila2].Style.Font.Bold = true;
-                ws.Cells["J" + fila2].Style.Font.Bold = true;
-                ws.Cells["K" + fila2].Style.Font.Bold = true;
-                ws.Cells["L" + fila2].Style.Font.Bold = true;
-                ws.Cells["M" + fila2].Style.Font.Bold = true;
-                ws.Cells["N" + fila2].Style.Font.Bold = true;
-                ws.Cells["O" + fila2].Style.Font.Bold = true;
-                ws.Cells["P" + fila2].Style.Font.Bold = true;
-                ws.Cells["Q" + fila2].Style.Font.Bold = true;
-                ws.Cells["R" + fila2].Style.Font.Bold = true;
-                ws.Cells["S" + fila2].Style.Font.Bold = true;
-                ws.Cells["T" + fila2].Style.Font.Bold = true;
-                ws.Cells["U" + fila2].Style.Font.Bold = true;
-                ws.Cells["V" + fila2].Style.Font.Bold = true;
-
-                ws.Cells["B" + fila3].Style.Font.Italic = true;
-                ws.Cells["C" + fila3].Style.Font.Italic = true;
-                ws.Cells["D" + fila3].Style.Font.Italic = true;
-                ws.Cells["E" + fila3].Style.Font.Italic = true;
-                ws.Cells["F" + fila3].Style.Font.Italic = true;
-                ws.Cells["G" + fila3].Style.Font.Italic = true;
-
-                ws.Cells["B" + fila2 + ":C" + fila2].Merge = true;
-                ws.Cells["D" + fila2 + ":E" + fila2].Merge = true;
-                ws.Cells["F" + fila2 + ":G" + fila2].Merge = true;
-
-
-
-                //totales al pie de la tabla
-                ws.Cells["A" + fila14].Value = "Totales";
-                ws.Cells["B"+fila14].Value = int.Parse(ws.Cells["B"+fila4].Value.ToString()) + int.Parse(ws.Cells["B"+fila5].Value.ToString()) + int.Parse(ws.Cells["B"+fila6].Value.ToString()) + int.Parse(ws.Cells["B"+fila7].Value.ToString()) + int.Parse(ws.Cells["B"+fila8].Value.ToString()) + int.Parse(ws.Cells["B"+fila9].Value.ToString()) + int.Parse(ws.Cells["B"+fila10].Value.ToString()) +  int.Parse(ws.Cells["B"+fila11].Value.ToString()) + int.Parse(ws.Cells["B"+fila12].Value.ToString()) + int.Parse(ws.Cells["B"+fila13].Value.ToString());
-                ws.Cells["C" + fila14].Value = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
-                ws.Cells["D" + fila14].Value = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
-                ws.Cells["E" + fila14].Value = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
-                ws.Cells["F" + fila14].Value = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
-                ws.Cells["G" + fila14].Value = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
-                
-                ws.Cells["O" + fila14].Value = int.Parse(ws.Cells["O" + fila4].Value.ToString()) + int.Parse(ws.Cells["O" + fila5].Value.ToString()) + int.Parse(ws.Cells["O" + fila6].Value.ToString()) + int.Parse(ws.Cells["O" + fila7].Value.ToString()) + int.Parse(ws.Cells["O" + fila8].Value.ToString()) + int.Parse(ws.Cells["O" + fila9].Value.ToString()) + int.Parse(ws.Cells["O" + fila10].Value.ToString()) + int.Parse(ws.Cells["O" + fila11].Value.ToString()) + int.Parse(ws.Cells["O" + fila12].Value.ToString()) + int.Parse(ws.Cells["O" + fila13].Value.ToString());
-
-
-
-                //valores de bonos
-
-                string valorDelProceso = ws.Cells["A" + fila2].Value.ToString();
-
-                if (valorDelProceso != "")
-                {
-                    ws.Cells["Q" + fila4].Value = ws.Cells["R" + fila4].Value;
-                    ws.Cells["Q" + fila5].Value = ws.Cells["R" + fila5].Value;
-                    ws.Cells["Q" + fila6].Value = ws.Cells["R" + fila6].Value;
-                    ws.Cells["Q" + fila7].Value = ws.Cells["R" + fila7].Value;
-                    ws.Cells["Q" + fila8].Value = ws.Cells["R" + fila8].Value;
-                    ws.Cells["Q" + fila9].Value = ws.Cells["R" + fila9].Value;
-                    ws.Cells["Q" + fila10].Value = ws.Cells["R" + fila10].Value;
-                    ws.Cells["Q" + fila11].Value = ws.Cells["R" + fila11].Value;
-                    ws.Cells["Q" + fila12].Value = ws.Cells["R" + fila12].Value;
-                    ws.Cells["Q" + fila13].Value = ws.Cells["R" + fila13].Value;
-
-
-
-                    ws.Cells["R" + fila4].Value = ws.Cells["T" + fila4].Value;
-                    ws.Cells["R" + fila5].Value = ws.Cells["T" + fila5].Value;
-                    ws.Cells["R" + fila6].Value = ws.Cells["T" + fila6].Value;
-                    ws.Cells["R" + fila7].Value = ws.Cells["T" + fila7].Value;
-                    ws.Cells["R" + fila8].Value = ws.Cells["T" + fila8].Value;
-                    ws.Cells["R" + fila9].Value = ws.Cells["T" + fila9].Value;
-                    ws.Cells["R" + fila10].Value = ws.Cells["T" + fila10].Value;
-                    ws.Cells["R" + fila11].Value = ws.Cells["T" + fila11].Value;
-                    ws.Cells["R" + fila12].Value = ws.Cells["T" + fila12].Value;
-                    ws.Cells["R" + fila13].Value = ws.Cells["T" + fila13].Value;
-
-                    ws.Cells["T" + fila4].Value = ws.Cells["X" + fila4].Value;
-                    ws.Cells["T" + fila5].Value = ws.Cells["X" + fila5].Value;
-                    ws.Cells["T" + fila6].Value = ws.Cells["X" + fila6].Value;
-                    ws.Cells["T" + fila7].Value = ws.Cells["X" + fila7].Value;
-                    ws.Cells["T" + fila8].Value = ws.Cells["X" + fila8].Value;
-                    ws.Cells["T" + fila9].Value = ws.Cells["X" + fila9].Value;
-                    ws.Cells["T" + fila10].Value = ws.Cells["X" + fila10].Value;
-                    ws.Cells["T" + fila11].Value = ws.Cells["X" + fila11].Value;
-                    ws.Cells["T" + fila12].Value = ws.Cells["X" + fila12].Value;
-                    ws.Cells["T" + fila13].Value = ws.Cells["X" + fila13].Value;
-
-                    ws.Cells["S" + fila4].Value = ws.Cells["V" + fila4].Value;
-                    ws.Cells["S" + fila5].Value = ws.Cells["V" + fila5].Value;
-                    ws.Cells["S" + fila6].Value = ws.Cells["V" + fila6].Value;
-                    ws.Cells["S" + fila7].Value = ws.Cells["V" + fila7].Value;
-                    ws.Cells["S" + fila8].Value = ws.Cells["V" + fila8].Value;
-                    ws.Cells["S" + fila9].Value = ws.Cells["V" + fila9].Value;
-                    ws.Cells["S" + fila10].Value = ws.Cells["V" + fila10].Value;
-                    ws.Cells["S" + fila11].Value = ws.Cells["V" + fila11].Value;
-                    ws.Cells["S" + fila12].Value = ws.Cells["V" + fila12].Value;
-                    ws.Cells["S" + fila13].Value = ws.Cells["V" + fila13].Value;
-
-                    ws.Cells["V" + fila4].Value = "";
-                    ws.Cells["V" + fila5].Value = "";
-                    ws.Cells["V" + fila6].Value = "";
-                    ws.Cells["V" + fila7].Value = "";
-                    ws.Cells["V" + fila8].Value = "";
-                    ws.Cells["V" + fila9].Value = "";
-                    ws.Cells["V" + fila10].Value = "";
-                    ws.Cells["V" + fila11].Value = "";
-                    ws.Cells["V" + fila12].Value = "";
-                    ws.Cells["V" + fila13].Value = "";
-
-
-                    ws.Cells["U" + fila4].Value = ws.Cells["Y" + fila4].Value;
-                    ws.Cells["U" + fila5].Value = ws.Cells["Y" + fila5].Value;
-                    ws.Cells["U" + fila6].Value = ws.Cells["Y" + fila6].Value;
-                    ws.Cells["U" + fila7].Value = ws.Cells["Y" + fila7].Value;
-                    ws.Cells["U" + fila8].Value = ws.Cells["Y" + fila8].Value;
-                    ws.Cells["U" + fila9].Value = ws.Cells["Y" + fila9].Value;
-                    ws.Cells["U" + fila10].Value = ws.Cells["Y" + fila10].Value;
-                    ws.Cells["U" + fila11].Value = ws.Cells["Y" + fila11].Value;
-                    ws.Cells["U" + fila12].Value = ws.Cells["Y" + fila12].Value;
-                    ws.Cells["U" + fila13].Value = ws.Cells["Y" + fila13].Value;
-
-                }
-                else
-                {
-                    ws.Cells["Q" + fila4].Value = 0;
-                    ws.Cells["Q" + fila5].Value = 0;
-                    ws.Cells["Q" + fila6].Value = 0;
-                    ws.Cells["Q" + fila7].Value = 0;
-                    ws.Cells["Q" + fila8].Value = 0;
-                    ws.Cells["Q" + fila9].Value = 0;
-                    ws.Cells["Q" + fila10].Value = 0;
-                    ws.Cells["Q" + fila11].Value = 0;
-                    ws.Cells["Q" + fila12].Value = 0;
-                    ws.Cells["Q" + fila13].Value = 0;
-
-
-
-                    ws.Cells["R" + fila4].Value = 0;
-                    ws.Cells["R" + fila5].Value = 0;
-                    ws.Cells["R" + fila6].Value = 0;
-                    ws.Cells["R" + fila7].Value = 0;
-                    ws.Cells["R" + fila8].Value = 0;
-                    ws.Cells["R" + fila9].Value = 0;
-                    ws.Cells["R" + fila10].Value = 0;
-                    ws.Cells["R" + fila11].Value = 0;
-                    ws.Cells["R" + fila12].Value = 0;
-                    ws.Cells["R" + fila13].Value = 0;
-
-                    ws.Cells["T" + fila4].Value = "";
-                    ws.Cells["T" + fila5].Value = "";
-                    ws.Cells["T" + fila6].Value = "";
-                    ws.Cells["T" + fila7].Value = "";
-                    ws.Cells["T" + fila8].Value = "";
-                    ws.Cells["T" + fila9].Value = "";
-                    ws.Cells["T" + fila10].Value = "";
-                    ws.Cells["T" + fila11].Value = "";
-                    ws.Cells["T" + fila12].Value = "";
-                    ws.Cells["T" + fila13].Value = "";
-
-                    ws.Cells["S" + fila4].Value = 0;
-                    ws.Cells["S" + fila5].Value = 0;
-                    ws.Cells["S" + fila6].Value = 0;
-                    ws.Cells["S" + fila7].Value = 0;
-                    ws.Cells["S" + fila8].Value = 0;
-                    ws.Cells["S" + fila9].Value = 0;
-                    ws.Cells["S" + fila10].Value = 0;
-                    ws.Cells["S" + fila11].Value = 0;
-                    ws.Cells["S" + fila12].Value = 0;
-                    ws.Cells["S" + fila13].Value = 0;
-
-                    ws.Cells["V" + fila4].Value = "";
-                    ws.Cells["V" + fila5].Value = 0;
-                    ws.Cells["V" + fila6].Value = 0;
-                    ws.Cells["V" + fila7].Value = 0;
-                    ws.Cells["V" + fila8].Value = 0;
-                    ws.Cells["V" + fila9].Value = 0;
-                    ws.Cells["V" + fila10].Value = 0;
-                    ws.Cells["V" + fila11].Value = 0;
-                    ws.Cells["V" + fila12].Value = 0;
-                    ws.Cells["V" + fila13].Value = "";
-
-
-
-                    ws.Cells["P" + fila4].Value = 0;
-                    ws.Cells["P" + fila5].Value = 0;
-                    ws.Cells["P" + fila6].Value = 0;
-                    ws.Cells["P" + fila7].Value = 0;
-                    ws.Cells["P" + fila8].Value = 0;
-                    ws.Cells["P" + fila9].Value = 0;
-                    ws.Cells["P" + fila10].Value = 0;
-                    ws.Cells["P" + fila11].Value = 0;
-                    ws.Cells["P" + fila12].Value = 0;
-                    ws.Cells["P" + fila13].Value = 0;
-
-
-                }
-
-
-
-                ////cuadro sub resumen
-
-
-                ////hay que mover las posiciones de las columnas, entonces
-                ////U-->W
-                ////V-->X
-                ////W-->Y
-                ////X-->Z
-
-
-                ws.Cells["W" + fila4].Value = "RESUMEN DE MODELOS";
-
-                ws.Cells["X" + fila4].Value = "Total";
-                //extra agregado por el Francisco
-                //ws.Cells["Y" + fila4].Value = "Por Cobrar a CCU";
-                //ws.Cells["Z" + fila4].Value = "Total Mes";
-
-                ws.Cells["W" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                //ws.Cells["Y" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-
-                ws.Cells["W" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["W" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-                //era Z
-                ws.Cells["X" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-                ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-                ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-               // ws.Cells["Y" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
-
-
-                //// titulos de cuadro resumen
-                ws.Cells["W" + fila5].Value = "INTERPLANTAS";
-                ws.Cells["W" + fila5].Style.Font.Bold = true;
-                ws.Cells["W" + fila6].Value = "MOVILIZADORES";
-                ws.Cells["W" + fila6].Style.Font.Bold = true;
-                ws.Cells["W" + fila7].Value = "EMPRENDEDORES";
-                ws.Cells["W" + fila7].Style.Font.Bold = true;
-                ws.Cells["W" + fila8].Value = "DIRECTOS";
-                ws.Cells["W" + fila8].Style.Font.Bold = true;
-                ws.Cells["W" + fila9].Value = "INDIRECTOS";
-                ws.Cells["W" + fila9].Style.Font.Bold = true;
-                ws.Cells["W" + fila10].Value = "ADMINISTRACION";
-                ws.Cells["W" + fila10].Style.Font.Bold = true;
-                ws.Cells["W" + fila11].Value = "$ TOTAL ";
-                ws.Cells["W" + fila11].Style.Font.Bold = true;
-                ws.Cells["W" + fila12].Value = "TOTAL TRABAJADORES";
-                ws.Cells["W" + fila12].Style.Font.Bold = true;
-
-                //valores de cuadro resumen (interplanta, movilizadores y emprendedores)
-                ws.Cells["X" + fila5].Value = ws.Cells["O" + fila5].Value;
-                ws.Cells["X" + fila6].Value = ws.Cells["O" + fila11].Value;
-                ws.Cells["X" + fila7].Value = ws.Cells["O" + fila12].Value;
-
-
-
-
-                int remuneracionesDirectosCurico = int.Parse(ws.Cells["L" + fila4].Value.ToString()) + int.Parse(ws.Cells["M" + fila4].Value.ToString());
-                int remuneracionesDirectosRancagua = int.Parse(ws.Cells["L" + fila6].Value.ToString()) + int.Parse(ws.Cells["M" + fila6].Value.ToString());
-                int remuneracionesDirectosMelipilla = int.Parse(ws.Cells["L" + fila7].Value.ToString()) + int.Parse(ws.Cells["M" + fila7].Value.ToString());
-                int remuneracionesDirectosSanAntonio = int.Parse(ws.Cells["L" + fila8].Value.ToString()) + int.Parse(ws.Cells["M" + fila8].Value.ToString());
-                int remuneracionesDirectosIllapel = int.Parse(ws.Cells["L" + fila9].Value.ToString()) + int.Parse(ws.Cells["M" + fila9].Value.ToString());
-                int remuneracionesDirectosSantiago = int.Parse(ws.Cells["L" + fila10].Value.ToString()) + int.Parse(ws.Cells["M" + fila10].Value.ToString());
-
-                int remuneracionesIndirectosCurico = int.Parse(ws.Cells["N" + fila4].Value.ToString());
-                int remuneracionesIndirectosRancagua = int.Parse(ws.Cells["N" + fila6].Value.ToString());
-                int remuneracionesIndirectosMelipilla = int.Parse(ws.Cells["N" + fila7].Value.ToString());
-                int remuneracionesIndirectosSanAntonio = int.Parse(ws.Cells["N" + fila8].Value.ToString());
-                int remuneracionesIndirectosIllapel = int.Parse(ws.Cells["N" + fila9].Value.ToString());
-                int remuneracionesIndirectosSantiago = int.Parse(ws.Cells["N" + fila10].Value.ToString());
-
-
-                int sumaDeDirectos = remuneracionesDirectosCurico + remuneracionesDirectosRancagua + remuneracionesDirectosMelipilla + remuneracionesDirectosSanAntonio + remuneracionesDirectosIllapel + remuneracionesDirectosSantiago;
-                int sumaDeIndirectos = remuneracionesIndirectosCurico + remuneracionesIndirectosRancagua + remuneracionesIndirectosMelipilla + remuneracionesIndirectosSanAntonio + remuneracionesIndirectosIllapel + remuneracionesIndirectosSantiago;
-
-
-                ////valores de modelo tradicional (directos e indirectos)
-                ws.Cells["X" + fila8].Value = sumaDeDirectos;
-                ws.Cells["X" + fila9].Value = sumaDeIndirectos;
-                ////valor de cuadro resumen (administracion)
-                ws.Cells["X" + fila10].Value = ws.Cells["O" + fila13].Value;
-
-                ////valor de celda de totales
-                ws.Cells["X" + fila11].Value = sumaDeDirectos + sumaDeIndirectos + int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["X" + fila7].Value.ToString());
-
-
-                ////formatear como numero usando comas como separadores de decimales
-                ws.Cells["L" + fila4 + ":U" + fila13].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
-                ws.Cells["X" + fila5 + ":Z" + fila10].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
-                ws.Cells["X" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
-
-                ////total de trabajadores
-
-                int conductoresActivos = int.Parse(ws.Cells["B" + fila4].Value.ToString()) + int.Parse(ws.Cells["B" + fila5].Value.ToString()) + int.Parse(ws.Cells["B" + fila6].Value.ToString()) + int.Parse(ws.Cells["B" + fila7].Value.ToString()) + int.Parse(ws.Cells["B" + fila8].Value.ToString()) + int.Parse(ws.Cells["B" + fila9].Value.ToString()) + int.Parse(ws.Cells["B" + fila10].Value.ToString()) + int.Parse(ws.Cells["B" + fila11].Value.ToString()) + int.Parse(ws.Cells["B" + fila12].Value.ToString()) + int.Parse(ws.Cells["B" + fila13].Value.ToString());
-                int conductoresDeLicencia = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
-                int ayudantesActivos = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
-                int ayudantesDeLicencia = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
-                int apoyosActivos = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
-                int apoyosDeLicencia = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
-                ws.Cells["X" + fila12].Value = conductoresActivos + conductoresDeLicencia + ayudantesActivos + ayudantesDeLicencia + apoyosActivos + apoyosDeLicencia;
-
-                ////formatear celdas de centros y de Totales en negrita
-                ws.Cells["A" + fila4 + ":A" + fila14].Style.Font.Bold = true;
-
-                ////quitar bordes hacia la derecha de la segunda fila de cada tabla (aparentemente no funciona)
-                ws.Cells["H" + fila3 + ":N" + fila3].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
-                ws.Cells["H" + fila3 + ":O" + fila3].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
-
-                ws.Cells["A" + fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                ws.Cells["A" + fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
-
-
-
-                ////por cobrar a CCU
-                //ws.Cells["Y" + fila5].Value = ws.Cells["P" + fila5].Value;//interplanta
-                //ws.Cells["Y" + fila6].Value = ws.Cells["P" + fila11].Value;//movilizadores
-                //ws.Cells["Y" + fila7].Value = ws.Cells["P" + fila12].Value;//emprendedores
-
-                //ws.Cells["Y" + fila8].Value = int.Parse(ws.Cells["P" + fila4].Value.ToString()) +
-                //    int.Parse(ws.Cells["P" + fila6].Value.ToString())+
-                //    int.Parse(ws.Cells["P" + fila7].Value.ToString())+
-                //    int.Parse(ws.Cells["P" + fila8].Value.ToString())+
-                //    int.Parse(ws.Cells["P" + fila9].Value.ToString())+
-                //    int.Parse(ws.Cells["P" + fila10].Value.ToString());//directos
-
-                //ws.Cells["Y" + fila9].Value = int.Parse(ws.Cells["P" + fila5].Value.ToString()) +
-                //    int.Parse(ws.Cells["P" + fila11].Value.ToString()) +
-                //    int.Parse(ws.Cells["P" + fila12].Value.ToString()) +
-                //    int.Parse(ws.Cells["P" + fila13].Value.ToString());//indirectos
-
-                //ws.Cells["Y" + fila10].Value = ws.Cells["P" + fila13].Value;//administracion
-
-                int bonoSobreEsfuerzoRFila13 = 0;
-
-
-                //valores pendientes
-                ws.Cells["T" + fila13].Value = bonoSobreEsfuerzoRFila13;
-
-                ws.Cells["U" + fila11].Value = bonoSobreEsfuerzoRFila13;
-                ws.Cells["U" + fila12].Value = bonoSobreEsfuerzoRFila13;
-                ws.Cells["U" + fila13].Value = bonoSobreEsfuerzoRFila13;
-
-
-
-                ////total mes
-                //ws.Cells["Z" + fila5].Value = int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["Y" + fila5].Value.ToString());
-                //ws.Cells["Z" + fila6].Value = int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["Y" + fila6].Value.ToString());
-                //ws.Cells["Z" + fila7].Value = int.Parse(ws.Cells["X" + fila7].Value.ToString()) + int.Parse(ws.Cells["Y" + fila7].Value.ToString());
-                //ws.Cells["Z" + fila8].Value = int.Parse(ws.Cells["X" + fila8].Value.ToString()) + int.Parse(ws.Cells["Y" + fila8].Value.ToString());
-                //ws.Cells["Z" + fila9].Value = int.Parse(ws.Cells["X" + fila9].Value.ToString()) + int.Parse(ws.Cells["Y" + fila9].Value.ToString());
-                //ws.Cells["Z" + fila10].Value = int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["Y" + fila10].Value.ToString());
-
-
-
-                //quitando valores de por cobrar a CCU
-                ws.Cells["Y" + fila4].Value = "";
-                ws.Cells["Y" + fila5].Value = "";
-                ws.Cells["Y" + fila6].Value = "";
-                ws.Cells["Y" + fila7].Value = "";
-                ws.Cells["Y" + fila8].Value = "";
-                ws.Cells["Y" + fila9].Value = "";
-                ws.Cells["Y" + fila10].Value = "";
 
 
+
+                //fijar titulo de columnas
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 2, 0, 0)].Value = "Cantidad de conductores activos";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 3, 0, 0)].Value = "Conductores de licencia";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 4, 0, 0)].Value = "Ayudantes activos";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 5, 0, 0)].Value = "Ayudantes de licencia";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 6, 0, 0)].Value = "Apoyos activos";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 7, 0, 0)].Value = "Apoyos de licencia";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 8, 0, 0)].Value = "Total de conductores";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 9, 0, 0)].Value = "Total de ayudantes";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 10, 0, 0)].Value = "Total de apoyos";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 11, 0, 0)].Value = "Total de trabajadores";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 12, 0, 0)].Value = "$ Conductores";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 13, 0, 0)].Value = "$ Ayudantes";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 14, 0, 0)].Value = "$ Apoyos";
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 15, 0, 0)].Value = "Total";
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 2, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 3, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 4, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 5, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 6, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 7, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 8, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 9, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 10, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 11, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 12, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 13, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 14, 0, 0)].Style.Font.Bold = true;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 15, 0, 0)].Style.Font.Bold = true;
+
+
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila1-1].Centro;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila2].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila3].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila4].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila5].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila6].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila7].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila8].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila9].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila10].Centro;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila11].Centro;
+
+
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeConductoresActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 2, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeConductoresActivos;
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeConductoresDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 3, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeConductoresDeLicencia;
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeAyudantesActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 4, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeAyudantesActivos;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeAyudantesDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 5, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeAyudantesDeLicencia;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeApoyosActivos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 6, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeApoyosActivos;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila2].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila3].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila4].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila5].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila6].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila7].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila8].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila9].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila10].CantidadDeApoyosDeLicencia;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 7, 0, 0)].Value = registrosDeTotales[fila11].CantidadDeApoyosDeLicencia;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila2].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila3].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila4].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila5].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila6].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila7].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila8].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila9].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila10].TotalConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 8, 0, 0)].Value = registrosDeTotales[fila11].TotalConductores;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila2].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila3].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila4].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila5].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila6].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila7].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila8].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila9].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila10].TotalAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 9, 0, 0)].Value = registrosDeTotales[fila11].TotalAyudantes;
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila2].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila3].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila4].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila5].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila6].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila7].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila8].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila9].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila10].TotalApoyos;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 10, 0, 0)].Value = registrosDeTotales[fila11].TotalApoyos;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila2].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila3].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila4].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila5].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila6].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila7].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila8].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila9].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila10].TotalDotacion;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 11, 0, 0)].Value = registrosDeTotales[fila11].TotalDotacion;
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila2].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila3].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila4].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila5].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila6].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila7].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila8].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila9].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila10].TotalRemuneracionesConductores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 12, 0, 0)].Value = registrosDeTotales[fila11].TotalRemuneracionesConductores;
+
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila2].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila3].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila4].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila5].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila6].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila7].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila8].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila9].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila10].TotalRemuneracionesAyudantes;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 13, 0, 0)].Value = registrosDeTotales[fila11].TotalRemuneracionesAyudantes;
+
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila2].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila3].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila4].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila5].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila6].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila7].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila8].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila9].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila10].TotalRemuneracionesOtros;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 14, 0, 0)].Value = registrosDeTotales[fila11].TotalRemuneracionesOtros;
+
+
+
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila2].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila3].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila4].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila7 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila5].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila8 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila6].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila9 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila7].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila10 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila8].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila11 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila9].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila12 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila10].TotalRemuneracionesDeTodosLosTrabajadores;
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila13 + "C" + 15, 0, 0)].Value = registrosDeTotales[fila11].TotalRemuneracionesDeTodosLosTrabajadores;
+
+                //aqui habría que ver lo de los bonos...
+
+
+
+
+                //    // agregar  bordes a tabla
+                ws.Cells["A" + fila3 + ":O" + fila13].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila3 + ":O" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila3 + ":O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                ws.Cells["A" + fila3 + ":O" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+
+                ws.Cells["L" + fila4 + ":O" + fila13].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+
+
+
+
+                //    //Arriba
+                //    ws.Cells["B" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["C" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["D" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["E" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["F" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["G" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["H" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["I" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["J" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["K" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["L" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["M" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["N" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["O" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["P" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["Q" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["R" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["S" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["T" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                //    ////izquierda
+                //    ws.Cells["B" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila11].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila12].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["B" + fila13].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                //    ////abajo
+                //    ws.Cells["B" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["C" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["D" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["E" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["F" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["G" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["H" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["I" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["J" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["K" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["L" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["M" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["N" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["O" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["P" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["Q" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["R" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["S" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["T" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila13].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+
+                //    ////derecha
+                //    ws.Cells["U" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila11].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["U" + fila13].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                //    //quitar ceros de los alrededores
+                //    ws.Cells["B" + fila2].Value = "";
+                //    ws.Cells["B" + fila3].Value = "";
+                //    ws.Cells["B" + fila14].Value = "";
+                //    ws.Cells["B" + fila15].Value = "";
+                //    ws.Cells["C"+fila2].Value = "";
+                //    ws.Cells["C"+fila3].Value = "";
+                //    ws.Cells["C"+fila14].Value = "";
+                //    ws.Cells["C"+fila15].Value = "";
+                //    ws.Cells["D"+fila2].Value = "";
+                //    ws.Cells["D"+fila3].Value = "";
+                //    ws.Cells["D"+fila14].Value = "";
+                //    ws.Cells["D"+fila15].Value = "";
+                //    ws.Cells["E"+fila2].Value = "";
+                //    ws.Cells["E"+fila3].Value = "";
+                //    ws.Cells["E"+fila14].Value = "";
+                //    ws.Cells["E"+fila15].Value = "";
+                //    ws.Cells["F"+fila2].Value = "";
+                //    ws.Cells["F"+fila3].Value = "";
+                //    ws.Cells["F"+fila14].Value = "";
+                //    ws.Cells["F"+fila15].Value = "";
+                //    ws.Cells["G"+fila2].Value = "";
+                //    ws.Cells["G"+fila3].Value = "";
+                //    ws.Cells["G"+fila14].Value = "";
+                //    ws.Cells["G"+fila15].Value = "";
+                //    ws.Cells["H"+fila2].Value = "";
+                //    ws.Cells["H"+fila3].Value = "";
+                //    ws.Cells["H"+fila14].Value = "";
+                //    ws.Cells["H"+fila15].Value = "";
+                //    ws.Cells["I"+fila2].Value = "";
+                //    ws.Cells["I"+fila3].Value = "";
+                //    ws.Cells["I"+fila14].Value = "";
+                //    ws.Cells["I"+fila15].Value = "";
+                //    ws.Cells["J"+fila2].Value = "";
+                //    ws.Cells["J"+fila3].Value = "";
+                //    ws.Cells["J"+fila14].Value = "";
+                //    ws.Cells["J"+fila15].Value = "";
+                //    ws.Cells["K"+fila2].Value = "";
+                //    ws.Cells["K"+fila3].Value = "";
+                //    ws.Cells["K"+fila14].Value = "";
+                //    ws.Cells["K"+fila15].Value = "";
+                //    ws.Cells["L"+fila2].Value = "";
+                //    ws.Cells["L"+fila3].Value = "";
+                //    ws.Cells["L"+fila14].Value = "";
+                //    ws.Cells["L"+fila15].Value = "";
+                //    ws.Cells["M"+fila2].Value = "";
+                //    ws.Cells["M"+fila3].Value = "";
+                //    ws.Cells["M"+fila14].Value = "";
+                //    ws.Cells["M"+fila15].Value = "";
+                //    ws.Cells["N"+fila2].Value = "";
+                //    ws.Cells["N"+fila3].Value = "";
+                //    ws.Cells["N"+fila14].Value = "";
+                //    ws.Cells["N"+fila15].Value = "";
+                //    ws.Cells["O"+fila2].Value = "";
+                //    ws.Cells["O"+fila3].Value = "";
+                //    ws.Cells["O"+fila14].Value = "";
+                //    ws.Cells["O"+fila15].Value = "";
+                //    ws.Cells["P" + fila2].Value = "";
+                //    ws.Cells["P" + fila3].Value = "";
+                //    ws.Cells["P" + fila14].Value = "";
+                //    ws.Cells["P" + fila15].Value = "";
+                //    ws.Cells["Q" + fila2].Value = "";
+                //    ws.Cells["Q" + fila3].Value = "";
+                //    ws.Cells["Q" + fila14].Value = "";
+                //    ws.Cells["Q" + fila15].Value = "";
+                //    ws.Cells["R" + fila2].Value = "";
+                //    ws.Cells["R" + fila3].Value = "";
+                //    ws.Cells["R" + fila14].Value = "";
+                //    ws.Cells["R" + fila15].Value = "";
+                //    ws.Cells["S" + fila2].Value = "";
+                //    ws.Cells["S" + fila3].Value = "";
+                //    ws.Cells["S" + fila14].Value = "";
+                //    ws.Cells["S" + fila15].Value = "";
+                //    ws.Cells["X" + fila2].Value = "";
+                //    ws.Cells["X" + fila3].Value = "";
+                //    ws.Cells["X" + fila14].Value = "";
+                //    ws.Cells["X" + fila15].Value = "";
+                //    ws.Cells["Y" + fila2].Value = "";
+                //    ws.Cells["Y" + fila3].Value = "";
+                //    ws.Cells["Y" + fila14].Value = "";
+                //    ws.Cells["Y" + fila15].Value = "";
+                //    ws.Cells["Z" + fila2].Value = "";
+                //    ws.Cells["Z" + fila3].Value = "";
+                //    ws.Cells["Z" + fila14].Value = "";
+                //    ws.Cells["Z" + fila15].Value = "";
+                //    ws.Cells["AA" + fila2].Value = "";
+                //    ws.Cells["AA" + fila3].Value = "";
+                //    ws.Cells["AA" + fila14].Value = "";
+                //    ws.Cells["AA" + fila15].Value = "";
+
+                //    ws.Cells["T" + fila3].Value = "";
+                //    ws.Cells["T" + fila14].Value = "";
+                //    ws.Cells["T" + fila15].Value = "";
+
+
+
+                //    ws.Cells["U" + fila2].Value = "";
+                //    ws.Cells["U" + fila3].Value = "";
+                //    ws.Cells["U" + fila14].Value = "";
+                //    ws.Cells["U" + fila15].Value = "";
+
+                //    ws.Cells["V" + fila2].Value = "";
+                //    ws.Cells["V" + fila3].Value = "";
+                //    ws.Cells["V" + fila14].Value = "";
+                //    ws.Cells["V" + fila15].Value = "";
+
+
+                //    ws.Cells["W" + fila2].Value = "";
+                //    ws.Cells["W" + fila3].Value = "";
+                //    ws.Cells["W" + fila14].Value = "";
+                //    ws.Cells["W" + fila15].Value = "";
+
+                //    ws.Cells["X" + fila13].Value = "";
+
+                //    ws.Cells["Y" + fila11].Value = "";
+                //    ws.Cells["Y" + fila12].Value = "";
+                //    ws.Cells["Y" + fila13].Value = "";
+
+
+
+
+                //    //agregar titulos en cada proceso
+                //    ws.Cells["B" + fila2].Value = "# de Conductores";
+                //    ws.Cells["B" + fila3].Value = "Activos";
+                //    ws.Cells["C" + fila3].Value = "De licencia";
+
+                //    ws.Cells["D" + fila2].Value = "# de Ayudantes";
+                //    ws.Cells["D" + fila3].Value = "Activos";
+                //    ws.Cells["E" +fila3].Value = "De licencia";
+
+                //    ws.Cells["F" + fila2].Value = "# de Apoyos";
+                //    ws.Cells["F" + fila3].Value = "Activos";
+                //    ws.Cells["G" + fila3].Value = "De licencia";
+
+                //    //H, I, J, K
+                //    ws.Cells["H" + fila2].Value = "Total conductores";
+                //    ws.Cells["I" + fila2].Value = "Total ayudantes";
+                //    ws.Cells["J" + fila2].Value = "Total apoyos";
+                //    ws.Cells["K" + fila2].Value = "Total dotación";
+
+                //    ws.Cells["L" + fila2].Value = "$ Concuctores";
+                //    ws.Cells["M" + fila2].Value = "$ Ayudantes";
+                //    ws.Cells["N" + fila2].Value = "$ Otros";
+                //    ws.Cells["O" + fila2].Value = "Total";
+                //    ws.Cells["P" + fila2].Value = "Total a recuperar";
+
+
+
+                //    //30/05/2022, la estructura actual no es dinámica con los conceptos; incluir conceptos adicionales al proceso es imposible sin
+                //    //modificar el codigo fuente, el cual lamentablemente depende de la notacion A1 para el Excel. Se vuelve necesario entonces hacer uso de 
+                //    // la notacion R1C1.
+                //    //Además la cantidad de bonos es indeterminada; hay meses en las que hay 3 bonos, y en otras ocasiones hay 5, 8...  y así. La propiedad de la clase de registro mensual
+                //    //debiese cambiar para que haya una lista de comisiones y que por cada bono se genere una columna adicional.
+
+
+
+                //    ws.Cells["Q" + fila2].Value = "Total bono tiempo de espera";
+                //    ws.Cells["R" + fila2].Value = "Total bono estacional";
+                //    ws.Cells["S" + fila2].Value = "Total Btn I";
+                //    ws.Cells["T" + fila2].Value = "Bono Sobre Esfuerzo R";
+                //    ws.Cells["U" + fila2].Value = "Viatico Ahorro R";
+                //    ws.Cells["V" + fila2].Value = "Bono Compensatorio R";
+                //    ws.Cells["W" + fila2].Value = "";
+
+
+
+
+                //    ws.Cells["B" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["D" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["F" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["H" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["I" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["J" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["K" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["L" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["M" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["N" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["O" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["P" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["Q" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["R" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["S" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["T" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["U" + fila2].Style.Font.Bold = true;
+                //    ws.Cells["V" + fila2].Style.Font.Bold = true;
+
+                //    ws.Cells["B" + fila3].Style.Font.Italic = true;
+                //    ws.Cells["C" + fila3].Style.Font.Italic = true;
+                //    ws.Cells["D" + fila3].Style.Font.Italic = true;
+                //    ws.Cells["E" + fila3].Style.Font.Italic = true;
+                //    ws.Cells["F" + fila3].Style.Font.Italic = true;
+                //    ws.Cells["G" + fila3].Style.Font.Italic = true;
+
+                //    ws.Cells["B" + fila2 + ":C" + fila2].Merge = true;
+                //    ws.Cells["D" + fila2 + ":E" + fila2].Merge = true;
+                //    ws.Cells["F" + fila2 + ":G" + fila2].Merge = true;
+
+
+
+                //    //totales al pie de la tabla
+                //    ws.Cells["A" + fila14].Value = "Totales";
+                //    ws.Cells["B"+fila14].Value = int.Parse(ws.Cells["B"+fila4].Value.ToString()) + int.Parse(ws.Cells["B"+fila5].Value.ToString()) + int.Parse(ws.Cells["B"+fila6].Value.ToString()) + int.Parse(ws.Cells["B"+fila7].Value.ToString()) + int.Parse(ws.Cells["B"+fila8].Value.ToString()) + int.Parse(ws.Cells["B"+fila9].Value.ToString()) + int.Parse(ws.Cells["B"+fila10].Value.ToString()) +  int.Parse(ws.Cells["B"+fila11].Value.ToString()) + int.Parse(ws.Cells["B"+fila12].Value.ToString()) + int.Parse(ws.Cells["B"+fila13].Value.ToString());
+                //    ws.Cells["C" + fila14].Value = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
+                //    ws.Cells["D" + fila14].Value = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
+                //    ws.Cells["E" + fila14].Value = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
+                //    ws.Cells["F" + fila14].Value = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
+                //    ws.Cells["G" + fila14].Value = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
+
+                //    ws.Cells["O" + fila14].Value = int.Parse(ws.Cells["O" + fila4].Value.ToString()) + int.Parse(ws.Cells["O" + fila5].Value.ToString()) + int.Parse(ws.Cells["O" + fila6].Value.ToString()) + int.Parse(ws.Cells["O" + fila7].Value.ToString()) + int.Parse(ws.Cells["O" + fila8].Value.ToString()) + int.Parse(ws.Cells["O" + fila9].Value.ToString()) + int.Parse(ws.Cells["O" + fila10].Value.ToString()) + int.Parse(ws.Cells["O" + fila11].Value.ToString()) + int.Parse(ws.Cells["O" + fila12].Value.ToString()) + int.Parse(ws.Cells["O" + fila13].Value.ToString());
+
+
+
+                //    //valores de bonos
+
+                //    string valorDelProceso = ws.Cells["A" + fila2].Value.ToString();
+
+                //    if (valorDelProceso != "")
+                //    {
+                //        ws.Cells["Q" + fila4].Value = ws.Cells["R" + fila4].Value;
+                //        ws.Cells["Q" + fila5].Value = ws.Cells["R" + fila5].Value;
+                //        ws.Cells["Q" + fila6].Value = ws.Cells["R" + fila6].Value;
+                //        ws.Cells["Q" + fila7].Value = ws.Cells["R" + fila7].Value;
+                //        ws.Cells["Q" + fila8].Value = ws.Cells["R" + fila8].Value;
+                //        ws.Cells["Q" + fila9].Value = ws.Cells["R" + fila9].Value;
+                //        ws.Cells["Q" + fila10].Value = ws.Cells["R" + fila10].Value;
+                //        ws.Cells["Q" + fila11].Value = ws.Cells["R" + fila11].Value;
+                //        ws.Cells["Q" + fila12].Value = ws.Cells["R" + fila12].Value;
+                //        ws.Cells["Q" + fila13].Value = ws.Cells["R" + fila13].Value;
+
+
+
+                //        ws.Cells["R" + fila4].Value = ws.Cells["T" + fila4].Value;
+                //        ws.Cells["R" + fila5].Value = ws.Cells["T" + fila5].Value;
+                //        ws.Cells["R" + fila6].Value = ws.Cells["T" + fila6].Value;
+                //        ws.Cells["R" + fila7].Value = ws.Cells["T" + fila7].Value;
+                //        ws.Cells["R" + fila8].Value = ws.Cells["T" + fila8].Value;
+                //        ws.Cells["R" + fila9].Value = ws.Cells["T" + fila9].Value;
+                //        ws.Cells["R" + fila10].Value = ws.Cells["T" + fila10].Value;
+                //        ws.Cells["R" + fila11].Value = ws.Cells["T" + fila11].Value;
+                //        ws.Cells["R" + fila12].Value = ws.Cells["T" + fila12].Value;
+                //        ws.Cells["R" + fila13].Value = ws.Cells["T" + fila13].Value;
+
+                //        ws.Cells["T" + fila4].Value = ws.Cells["X" + fila4].Value;
+                //        ws.Cells["T" + fila5].Value = ws.Cells["X" + fila5].Value;
+                //        ws.Cells["T" + fila6].Value = ws.Cells["X" + fila6].Value;
+                //        ws.Cells["T" + fila7].Value = ws.Cells["X" + fila7].Value;
+                //        ws.Cells["T" + fila8].Value = ws.Cells["X" + fila8].Value;
+                //        ws.Cells["T" + fila9].Value = ws.Cells["X" + fila9].Value;
+                //        ws.Cells["T" + fila10].Value = ws.Cells["X" + fila10].Value;
+                //        ws.Cells["T" + fila11].Value = ws.Cells["X" + fila11].Value;
+                //        ws.Cells["T" + fila12].Value = ws.Cells["X" + fila12].Value;
+                //        ws.Cells["T" + fila13].Value = ws.Cells["X" + fila13].Value;
+
+                //        ws.Cells["S" + fila4].Value = ws.Cells["V" + fila4].Value;
+                //        ws.Cells["S" + fila5].Value = ws.Cells["V" + fila5].Value;
+                //        ws.Cells["S" + fila6].Value = ws.Cells["V" + fila6].Value;
+                //        ws.Cells["S" + fila7].Value = ws.Cells["V" + fila7].Value;
+                //        ws.Cells["S" + fila8].Value = ws.Cells["V" + fila8].Value;
+                //        ws.Cells["S" + fila9].Value = ws.Cells["V" + fila9].Value;
+                //        ws.Cells["S" + fila10].Value = ws.Cells["V" + fila10].Value;
+                //        ws.Cells["S" + fila11].Value = ws.Cells["V" + fila11].Value;
+                //        ws.Cells["S" + fila12].Value = ws.Cells["V" + fila12].Value;
+                //        ws.Cells["S" + fila13].Value = ws.Cells["V" + fila13].Value;
+
+                //        ws.Cells["V" + fila4].Value = "";
+                //        ws.Cells["V" + fila5].Value = "";
+                //        ws.Cells["V" + fila6].Value = "";
+                //        ws.Cells["V" + fila7].Value = "";
+                //        ws.Cells["V" + fila8].Value = "";
+                //        ws.Cells["V" + fila9].Value = "";
+                //        ws.Cells["V" + fila10].Value = "";
+                //        ws.Cells["V" + fila11].Value = "";
+                //        ws.Cells["V" + fila12].Value = "";
+                //        ws.Cells["V" + fila13].Value = "";
+
+
+                //        ws.Cells["U" + fila4].Value = ws.Cells["Y" + fila4].Value;
+                //        ws.Cells["U" + fila5].Value = ws.Cells["Y" + fila5].Value;
+                //        ws.Cells["U" + fila6].Value = ws.Cells["Y" + fila6].Value;
+                //        ws.Cells["U" + fila7].Value = ws.Cells["Y" + fila7].Value;
+                //        ws.Cells["U" + fila8].Value = ws.Cells["Y" + fila8].Value;
+                //        ws.Cells["U" + fila9].Value = ws.Cells["Y" + fila9].Value;
+                //        ws.Cells["U" + fila10].Value = ws.Cells["Y" + fila10].Value;
+                //        ws.Cells["U" + fila11].Value = ws.Cells["Y" + fila11].Value;
+                //        ws.Cells["U" + fila12].Value = ws.Cells["Y" + fila12].Value;
+                //        ws.Cells["U" + fila13].Value = ws.Cells["Y" + fila13].Value;
+
+                //    }
+                //    else
+                //    {
+                //        ws.Cells["Q" + fila4].Value = 0;
+                //        ws.Cells["Q" + fila5].Value = 0;
+                //        ws.Cells["Q" + fila6].Value = 0;
+                //        ws.Cells["Q" + fila7].Value = 0;
+                //        ws.Cells["Q" + fila8].Value = 0;
+                //        ws.Cells["Q" + fila9].Value = 0;
+                //        ws.Cells["Q" + fila10].Value = 0;
+                //        ws.Cells["Q" + fila11].Value = 0;
+                //        ws.Cells["Q" + fila12].Value = 0;
+                //        ws.Cells["Q" + fila13].Value = 0;
+
+
+
+                //        ws.Cells["R" + fila4].Value = 0;
+                //        ws.Cells["R" + fila5].Value = 0;
+                //        ws.Cells["R" + fila6].Value = 0;
+                //        ws.Cells["R" + fila7].Value = 0;
+                //        ws.Cells["R" + fila8].Value = 0;
+                //        ws.Cells["R" + fila9].Value = 0;
+                //        ws.Cells["R" + fila10].Value = 0;
+                //        ws.Cells["R" + fila11].Value = 0;
+                //        ws.Cells["R" + fila12].Value = 0;
+                //        ws.Cells["R" + fila13].Value = 0;
+
+                //        ws.Cells["T" + fila4].Value = "";
+                //        ws.Cells["T" + fila5].Value = "";
+                //        ws.Cells["T" + fila6].Value = "";
+                //        ws.Cells["T" + fila7].Value = "";
+                //        ws.Cells["T" + fila8].Value = "";
+                //        ws.Cells["T" + fila9].Value = "";
+                //        ws.Cells["T" + fila10].Value = "";
+                //        ws.Cells["T" + fila11].Value = "";
+                //        ws.Cells["T" + fila12].Value = "";
+                //        ws.Cells["T" + fila13].Value = "";
+
+                //        ws.Cells["S" + fila4].Value = 0;
+                //        ws.Cells["S" + fila5].Value = 0;
+                //        ws.Cells["S" + fila6].Value = 0;
+                //        ws.Cells["S" + fila7].Value = 0;
+                //        ws.Cells["S" + fila8].Value = 0;
+                //        ws.Cells["S" + fila9].Value = 0;
+                //        ws.Cells["S" + fila10].Value = 0;
+                //        ws.Cells["S" + fila11].Value = 0;
+                //        ws.Cells["S" + fila12].Value = 0;
+                //        ws.Cells["S" + fila13].Value = 0;
+
+                //        ws.Cells["V" + fila4].Value = "";
+                //        ws.Cells["V" + fila5].Value = 0;
+                //        ws.Cells["V" + fila6].Value = 0;
+                //        ws.Cells["V" + fila7].Value = 0;
+                //        ws.Cells["V" + fila8].Value = 0;
+                //        ws.Cells["V" + fila9].Value = 0;
+                //        ws.Cells["V" + fila10].Value = 0;
+                //        ws.Cells["V" + fila11].Value = 0;
+                //        ws.Cells["V" + fila12].Value = 0;
+                //        ws.Cells["V" + fila13].Value = "";
+
+
+
+                //        ws.Cells["P" + fila4].Value = 0;
+                //        ws.Cells["P" + fila5].Value = 0;
+                //        ws.Cells["P" + fila6].Value = 0;
+                //        ws.Cells["P" + fila7].Value = 0;
+                //        ws.Cells["P" + fila8].Value = 0;
+                //        ws.Cells["P" + fila9].Value = 0;
+                //        ws.Cells["P" + fila10].Value = 0;
+                //        ws.Cells["P" + fila11].Value = 0;
+                //        ws.Cells["P" + fila12].Value = 0;
+                //        ws.Cells["P" + fila13].Value = 0;
+
+
+                //    }
+
+
+
+                //    ////cuadro sub resumen
+
+
+                //    ////hay que mover las posiciones de las columnas, entonces
+                //    ////U-->W
+                //    ////V-->X
+                //    ////W-->Y
+                //    ////X-->Z
+
+
+                //    ws.Cells["W" + fila4].Value = "RESUMEN DE MODELOS";
+
+                //    ws.Cells["X" + fila4].Value = "Total";
+                //    //extra agregado por el Francisco
+                //    //ws.Cells["Y" + fila4].Value = "Por Cobrar a CCU";
+                //    //ws.Cells["Z" + fila4].Value = "Total Mes";
+
+                //    ws.Cells["W" + fila4].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila4].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila4].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    //ws.Cells["Y" + fila4].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                //    ws.Cells["W" + fila5].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila6].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila7].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila8].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila9].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila10].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["W" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                //    //era Z
+                //    ws.Cells["X" + fila5].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila5].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila6].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila7].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila8].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila9].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila10].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //    ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                //    ws.Cells["X" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                //   // ws.Cells["Y" + fila10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+
+                //    //// titulos de cuadro resumen
+                //    ws.Cells["W" + fila5].Value = "INTERPLANTAS";
+                //    ws.Cells["W" + fila5].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila6].Value = "MOVILIZADORES";
+                //    ws.Cells["W" + fila6].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila7].Value = "EMPRENDEDORES";
+                //    ws.Cells["W" + fila7].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila8].Value = "DIRECTOS";
+                //    ws.Cells["W" + fila8].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila9].Value = "INDIRECTOS";
+                //    ws.Cells["W" + fila9].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila10].Value = "ADMINISTRACION";
+                //    ws.Cells["W" + fila10].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila11].Value = "$ TOTAL ";
+                //    ws.Cells["W" + fila11].Style.Font.Bold = true;
+                //    ws.Cells["W" + fila12].Value = "TOTAL TRABAJADORES";
+                //    ws.Cells["W" + fila12].Style.Font.Bold = true;
+
+                //    //valores de cuadro resumen (interplanta, movilizadores y emprendedores)
+                //    ws.Cells["X" + fila5].Value = ws.Cells["O" + fila5].Value;
+                //    ws.Cells["X" + fila6].Value = ws.Cells["O" + fila11].Value;
+                //    ws.Cells["X" + fila7].Value = ws.Cells["O" + fila12].Value;
+
+
+
+
+                //    int remuneracionesDirectosCurico = int.Parse(ws.Cells["L" + fila4].Value.ToString()) + int.Parse(ws.Cells["M" + fila4].Value.ToString());
+                //    int remuneracionesDirectosRancagua = int.Parse(ws.Cells["L" + fila6].Value.ToString()) + int.Parse(ws.Cells["M" + fila6].Value.ToString());
+                //    int remuneracionesDirectosMelipilla = int.Parse(ws.Cells["L" + fila7].Value.ToString()) + int.Parse(ws.Cells["M" + fila7].Value.ToString());
+                //    int remuneracionesDirectosSanAntonio = int.Parse(ws.Cells["L" + fila8].Value.ToString()) + int.Parse(ws.Cells["M" + fila8].Value.ToString());
+                //    int remuneracionesDirectosIllapel = int.Parse(ws.Cells["L" + fila9].Value.ToString()) + int.Parse(ws.Cells["M" + fila9].Value.ToString());
+                //    int remuneracionesDirectosSantiago = int.Parse(ws.Cells["L" + fila10].Value.ToString()) + int.Parse(ws.Cells["M" + fila10].Value.ToString());
+
+                //    int remuneracionesIndirectosCurico = int.Parse(ws.Cells["N" + fila4].Value.ToString());
+                //    int remuneracionesIndirectosRancagua = int.Parse(ws.Cells["N" + fila6].Value.ToString());
+                //    int remuneracionesIndirectosMelipilla = int.Parse(ws.Cells["N" + fila7].Value.ToString());
+                //    int remuneracionesIndirectosSanAntonio = int.Parse(ws.Cells["N" + fila8].Value.ToString());
+                //    int remuneracionesIndirectosIllapel = int.Parse(ws.Cells["N" + fila9].Value.ToString());
+                //    int remuneracionesIndirectosSantiago = int.Parse(ws.Cells["N" + fila10].Value.ToString());
+
+
+                //    int sumaDeDirectos = remuneracionesDirectosCurico + remuneracionesDirectosRancagua + remuneracionesDirectosMelipilla + remuneracionesDirectosSanAntonio + remuneracionesDirectosIllapel + remuneracionesDirectosSantiago;
+                //    int sumaDeIndirectos = remuneracionesIndirectosCurico + remuneracionesIndirectosRancagua + remuneracionesIndirectosMelipilla + remuneracionesIndirectosSanAntonio + remuneracionesIndirectosIllapel + remuneracionesIndirectosSantiago;
+
+
+                //    ////valores de modelo tradicional (directos e indirectos)
+                //    ws.Cells["X" + fila8].Value = sumaDeDirectos;
+                //    ws.Cells["X" + fila9].Value = sumaDeIndirectos;
+                //    ////valor de cuadro resumen (administracion)
+                //    ws.Cells["X" + fila10].Value = ws.Cells["O" + fila13].Value;
+
+                //    ////valor de celda de totales
+                //    ws.Cells["X" + fila11].Value = sumaDeDirectos + sumaDeIndirectos + int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["X" + fila7].Value.ToString());
+
+
+                //    ////formatear como numero usando comas como separadores de decimales
+                //    ws.Cells["L" + fila4 + ":U" + fila13].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                //    ws.Cells["X" + fila5 + ":Z" + fila10].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+                //    ws.Cells["X" + fila11].Style.Numberformat.Format = "#,##0.00;(#,##0.00)";
+
+                //    ////total de trabajadores
+
+                //    int conductoresActivos = int.Parse(ws.Cells["B" + fila4].Value.ToString()) + int.Parse(ws.Cells["B" + fila5].Value.ToString()) + int.Parse(ws.Cells["B" + fila6].Value.ToString()) + int.Parse(ws.Cells["B" + fila7].Value.ToString()) + int.Parse(ws.Cells["B" + fila8].Value.ToString()) + int.Parse(ws.Cells["B" + fila9].Value.ToString()) + int.Parse(ws.Cells["B" + fila10].Value.ToString()) + int.Parse(ws.Cells["B" + fila11].Value.ToString()) + int.Parse(ws.Cells["B" + fila12].Value.ToString()) + int.Parse(ws.Cells["B" + fila13].Value.ToString());
+                //    int conductoresDeLicencia = int.Parse(ws.Cells["C" + fila4].Value.ToString()) + int.Parse(ws.Cells["C" + fila5].Value.ToString()) + int.Parse(ws.Cells["C" + fila6].Value.ToString()) + int.Parse(ws.Cells["C" + fila7].Value.ToString()) + int.Parse(ws.Cells["C" + fila8].Value.ToString()) + int.Parse(ws.Cells["C" + fila9].Value.ToString()) + int.Parse(ws.Cells["C" + fila10].Value.ToString()) + int.Parse(ws.Cells["C" + fila11].Value.ToString()) + int.Parse(ws.Cells["C" + fila12].Value.ToString()) + int.Parse(ws.Cells["C" + fila13].Value.ToString());
+                //    int ayudantesActivos = int.Parse(ws.Cells["D" + fila4].Value.ToString()) + int.Parse(ws.Cells["D" + fila5].Value.ToString()) + int.Parse(ws.Cells["D" + fila6].Value.ToString()) + int.Parse(ws.Cells["D" + fila7].Value.ToString()) + int.Parse(ws.Cells["D" + fila8].Value.ToString()) + int.Parse(ws.Cells["D" + fila9].Value.ToString()) + int.Parse(ws.Cells["D" + fila10].Value.ToString()) + int.Parse(ws.Cells["D" + fila11].Value.ToString()) + int.Parse(ws.Cells["D" + fila12].Value.ToString()) + int.Parse(ws.Cells["D" + fila13].Value.ToString());
+                //    int ayudantesDeLicencia = int.Parse(ws.Cells["E" + fila4].Value.ToString()) + int.Parse(ws.Cells["E" + fila5].Value.ToString()) + int.Parse(ws.Cells["E" + fila6].Value.ToString()) + int.Parse(ws.Cells["E" + fila7].Value.ToString()) + int.Parse(ws.Cells["E" + fila8].Value.ToString()) + int.Parse(ws.Cells["E" + fila9].Value.ToString()) + int.Parse(ws.Cells["E" + fila10].Value.ToString()) + int.Parse(ws.Cells["E" + fila11].Value.ToString()) + int.Parse(ws.Cells["E" + fila12].Value.ToString()) + int.Parse(ws.Cells["E" + fila13].Value.ToString());
+                //    int apoyosActivos = int.Parse(ws.Cells["F" + fila4].Value.ToString()) + int.Parse(ws.Cells["F" + fila5].Value.ToString()) + int.Parse(ws.Cells["F" + fila6].Value.ToString()) + int.Parse(ws.Cells["F" + fila7].Value.ToString()) + int.Parse(ws.Cells["F" + fila8].Value.ToString()) + int.Parse(ws.Cells["F" + fila9].Value.ToString()) + int.Parse(ws.Cells["F" + fila10].Value.ToString()) + int.Parse(ws.Cells["F" + fila11].Value.ToString()) + int.Parse(ws.Cells["F" + fila12].Value.ToString()) + int.Parse(ws.Cells["F" + fila13].Value.ToString());
+                //    int apoyosDeLicencia = int.Parse(ws.Cells["G" + fila4].Value.ToString()) + int.Parse(ws.Cells["G" + fila5].Value.ToString()) + int.Parse(ws.Cells["G" + fila6].Value.ToString()) + int.Parse(ws.Cells["G" + fila7].Value.ToString()) + int.Parse(ws.Cells["G" + fila8].Value.ToString()) + int.Parse(ws.Cells["G" + fila9].Value.ToString()) + int.Parse(ws.Cells["G" + fila10].Value.ToString()) + int.Parse(ws.Cells["G" + fila11].Value.ToString()) + int.Parse(ws.Cells["G" + fila12].Value.ToString()) + int.Parse(ws.Cells["G" + fila13].Value.ToString());
+                //    ws.Cells["X" + fila12].Value = conductoresActivos + conductoresDeLicencia + ayudantesActivos + ayudantesDeLicencia + apoyosActivos + apoyosDeLicencia;
+
+                //    ////formatear celdas de centros y de Totales en negrita
+                //    ws.Cells["A" + fila4 + ":A" + fila14].Style.Font.Bold = true;
+
+                //    ////quitar bordes hacia la derecha de la segunda fila de cada tabla (aparentemente no funciona)
+                //    ws.Cells["H" + fila3 + ":N" + fila3].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
+                //    ws.Cells["H" + fila3 + ":O" + fila3].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.None;
+
+                //    ws.Cells["A" + fila2].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                //    ws.Cells["A" + fila2].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+
+
+
+                //    ////por cobrar a CCU
+                //    //ws.Cells["Y" + fila5].Value = ws.Cells["P" + fila5].Value;//interplanta
+                //    //ws.Cells["Y" + fila6].Value = ws.Cells["P" + fila11].Value;//movilizadores
+                //    //ws.Cells["Y" + fila7].Value = ws.Cells["P" + fila12].Value;//emprendedores
+
+                //    //ws.Cells["Y" + fila8].Value = int.Parse(ws.Cells["P" + fila4].Value.ToString()) +
+                //    //    int.Parse(ws.Cells["P" + fila6].Value.ToString())+
+                //    //    int.Parse(ws.Cells["P" + fila7].Value.ToString())+
+                //    //    int.Parse(ws.Cells["P" + fila8].Value.ToString())+
+                //    //    int.Parse(ws.Cells["P" + fila9].Value.ToString())+
+                //    //    int.Parse(ws.Cells["P" + fila10].Value.ToString());//directos
+
+                //    //ws.Cells["Y" + fila9].Value = int.Parse(ws.Cells["P" + fila5].Value.ToString()) +
+                //    //    int.Parse(ws.Cells["P" + fila11].Value.ToString()) +
+                //    //    int.Parse(ws.Cells["P" + fila12].Value.ToString()) +
+                //    //    int.Parse(ws.Cells["P" + fila13].Value.ToString());//indirectos
+
+                //    //ws.Cells["Y" + fila10].Value = ws.Cells["P" + fila13].Value;//administracion
+
+                //    int bonoSobreEsfuerzoRFila13 = 0;
+
+
+                //    //valores pendientes
+                //    ws.Cells["T" + fila13].Value = bonoSobreEsfuerzoRFila13;
+
+                //    ws.Cells["U" + fila11].Value = bonoSobreEsfuerzoRFila13;
+                //    ws.Cells["U" + fila12].Value = bonoSobreEsfuerzoRFila13;
+                //    ws.Cells["U" + fila13].Value = bonoSobreEsfuerzoRFila13;
+
+
+
+                //    ////total mes
+                //    //ws.Cells["Z" + fila5].Value = int.Parse(ws.Cells["X" + fila5].Value.ToString()) + int.Parse(ws.Cells["Y" + fila5].Value.ToString());
+                //    //ws.Cells["Z" + fila6].Value = int.Parse(ws.Cells["X" + fila6].Value.ToString()) + int.Parse(ws.Cells["Y" + fila6].Value.ToString());
+                //    //ws.Cells["Z" + fila7].Value = int.Parse(ws.Cells["X" + fila7].Value.ToString()) + int.Parse(ws.Cells["Y" + fila7].Value.ToString());
+                //    //ws.Cells["Z" + fila8].Value = int.Parse(ws.Cells["X" + fila8].Value.ToString()) + int.Parse(ws.Cells["Y" + fila8].Value.ToString());
+                //    //ws.Cells["Z" + fila9].Value = int.Parse(ws.Cells["X" + fila9].Value.ToString()) + int.Parse(ws.Cells["Y" + fila9].Value.ToString());
+                //    //ws.Cells["Z" + fila10].Value = int.Parse(ws.Cells["X" + fila10].Value.ToString()) + int.Parse(ws.Cells["Y" + fila10].Value.ToString());
+
+
+
+                //    //quitando valores de por cobrar a CCU
+                //    ws.Cells["Y" + fila4].Value = "";
+                //    ws.Cells["Y" + fila5].Value = "";
+                //    ws.Cells["Y" + fila6].Value = "";
+                //    ws.Cells["Y" + fila7].Value = "";
+                //    ws.Cells["Y" + fila8].Value = "";
+                //    ws.Cells["Y" + fila9].Value = "";
+                //    ws.Cells["Y" + fila10].Value = "";
+
+                fila1 = fila1 + 14;
                 fila2 = fila2 + 14;
                 fila3 = fila3 + 14;
                 fila4 = fila4 + 14;
@@ -905,6 +1081,12 @@ namespace DeIntranetARex
 
             }
 
+
+
+
+            // range.AutoFitColumns();
+
+            var range = ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + 1 + "C" + 1 + ":R" + 15 + "C" + 15, 0, 0)];
 
             range.AutoFitColumns();
 
@@ -1196,12 +1378,7 @@ namespace DeIntranetARex
        
 
                 for (int row = 3; row <= rowCount; row++)//row solia ser 1
-                {
-
-                   
-
-
-                    
+                {         
 
                     String columnaDeNombre = worksheet.Cells[row, 9].Value?.ToString().Trim();
 
@@ -1215,13 +1392,20 @@ namespace DeIntranetARex
                     if (ultimaLetra=="R")//Agregar solo los montos por concepto cuyo nombre de concepto termine en R
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
-                        mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();
-                        mpc.NombreDeEmpleado = worksheet.Cells[row, 2].Value?.ToString().Trim();//nombre
-                        mpc.Rut = worksheet.Cells[row, 1].Value?.ToString().Trim();//rut
-                        mpc.MesDeProceso = worksheet.Cells[row, 8].Value?.ToString().Trim();//fechaProceso
-                        mpc.Monto = int.Parse(worksheet.Cells[row, 10].Value?.ToString().Trim());
+                        mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();//nombre del concepto
+                        mpc.Nombre = worksheet.Cells[row, 2].Value?.ToString().Trim();//nombre
+                        mpc.Empleado = worksheet.Cells[row, 1].Value?.ToString().Trim();//rut
+                        mpc.FechaProceso = worksheet.Cells[row, 8].Value?.ToString().Trim();//fechaProceso
+                        mpc.Monto = int.Parse(worksheet.Cells[row, 10].Value?.ToString().Trim());//monto
 
-                        listadoDeMontosPorConceptos.Add(mpc);
+                        mpc.ApellidoPaterno = worksheet.Cells[row, 3].Value?.ToString().Trim();//apellido Ppaterno
+                        mpc.ApellidoMaterno = worksheet.Cells[row, 4].Value?.ToString().Trim();//apellido materno
+                        mpc.CentroCosto = worksheet.Cells[row, 7].Value?.ToString().Trim();//centro de costo
+                        mpc.Cargo = worksheet.Cells[row, 6].Value?.ToString().Trim();//cargo del trabajador
+                        mpc.Empresa = worksheet.Cells[row, 5].Value?.ToString().Trim();//empresa del trabajador
+
+
+                       listadoDeMontosPorConceptos.Add(mpc);
 
                         nombresDeConceptos.Add(worksheet.Cells[row, 9].Value?.ToString().Trim());
                         }
@@ -1235,10 +1419,8 @@ namespace DeIntranetARex
                 foreach (var item in nombresDeConceptos)
                 {
                     Console.WriteLine(item);
-                }
-              
+                }            
             }
-
 
             return listadoDeMontosPorConceptos;
         }
@@ -1356,31 +1538,77 @@ namespace DeIntranetARex
 
             //Leer todos los conceptos UNA VEZ
             List<MontoPorConcepto> listadoDeConceptosEnMasa = leerHojaDeConceptos(FilePath, 1);
- 
+            List<String> nombresDeConceptos = new List<String>();
+            foreach (var item in listadoDeConceptosEnMasa)
+            {
+                nombresDeConceptos.Add(item.Concepto);
+              
+            }
+
+            List<String> nuevaListaDeNombresDeConceptos = nombresDeConceptos.Distinct().ToList<String>();
+
+            int contadorConceptos = 0;
+            foreach (var item in nuevaListaDeNombresDeConceptos)
+            {
+                contadorConceptos++;
+            }
+
+            //Cantidad de conceptos en listado (que terminan en R)
+            Console.WriteLine(contadorConceptos.ToString());
+
+
+            List<MontoPorConcepto> listadoDeConceptosDeCuadro = new List<MontoPorConcepto>();
+
 
             foreach (var procesoActual in procesos)
             {
-              
 
-                //List <RegistroTotalesComoString> listadoDeRegistrosDeTotales = new List<RegistroTotalesComoString>();
+                List<TotalDeConcepto> totalesDeConceptos = new List<TotalDeConcepto>();
 
-                //un registro de totales por centro
+                foreach (var item in nuevaListaDeNombresDeConceptos)
+                {
+                    TotalDeConcepto conceptoAAgregarDeCurico = new TotalDeConcepto(item, "Curico", 0);
+                    TotalDeConcepto conceptoAAgregarDeInterplanta = new TotalDeConcepto(item, "Interplanta", 0);
+                    TotalDeConcepto conceptoAAgregarDeRancagua = new TotalDeConcepto(item, "Rancagua", 0);
+                    TotalDeConcepto conceptoAAgregarDeMelipilla = new TotalDeConcepto(item, "Melipilla", 0);
+                    TotalDeConcepto conceptoAAgregarDeSanAntonio = new TotalDeConcepto(item, "San Antonio", 0);
+                    TotalDeConcepto conceptoAAgregarDeIllapel = new TotalDeConcepto(item, "Illapel", 0);
+                    TotalDeConcepto conceptoAAgregarDeSantiago = new TotalDeConcepto(item, "Santiago", 0);
+                    TotalDeConcepto conceptoAAgregarDeMovilizadores = new TotalDeConcepto(item, "Movilizadores", 0);
+                    TotalDeConcepto conceptoAAgregarDeAdministracion = new TotalDeConcepto(item, "Administracion", 0);
+                    TotalDeConcepto conceptoAAgregarDeEmprendedores = new TotalDeConcepto(item, "Emprendedores", 0);
 
-            RegistroDeTotales registroProceso = new RegistroDeTotales(procesoActual, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroCurico = new RegistroDeTotales("Curico",0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroInterplanta = new RegistroDeTotales("Interplanta", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroRancagua = new RegistroDeTotales("Rancagua", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroTaller = new RegistroDeTotales("Taller", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);// taller serian todos los trabajadores que sean nocheros o mecanicos, independiente del centro 
-            RegistroDeTotales registroMelipilla = new RegistroDeTotales("Melipilla", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroSanAntonio = new RegistroDeTotales("San Antonio", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroIllapel = new RegistroDeTotales("Illapel", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroSantiago = new RegistroDeTotales("Santiago", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroMovilizadores = new RegistroDeTotales("Movilizadores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroAdministracion = new RegistroDeTotales("Administracion", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEmprendedores = new RegistroDeTotales("Emprendedores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                    totalesDeConceptos.Add(conceptoAAgregarDeCurico);
+                    totalesDeConceptos.Add(conceptoAAgregarDeInterplanta);
+                    totalesDeConceptos.Add(conceptoAAgregarDeRancagua);
+                    totalesDeConceptos.Add(conceptoAAgregarDeMelipilla);
+                    totalesDeConceptos.Add(conceptoAAgregarDeSanAntonio);
+                    totalesDeConceptos.Add(conceptoAAgregarDeIllapel);
+                    totalesDeConceptos.Add(conceptoAAgregarDeSantiago);
+                    totalesDeConceptos.Add(conceptoAAgregarDeMovilizadores);
+                    totalesDeConceptos.Add(conceptoAAgregarDeAdministracion);
+                    totalesDeConceptos.Add(conceptoAAgregarDeEmprendedores);
+
+                }
+
+
+
+
+            RegistroDeTotales registroProceso = new RegistroDeTotales(procesoActual, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroEspacio = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroCurico = new RegistroDeTotales("Curico",0,0,0,0,0,0,0,0,0,0,0,0,0,0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroInterplanta = new RegistroDeTotales("Interplanta", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroRancagua = new RegistroDeTotales("Rancagua", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroTaller = new RegistroDeTotales("Taller", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);// taller serian todos los trabajadores que sean nocheros o mecanicos, independiente del centro 
+            RegistroDeTotales registroMelipilla = new RegistroDeTotales("Melipilla", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroSanAntonio = new RegistroDeTotales("San Antonio", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroIllapel = new RegistroDeTotales("Illapel", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroSantiago = new RegistroDeTotales("Santiago", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroMovilizadores = new RegistroDeTotales("Movilizadores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroAdministracion = new RegistroDeTotales("Administracion", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroEmprendedores = new RegistroDeTotales("Emprendedores", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
+            RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
 
 
 
@@ -1396,37 +1624,47 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroCurico.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;                           
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoEstacionalR = registroCurico.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBtnLR = registroCurico.TotalBtnLR + mpcSincoFlet.Monto;
                                 } //11/5/2022 se agregan 2 bonos: "Bono Sobre Esfuerzo R" y  "VIATICO POR AHORRO" (Viatico Ahorro R)
                                   //SEGUIR DESDE AQUI
-                                  else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                  else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoSobreEsfuerzoR = registroCurico.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalViaticoAhorroR = registroCurico.TotalViaticoAhorroR + mpcSincoFlet.Monto;
                                     
                                 }
 
+
+
+                                foreach (var item3 in totalesDeConceptos)
+                                {
+                                    if (item3.NombreDeConcepto==mpcSincoFlet.Concepto && mpcSincoFlet.FechaProceso==item.Proceso && item3.CentroDeConcepto=="CURICO" || item3.CentroDeConcepto=="CURICO E2" )
+                                    {
+                                        item3.MontoTotalDeConcepto = item3.MontoTotalDeConcepto + mpcSincoFlet.Monto;
+                                        //se supone que esto debería sumar los totales
+                                    }
+                                }
+                       
+
                             }
-
-
 
 
 
@@ -1531,27 +1769,27 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBonoEstacionalR = registroIllapel.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBtnLR = registroIllapel.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalBonoSobreEsfuerzoR = registroIllapel.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
                                     registroIllapel.TotalViaticoAhorroR = registroIllapel.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -1660,27 +1898,27 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBonoEstacionalR = registroInterplanta.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBtnLR = registroInterplanta.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalBonoSobreEsfuerzoR = registroInterplanta.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
                                     registroInterplanta.TotalViaticoAhorroR = registroInterplanta.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -1799,27 +2037,27 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoTiempoEsperaR = registroMelipilla.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoEstacionalR = registroMelipilla.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBtnLR = registroMelipilla.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalBonoSobreEsfuerzoR = registroMelipilla.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroMelipilla.TotalR = registroMelipilla.TotalR + mpcSincoFlet.Monto;
                                     registroMelipilla.TotalViaticoAhorroR = registroMelipilla.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -1930,27 +2168,27 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso==mpcSincoFlet.MesDeProceso &&  item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso==mpcSincoFlet.FechaProceso &&  item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBonoTiempoEsperaR = registroRancagua.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBonoEstacionalR = registroRancagua.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBtnLR = registroRancagua.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalBonoSobreEsfuerzoR = registroRancagua.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroRancagua.TotalR = registroRancagua.TotalR + mpcSincoFlet.Monto;
                                     registroRancagua.TotalViaticoAhorroR = registroRancagua.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2081,27 +2319,27 @@ namespace DeIntranetARex
                         {
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoTiempoEsperaR = registroSanAntonio.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoEstacionalR = registroSanAntonio.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBtnLR = registroSanAntonio.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalBonoSobreEsfuerzoR = registroSanAntonio.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroSanAntonio.TotalR = registroSanAntonio.TotalR + mpcSincoFlet.Monto;
                                     registroSanAntonio.TotalViaticoAhorroR = registroSanAntonio.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2228,28 +2466,28 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoSobreEsfuerzoR = registroSantiago.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                             
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalViaticoAhorroR = registroSantiago.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2278,27 +2516,27 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoSobreEsfuerzoR = registroSantiago.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalViaticoAhorroR = registroSantiago.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2327,27 +2565,27 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoSobreEsfuerzoR = registroSantiago.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalViaticoAhorroR = registroSantiago.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2376,27 +2614,27 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoSobreEsfuerzoR = registroSantiago.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalViaticoAhorroR = registroSantiago.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2426,27 +2664,27 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalBonoSobreEsfuerzoR = registroMovilizadores.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
                                             registroMovilizadores.TotalViaticoAhorroR = registroMovilizadores.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2477,27 +2715,27 @@ namespace DeIntranetARex
 
                                     foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                                     {
-                                        if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoTiempoEsperaR = registroSantiago.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoEstacionalR = registroSantiago.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBtnLR = registroSantiago.TotalBtnLR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalBonoSobreEsfuerzoR = registroSantiago.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                         }
-                                        else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                         {
                                             registroSantiago.TotalR = registroSantiago.TotalR + mpcSincoFlet.Monto;
                                             registroSantiago.TotalViaticoAhorroR = registroSantiago.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2515,27 +2753,27 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoTiempoEsperaR = registroAdministracion.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoEstacionalR = registroAdministracion.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBtnLR = registroAdministracion.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalBonoSobreEsfuerzoR = registroAdministracion.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroAdministracion.TotalR = registroAdministracion.TotalR + mpcSincoFlet.Monto;
                                     registroAdministracion.TotalViaticoAhorroR = registroAdministracion.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2665,27 +2903,27 @@ namespace DeIntranetARex
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
-                                if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoTiempoEsperaR = registroEmprendedores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono estacional R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoEstacionalR = registroEmprendedores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Btn I R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBtnLR = registroEmprendedores.TotalBtnLR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalBonoSobreEsfuerzoR = registroEmprendedores.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
                                 }
-                                else if (item.Proceso == mpcSincoFlet.MesDeProceso && item.Empleado == mpcSincoFlet.Rut && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
                                 {
                                     registroEmprendedores.TotalR = registroEmprendedores.TotalR + mpcSincoFlet.Monto;
                                     registroEmprendedores.TotalViaticoAhorroR = registroEmprendedores.TotalViaticoAhorroR + mpcSincoFlet.Monto;
@@ -2789,7 +3027,15 @@ namespace DeIntranetARex
 
 
                         }
+
+                        Console.WriteLine((totalesDeConceptos[0].MontoTotalDeConcepto.ToString());
+                   
+
+
+
                     }
+
+                    
                 
             }
 
@@ -2812,9 +3058,7 @@ namespace DeIntranetARex
             RegistroTotalesComoString registroEspacioComoString2 = new RegistroTotalesComoString(registroEspacio2, "titulo");
             RegistroTotalesComoString registroEspacioComoString3 = new RegistroTotalesComoString(registroEspacio3, "titulo");
 
-                //MessageBox.Show("El valor del viatico de ahorro es "+ registroCuricoComoString.TotalViaticoAhorroR.ToString());
-                //MessageBox.Show("El valor del viatico de ahorro (como string) es " + registroCuricoComoString.TotalViaticoAhorroRComoString);
-
+           
 
             listadoDeRegistrosDeTotales.Add(registroProcesoComoString);
             listadoDeRegistrosDeTotales.Add(registroEspacioComoString);
@@ -2877,6 +3121,8 @@ namespace DeIntranetARex
 
 
             List<RegistroMensualDeTrabajador> registros = leerExcelDeRegistroDeTrabajadores(sFileName);
+
+       
 
             string localfolder = ApplicationData.Current.LocalFolder.Path;
             var array = localfolder.Split('\\');
