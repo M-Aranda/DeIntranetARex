@@ -274,6 +274,9 @@ namespace DeIntranetARex
                 ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila1 - 1].Centro;
 
 
+                ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila3 + "C" + 1, 0, 0)].Style.Font.Italic = true;
+
+
                 ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila4 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila2].Centro;
                 ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila5 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila3].Centro;
                 ws.Cells[ExcelCellBase.TranslateFromR1C1("R" + fila6 + "C" + 1, 0, 0)].Value = registrosDeTotales[fila4].Centro;
