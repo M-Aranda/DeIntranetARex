@@ -29,6 +29,7 @@ namespace DeIntranetARex
         private int totalBtnLR;
         private int totalBonoSobreEsfuerzoR;
         private int totalViaticoAhorroR;
+        private int totalBonoCompensatorioR;
         private int totalRemuneracionesDeTodosLosTrabajadores;
         private List<MontoPorConcepto> listadoDeConceptos;
 
@@ -36,7 +37,7 @@ namespace DeIntranetARex
         {
         }
 
-        public RegistroDeTotales(string centro, int cantidadDeConductoresActivos, int cantidadDeConductoresDeLicencia, int cantidadDeAyudantesActivos, int cantidadDeAyudantesDeLicencia, int cantidadDeApoyosActivos, int cantidadDeApoyosDeLicencia, int totalConductores, int totalAyudantes, int totalApoyos, int totalDotacion, int totalRemuneracionesConductores, int totalRemuneracionesAyudantes, int totalRemuneracionesOtros, int totalR, int totalBonoTiempoEsperaR, int totalBonoEstacionalR, int totalBtnLR, int totalBonoSobreEsfuerzoR, int totalViaticoAhorroR, int totalRemuneracionesDeTodosLosTrabajadores, List<MontoPorConcepto> listadoDeConceptos)
+        public RegistroDeTotales(string centro, int cantidadDeConductoresActivos, int cantidadDeConductoresDeLicencia, int cantidadDeAyudantesActivos, int cantidadDeAyudantesDeLicencia, int cantidadDeApoyosActivos, int cantidadDeApoyosDeLicencia, int totalConductores, int totalAyudantes, int totalApoyos, int totalDotacion, int totalRemuneracionesConductores, int totalRemuneracionesAyudantes, int totalRemuneracionesOtros, int totalR, int totalBonoTiempoEsperaR, int totalBonoEstacionalR, int totalBtnLR, int totalBonoSobreEsfuerzoR, int totalViaticoAhorroR, int totalBonoCompensatorioR, int totalRemuneracionesDeTodosLosTrabajadores, List<MontoPorConcepto> listadoDeConceptos)
         {
             this.Centro = centro;
             this.CantidadDeConductoresActivos = cantidadDeConductoresActivos;
@@ -58,6 +59,7 @@ namespace DeIntranetARex
             this.TotalBtnLR = totalBtnLR;
             this.TotalBonoSobreEsfuerzoR = totalBonoSobreEsfuerzoR;
             this.TotalViaticoAhorroR = totalViaticoAhorroR;
+            this.TotalBonoCompensatorioR = totalBonoCompensatorioR;
             this.TotalRemuneracionesDeTodosLosTrabajadores = totalRemuneracionesDeTodosLosTrabajadores;
             this.ListadoDeConceptos = listadoDeConceptos;
         }
@@ -82,6 +84,7 @@ namespace DeIntranetARex
         public int TotalBtnLR { get => totalBtnLR; set => totalBtnLR = value; }
         public int TotalBonoSobreEsfuerzoR { get => totalBonoSobreEsfuerzoR; set => totalBonoSobreEsfuerzoR = value; }
         public int TotalViaticoAhorroR { get => totalViaticoAhorroR; set => totalViaticoAhorroR = value; }
+        public int TotalBonoCompensatorioR { get => totalBonoCompensatorioR; set => totalBonoCompensatorioR = value; }
         public int TotalRemuneracionesDeTodosLosTrabajadores { get => totalRemuneracionesDeTodosLosTrabajadores; set => totalRemuneracionesDeTodosLosTrabajadores = value; }
         internal List<MontoPorConcepto> ListadoDeConceptos { get => listadoDeConceptos; set => listadoDeConceptos = value; }
     }
