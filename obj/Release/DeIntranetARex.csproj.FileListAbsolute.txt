@@ -33,7 +33,6 @@ C:\Users\Chelo\Desktop\DeIntranetARex\bin\Release\Uno.UI.FluentTheme.pdb
 C:\Users\Chelo\Desktop\DeIntranetARex\bin\Release\Uno.UI.FluentTheme.v1.pdb
 C:\Users\Chelo\Desktop\DeIntranetARex\bin\Release\Uno.UI.FluentTheme.v2.pdb
 C:\Users\Chelo\Desktop\DeIntranetARex\bin\Release\Uno.UI.Toolkit.pdb
-C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.csproj.AssemblyReference.cache
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.csproj.SuggestedBindingRedirects.cache
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.Form1.resources
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.Properties.Resources.resources
