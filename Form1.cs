@@ -762,7 +762,17 @@ namespace DeIntranetARex
                             a.Tipo = "F";
                             a.TipoDePermiso = "";
                             break;
+                        case "FALLA":
+                            a.Descripcion = "Falla";
+                            a.Tipo = "F";
+                            a.TipoDePermiso = "";
+                            break;
                         case "Permiso":
+                            a.Descripcion = "Permiso";
+                            a.Tipo = "P";
+                            a.TipoDePermiso = "N";
+                            break;
+                        case "PERMISO":
                             a.Descripcion = "Permiso";
                             a.Tipo = "P";
                             a.TipoDePermiso = "N";
@@ -795,7 +805,16 @@ namespace DeIntranetARex
                        // Console.WriteLine(" Row:" + row + " column:" + col + " Value:" + worksheet.Cells[row, col].Value?.ToString().Trim());
                     }
 
-                    if (a.Tipo != "Estado")
+
+//                    Roberto Fernández,( 15523665 - 5)
+//Jorge Henríquez(16493501 - 9),
+//Christopher Figueroa(18200697 - 1) y
+// Fernando López
+
+
+
+
+                if (a.Tipo != "Estado" && a.Empleado!= "15523665-5" && a.Empleado != "16493501-9" && a.Empleado != "18200697-1")
                     {
                         ausencias.Add(a);
                     }
@@ -997,7 +1016,7 @@ namespace DeIntranetARex
                     char ultimoCaracter = columnaDeNombre[columnaDeNombre.Length - 1];
                     String ultimaLetra = ultimoCaracter.ToString();
 
-                    if (ultimaLetra=="R")//Agregar solo los montos por concepto cuyo nombre de concepto termine en R
+                    if (ultimaLetra=="R" || columnaDeNombre== "Aporte a CCAF")//Agregar solo los montos por concepto cuyo nombre de concepto termine en R, o sea Aporte a CCAF
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
                         mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();//nombre del concepto
@@ -1161,7 +1180,7 @@ namespace DeIntranetARex
                 contadorConceptos++;
             }
 
-            //Cantidad de conceptos en listado (que terminan en R)
+            //Cantidad de conceptos en listado (que terminan en R o son de Aporte a CCAF)
             Console.WriteLine(contadorConceptos.ToString());
 
 
@@ -1259,13 +1278,44 @@ namespace DeIntranetARex
                                     registroCurico.TotalViaticoAhorroR = registroCurico.TotalViaticoAhorroR + mpcSincoFlet.Monto;
                                     
                                 }
-                                // 06/02/2022 se agrega otro bono: "Bono compensatorio R"
+                                // 02/06/2022 se agrega otro bono: "Bono compensatorio R"
                                 else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Compensatorio R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
                                     registroCurico.TotalBonoCompensatorioR = registroCurico.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroCurico.TotalRemuneracionesAyudantes = registroCurico.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroCurico.TotalRemuneracionesConductores = registroCurico.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroCurico.TotalRemuneracionesOtros = registroCurico.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroCurico.TotalRemuneracionesDeTodosLosTrabajadores = registroCurico.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
 
 
@@ -1378,7 +1428,7 @@ namespace DeIntranetARex
                                 if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroIllapel.TotalR = registroIllapel.TotalR + mpcSincoFlet.Monto;
-                                    registroCurico.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                    registroIllapel.TotalBonoTiempoEsperaR = registroIllapel.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                                 else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
@@ -1406,6 +1456,38 @@ namespace DeIntranetARex
                                     registroIllapel.TotalBonoCompensatorioR = registroIllapel.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroIllapel.TotalRemuneracionesAyudantes = registroIllapel.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroIllapel.TotalRemuneracionesConductores = registroIllapel.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroIllapel.TotalRemuneracionesOtros = registroIllapel.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores = registroIllapel.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
                             }
 
@@ -1513,7 +1595,7 @@ namespace DeIntranetARex
                                 if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
                                 {
                                     registroInterplanta.TotalR = registroInterplanta.TotalR + mpcSincoFlet.Monto;
-                                    registroCurico.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                    registroInterplanta.TotalBonoTiempoEsperaR = registroInterplanta.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
                                 }
                                 else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
                                 {
@@ -1541,6 +1623,38 @@ namespace DeIntranetARex
                                     registroInterplanta.TotalBonoCompensatorioR = registroInterplanta.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroInterplanta.TotalRemuneracionesAyudantes = registroInterplanta.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroInterplanta.TotalRemuneracionesConductores = registroInterplanta.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroInterplanta.TotalRemuneracionesOtros = registroInterplanta.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores = registroInterplanta.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
                             }
 
@@ -1687,6 +1801,38 @@ namespace DeIntranetARex
 
                                 }
 
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroMelipilla.TotalRemuneracionesAyudantes = registroMelipilla.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroMelipilla.TotalRemuneracionesConductores = registroMelipilla.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroMelipilla.TotalRemuneracionesOtros = registroMelipilla.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores = registroMelipilla.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
+
                             }
 
 
@@ -1823,6 +1969,38 @@ namespace DeIntranetARex
                                     registroRancagua.TotalBonoCompensatorioR = registroRancagua.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroRancagua.TotalRemuneracionesAyudantes = registroRancagua.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroRancagua.TotalRemuneracionesConductores = registroRancagua.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroRancagua.TotalRemuneracionesOtros = registroRancagua.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores = registroRancagua.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
                             }
 
@@ -1981,6 +2159,38 @@ namespace DeIntranetARex
 
                                 }
 
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroSanAntonio.TotalRemuneracionesAyudantes = registroSanAntonio.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroSanAntonio.TotalRemuneracionesConductores = registroSanAntonio.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroSanAntonio.TotalRemuneracionesOtros = registroSanAntonio.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
+
 
                             }
 
@@ -2134,6 +2344,37 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
 
                                     }
 
@@ -2189,6 +2430,37 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
 
                                     }
 
@@ -2244,6 +2516,37 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
 
                                     }
 
@@ -2299,6 +2602,37 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
 
                                     }
 
@@ -2356,6 +2690,38 @@ namespace DeIntranetARex
 
                                         }
 
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
+
                                     }
 
 
@@ -2412,6 +2778,37 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
+                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                        //inicio de estructura para manejar Aporte a CCAF
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                        {
+                                            switch (item.Nombre_cargo)
+                                            {
+                                                case "AYUDANTE CHOFER":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "AYUDANTE CHOFER E2":
+                                                    registroSantiago.TotalRemuneracionesAyudantes = registroSantiago.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                case "CHOFER PORTEO E2":
+                                                    registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                                default:
+                                                    //son apoyos
+                                                    registroSantiago.TotalRemuneracionesOtros = registroSantiago.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                                    registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores = registroSantiago.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                                    break;
+                                            }
+                                        }
+                                        //fin de estructura para manejar Aporte a CCAF
 
                                     }
 
@@ -2456,6 +2853,37 @@ namespace DeIntranetARex
                                     registroAdministracion.TotalBonoCompensatorioR = registroAdministracion.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroAdministracion.TotalRemuneracionesAyudantes = registroAdministracion.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroAdministracion.TotalRemuneracionesConductores = registroAdministracion.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroAdministracion.TotalRemuneracionesOtros = registroAdministracion.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores = registroAdministracion.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
                             }
 
@@ -2612,6 +3040,37 @@ namespace DeIntranetARex
                                     registroEmprendedores.TotalBonoCompensatorioR = registroEmprendedores.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
+                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+
+                                //inicio de estructura para manejar Aporte a CCAF
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroEmprendedores.TotalRemuneracionesAyudantes = registroEmprendedores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroEmprendedores.TotalRemuneracionesConductores = registroEmprendedores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroEmprendedores.TotalRemuneracionesOtros = registroEmprendedores.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores = registroEmprendedores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar Aporte a CCAF
 
                             }
 
@@ -2783,6 +3242,8 @@ namespace DeIntranetARex
         private void button4_Click(object sender, EventArgs e)
         {
 
+            MessageBox.Show("Debe cargar un Excel con 2 hojas: la primera con TODAS las remuneraciones," +
+                " y la segunda con TODOS los conceptos. Vale decir, desde Enero del 2022 a la fecha");
 
             string sFileName = "";
 
@@ -2817,7 +3278,7 @@ namespace DeIntranetARex
 
             SaveExcelFileRegistroDeTotales(registrosDeTotales, archivo);
 
-            MessageBox.Show("Archivo Excel de de totales creado en carpeta de descargas!");
+            MessageBox.Show("Archivo Excel llamado Registro de montos totales, creado en carpeta de descargas!");
 
 
         }

@@ -41,3 +41,4 @@ C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.csproj.CoreComp
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.csproj.CopyComplete
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.exe
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.pdb
+C:\Users\Chelo\Desktop\DeIntranetARex\obj\Release\DeIntranetARex.csproj.AssemblyReference.cache
