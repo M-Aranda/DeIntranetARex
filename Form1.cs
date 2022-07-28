@@ -43,12 +43,25 @@ namespace DeIntranetARex
 
             string[] arrAllFiles = new string[] { };
 
-            if (choofdlog.ShowDialog() == DialogResult.OK)
+            while (true)
             {
-                sFileName = choofdlog.FileName;
-                arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
+                if (choofdlog.ShowDialog() == DialogResult.OK)
+                {
+                    sFileName = choofdlog.FileName;
+                    arrAllFiles = choofdlog.FileNames; //used when Multiselect = true
+                    break;
+                }else
+                {
+                    MessageBox.Show("No se seleccionó nada, proceso terminado.");
+                    System.Environment.Exit(0);
+                }
+
             }
 
+            try
+            {
+
+           
             List<Ausencia> ausencias = leerExcelDeFallos(sFileName);
 
             
@@ -64,7 +77,13 @@ namespace DeIntranetARex
 
             MessageBox.Show("Archivo Excel de asistencias creado en carpeta de descargas!");
 
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Revisar Excel de carga. Cerrando programa");
+                System.Environment.Exit(0);
+                throw;
+            }
 
 
         }
@@ -80,14 +99,25 @@ namespace DeIntranetARex
 
             string[] arrAllFiles = new string[] { };
 
-            if (choofdlog.ShowDialog() == DialogResult.OK)
+            while (true)
             {
-                sFileName = choofdlog.FileName;
-                arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
+                if (choofdlog.ShowDialog() == DialogResult.OK)
+                {
+                    sFileName = choofdlog.FileName;
+                    arrAllFiles = choofdlog.FileNames; //used when Multiselect = true
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó nada, proceso terminado.");
+                    System.Environment.Exit(0);
+                }
+
             }
 
- 
-
+            try
+            {
+        
             List<Comision> comisiones = leerExcelDeComisiones(sFileName);
 
             string localfolder = ApplicationData.Current.LocalFolder.Path;
@@ -109,6 +139,14 @@ namespace DeIntranetARex
             SaveExcelFileComision(comisiones, archivo);
 
             MessageBox.Show("Archivo Excel de comisiones de "+ tipoDeArchivo + " creado en carpeta de descargas!");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Revisar Excel de carga. Cerrando programa");
+                System.Environment.Exit(0);
+                throw;
+            }
         }
 
 
@@ -3229,7 +3267,7 @@ namespace DeIntranetARex
         {
             MessageBox.Show("para subir asistencias a rex: * recibir excel de Francisco * copiar los datos que vienen filtrados en el excel, a un excel nuevo que tenga la cabecera(ese excel se descarga de rex) * Guardar el nuevo excel con los registros copiados como formato CSV * Enviar a las de remuneraciones para que ellas hagan la carga.", "Sobre la subida a Rex");
             MessageBox.Show("Transformar registros a totales sigue la siguiente lógica: se toma el archivo excel de base, se filtra primero por mes y luego por Centro. Los montos y totales para cada centro se obtienen con esos 2 filtros, salvo 2 excpeciones. La primera es si un trabajador de SANTIAGO o SANTIAGO E2 es un movilizador, en cuyo caso se asigna al centro de movilizadores. La segunda es cuando el trabajador de central es un nochero, en cuyo caso se asigna a administración.", "Sobre el registro de totales, parte 1");
-            MessageBox.Show("Desde Mayo del 2022, el programa también es capaz de filtrar valores de conceptos (todos los que terminen en R).", "Sobre el registro de totales, parte 2");
+            MessageBox.Show("Desde Mayo del 2022, el programa también es capaz de filtrar valores de conceptos (todos los que terminen en R, o sea 5).", "Sobre el registro de totales, parte 2");
             MessageBox.Show("Programa creado por Marcelo Andrés Aranda Tatto, bajo ordenes de Antonio Alonso.", "Sobre el programa");
 
         }
@@ -3254,17 +3292,26 @@ namespace DeIntranetARex
 
             string[] arrAllFiles = new string[] { };
 
-            if (choofdlog.ShowDialog() == DialogResult.OK)
+            while (true)
             {
-                sFileName = choofdlog.FileName;
-                arrAllFiles = choofdlog.FileNames; //used when Multiselect = true           
+                if (choofdlog.ShowDialog() == DialogResult.OK)
+                {
+                    sFileName = choofdlog.FileName;
+                    arrAllFiles = choofdlog.FileNames; //used when Multiselect = true
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Revisar Excel de carga. Cerrando programa");
+                    System.Environment.Exit(0);
+                }
+
             }
 
-
-
+            try
+            {
+                
             List<RegistroMensualDeTrabajador> registros = leerExcelDeRegistroDeTrabajadores(sFileName);
-
-       
 
             string localfolder = ApplicationData.Current.LocalFolder.Path;
             var array = localfolder.Split('\\');
@@ -3279,6 +3326,15 @@ namespace DeIntranetARex
             SaveExcelFileRegistroDeTotales(registrosDeTotales, archivo);
 
             MessageBox.Show("Archivo Excel llamado Registro de montos totales, creado en carpeta de descargas!");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrió un error. Cerrando programa");
+                System.Environment.Exit(0);
+                throw;
+            }
+
 
 
         }
