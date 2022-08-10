@@ -852,7 +852,7 @@ namespace DeIntranetARex
 
 
 
-                if (a.Tipo != "Estado" && a.Empleado!= "15523665-5" && a.Empleado != "16493501-9" && a.Empleado != "18200697-1")
+                if (a.Tipo != "Estado" && a.Empleado!= "15523665-5" && a.Empleado != "16493501-9" && a.Empleado != "18200697-1" )
                     {
                         ausencias.Add(a);
                     }
@@ -1054,7 +1054,19 @@ namespace DeIntranetARex
                     char ultimoCaracter = columnaDeNombre[columnaDeNombre.Length - 1];
                     String ultimaLetra = ultimoCaracter.ToString();
 
-                    if (ultimaLetra=="R" || columnaDeNombre== "Aporte a CCAF")//Agregar solo los montos por concepto cuyo nombre de concepto termine en R, o sea Aporte a CCAF
+                        //modificar aqui para considerar conceptos extra a restar
+                        List<String> listadoDeConceptosARestar = new List<string>();
+
+                        listadoDeConceptosARestar.Add("Aporte a CCAF");
+                        listadoDeConceptosARestar.Add("Asignacion Familiar Retroactiva");
+                        listadoDeConceptosARestar.Add("Cargas Familiares Invalidas");
+                        listadoDeConceptosARestar.Add("Cargas Familiares Maternales");
+                        listadoDeConceptosARestar.Add("Cargas Familiares Simples");
+                        listadoDeConceptosARestar.Add("Desc Dif Cargas Familiares");
+                        listadoDeConceptosARestar.Add("Reintegro Cargas Familiares");
+
+                        if (ultimaLetra=="R" || listadoDeConceptosARestar.Contains(columnaDeNombre))//columnaDeNombre== "Aporte a CCAF")//Agregar solo los montos por concepto cuyo nombre de concepto termine en R,  sea Aporte a CCAF
+                            //o una de las asignaciones familiares que se restan
                     {
                         MontoPorConcepto mpc = new MontoPorConcepto();
                         mpc.Concepto = worksheet.Cells[row, 9].Value?.ToString().Trim();//nombre del concepto
@@ -1275,20 +1287,36 @@ namespace DeIntranetARex
             RegistroDeTotales registroEspacio2 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, listadoDeConceptosDeCuadro);
             RegistroDeTotales registroEspacio3 = new RegistroDeTotales("", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,listadoDeConceptosDeCuadro);
 
+                //listado de conceptos a restar
+
+                List<String> listadoDeConceptosARestar = new List<string>();
+
+   
+                listadoDeConceptosARestar.Add("Aporte a CCAF");
+                listadoDeConceptosARestar.Add("Asignacion Familiar Retroactiva");
+                listadoDeConceptosARestar.Add("Cargas Familiares Invalidas");
+                listadoDeConceptosARestar.Add("Cargas Familiares Maternales");
+                listadoDeConceptosARestar.Add("Cargas Familiares Simples");
+                listadoDeConceptosARestar.Add("Desc Dif Cargas Familiares");
+                listadoDeConceptosARestar.Add("Reintegro Cargas Familiares");
+
+
+
 
 
                 foreach (var item in registrosMensualesDeTrabajadores)
             {
 
                     if (item.Proceso == procesoActual)
-                    {
-                       
+                    {                    
 
                        if (item.Nombre_centro_costo == "CURICO" || item.Nombre_centro_costo == "CURICO E2")
                         {
 
                             foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
                             {
+
+
                                 if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto== "Bono Tiempo Espera R")
                                 {
                                     registroCurico.TotalR = registroCurico.TotalR + mpcSincoFlet.Monto;
@@ -1323,11 +1351,17 @@ namespace DeIntranetARex
                                     registroCurico.TotalBonoCompensatorioR = registroCurico.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/08/2022, resulta que hay más de un concepto que debe restarse. Además de "Aporte a CCAF", hay que
+                                //restar "Asignacion Familiar Retroactiva", "Cargas Familiares Invalidas", "Cargas Familiares Maternales", "Cargas Familiares Simples", "Desc Dif Cargas Familiares", "Reintegro Cargas Familiares"
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+                                //inicio de estructura para manejar conceptos a restar
+
+                                
+
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
+                                    
                                     switch (item.Nombre_cargo)
                                     {
                                         case "AYUDANTE CHOFER":
@@ -1353,7 +1387,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
 
 
@@ -1495,10 +1529,12 @@ namespace DeIntranetARex
 
                                 }
 
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -1525,7 +1561,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
@@ -1662,10 +1698,12 @@ namespace DeIntranetARex
 
                                 }
 
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -1692,7 +1730,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
@@ -1839,10 +1877,12 @@ namespace DeIntranetARex
 
                                 }
 
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -1869,7 +1909,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
@@ -2008,10 +2048,12 @@ namespace DeIntranetARex
 
                                 }
 
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -2038,7 +2080,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
@@ -2197,10 +2239,12 @@ namespace DeIntranetARex
 
                                 }
 
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -2227,7 +2271,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
 
                             }
@@ -2382,10 +2426,12 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2412,7 +2458,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2468,10 +2514,12 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2498,7 +2546,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2554,10 +2602,12 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2584,7 +2634,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2640,10 +2690,12 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2670,7 +2722,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2728,10 +2780,12 @@ namespace DeIntranetARex
 
                                         }
 
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2758,7 +2812,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2816,10 +2870,12 @@ namespace DeIntranetARex
                                             registroSantiago.TotalBonoCompensatorioR = registroSantiago.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                         }
-                                        // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                        //inicio de estructura para manejar Aporte a CCAF
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                        //inicio de estructura para manejar conceptos a restar
+                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                         {
                                             switch (item.Nombre_cargo)
                                             {
@@ -2846,7 +2902,7 @@ namespace DeIntranetARex
                                                     break;
                                             }
                                         }
-                                        //fin de estructura para manejar Aporte a CCAF
+                                        //fin de estructura para manejar resta de conceptos
 
                                     }
 
@@ -2891,10 +2947,12 @@ namespace DeIntranetARex
                                     registroAdministracion.TotalBonoCompensatorioR = registroAdministracion.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -2921,7 +2979,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
@@ -3078,10 +3136,12 @@ namespace DeIntranetARex
                                     registroEmprendedores.TotalBonoCompensatorioR = registroEmprendedores.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
                                 }
-                                // 08/07/2022 se agrega concepot a restarse "Aporte a CCAF"
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
-                                //inicio de estructura para manejar Aporte a CCAF
-                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Aporte a CCAF")
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
                                 {
                                     switch (item.Nombre_cargo)
                                     {
@@ -3108,7 +3168,7 @@ namespace DeIntranetARex
                                             break;
                                     }
                                 }
-                                //fin de estructura para manejar Aporte a CCAF
+                                //fin de estructura para manejar resta de conceptos
 
                             }
 
