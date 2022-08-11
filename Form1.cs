@@ -2371,6 +2371,180 @@ namespace DeIntranetARex
                             }
 
                         }
+
+
+                        if (item.Nombre_centro_costo == "MOVILIZADORES" || item.Nombre_centro_costo == "MOVILIZADORES E2")
+                        {
+                            foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
+                            {
+                                if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalBonoSobreEsfuerzoR = registroMovilizadores.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalViaticoAhorroR = registroMovilizadores.TotalViaticoAhorroR + mpcSincoFlet.Monto;
+                                }
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Compensatorio R")
+                                {
+                                    registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                    registroMovilizadores.TotalBonoCompensatorioR = registroMovilizadores.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
+
+                                }
+
+                                // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
+
+
+                                //inicio de estructura para manejar conceptos a restar
+                                else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
+                                {
+                                    switch (item.Nombre_cargo)
+                                    {
+                                        case "AYUDANTE CHOFER":
+                                            registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "AYUDANTE CHOFER E2":
+                                            registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroSanAntonio.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO":
+                                            registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        case "CHOFER PORTEO E2":
+                                            registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                        default:
+                                            //son apoyos
+                                            registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                            registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                            break;
+                                    }
+                                }
+                                //fin de estructura para manejar resta de conceptos
+
+
+                            }
+
+
+                            switch (item.Nombre_cargo)
+                            {
+                                case "AYUDANTE CHOFER":
+                                    registroMovilizadores.TotalAyudantes = registroMovilizadores.TotalAyudantes + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeAyudantesDeLicencia = registroMovilizadores.CantidadDeAyudantesDeLicencia + 1;
+
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeAyudantesActivos = registroMovilizadores.CantidadDeAyudantesActivos + 1;
+
+                                    }
+
+                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    break;
+                                case "AYUDANTE CHOFER E2":
+                                    registroMovilizadores.TotalAyudantes = registroMovilizadores.TotalAyudantes + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeAyudantesDeLicencia = registroMovilizadores.CantidadDeAyudantesDeLicencia + 1;
+
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeAyudantesActivos = registroMovilizadores.CantidadDeAyudantesActivos + 1;
+
+                                    }
+
+                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    break;
+                                case "CHOFER PORTEO":
+                                    registroMovilizadores.TotalConductores = registroMovilizadores.TotalConductores + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeConductoresDeLicencia = registroMovilizadores.CantidadDeConductoresDeLicencia + 1;
+
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeConductoresActivos = registroMovilizadores.CantidadDeConductoresActivos + 1;
+
+                                    }
+
+                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    break;
+                                case "CHOFER PORTEO E2":
+                                    registroMovilizadores.TotalConductores = registroMovilizadores.TotalConductores + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeConductoresDeLicencia = registroMovilizadores.CantidadDeConductoresDeLicencia + 1;
+
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeConductoresActivos = registroMovilizadores.CantidadDeConductoresActivos + 1;
+
+                                    }
+
+                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    break;
+
+
+                                default:
+                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                    if (item.Imponible_sin_tope == "0")
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+
+                                    }
+                                    else
+                                    {
+                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+
+                                    }
+
+                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+
+                                    break;
+                            }
+
+                        }
+
+
+
+
                         if (item.Nombre_centro_costo == "SANTIAGO" || item.Nombre_centro_costo == "SANTIAGO E2")
                         {
                             switch (item.Nombre_cargo)
@@ -2729,96 +2903,98 @@ namespace DeIntranetARex
 
                                     break;
                                     //el trabajador esta en santiago y es un movilizador = se asigna a movilizadores
-                                case "MOVILIZADOR":
-                                    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
-                                    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
-                                    if (item.Imponible_sin_tope == "0")
-                                    {
-                                        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
+                                    //a partir del 10/08/2022 debiese haber 2 centros aparte de movilizadores,
+                                    //el nombre de esos centros es MOVILIZADORES Y MOVILIZADORES E2
+                                //case "MOVILIZADOR":
+                                //    registroMovilizadores.TotalApoyos = registroMovilizadores.TotalApoyos + 1;
+                                //    registroMovilizadores.TotalDotacion = registroMovilizadores.TotalDotacion + 1;
+                                //    if (item.Imponible_sin_tope == "0")
+                                //    {
+                                //        registroMovilizadores.CantidadDeApoyosDeLicencia = registroMovilizadores.CantidadDeApoyosDeLicencia + 1;
 
-                                    }
-                                    else
-                                    {
-                                        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
+                                //    }
+                                //    else
+                                //    {
+                                //        registroMovilizadores.CantidadDeApoyosActivos = registroMovilizadores.CantidadDeApoyosActivos + 1;
 
-                                    }
+                                //    }
 
-                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
-                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                //    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
+                                //    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
 
-                                    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
-                                    {
-                                        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
-                                        }
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
-                                        }
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
-                                        }
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalBonoSobreEsfuerzoR = registroMovilizadores.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
-                                        }
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalViaticoAhorroR = registroMovilizadores.TotalViaticoAhorroR + mpcSincoFlet.Monto;
-                                        }
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Compensatorio R")
-                                        {
-                                            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
-                                            registroMovilizadores.TotalBonoCompensatorioR = registroMovilizadores.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
+                                //    foreach (var mpcSincoFlet in listadoDeConceptosEnMasa)
+                                //    {
+                                //        if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Tiempo Espera R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalBonoTiempoEsperaR = registroMovilizadores.TotalBonoTiempoEsperaR + mpcSincoFlet.Monto;
+                                //        }
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono estacional R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalBonoEstacionalR = registroMovilizadores.TotalBonoEstacionalR + mpcSincoFlet.Monto;
+                                //        }
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Btn I R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalBtnLR = registroMovilizadores.TotalBtnLR + mpcSincoFlet.Monto;
+                                //        }
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Sobre Esfuerzo R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalBonoSobreEsfuerzoR = registroMovilizadores.TotalBonoSobreEsfuerzoR + mpcSincoFlet.Monto;
+                                //        }
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "VIATICO POR AHORRO R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalViaticoAhorroR = registroMovilizadores.TotalViaticoAhorroR + mpcSincoFlet.Monto;
+                                //        }
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && mpcSincoFlet.Concepto == "Bono Compensatorio R")
+                                //        {
+                                //            registroMovilizadores.TotalR = registroMovilizadores.TotalR + mpcSincoFlet.Monto;
+                                //            registroMovilizadores.TotalBonoCompensatorioR = registroMovilizadores.TotalBonoCompensatorioR + mpcSincoFlet.Monto;
 
-                                        }
+                                //        }
 
-                                        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
-                                        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
-
-
-                                        //inicio de estructura para manejar conceptos a restar
-                                        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
-                                        {
-                                            switch (item.Nombre_cargo)
-                                            {
-                                                case "AYUDANTE CHOFER":
-                                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
-                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
-                                                    break;
-                                                case "AYUDANTE CHOFER E2":
-                                                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
-                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
-                                                    break;
-                                                case "CHOFER PORTEO":
-                                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
-                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
-                                                    break;
-                                                case "CHOFER PORTEO E2":
-                                                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
-                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
-                                                    break;
-                                                default:
-                                                    //son apoyos
-                                                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
-                                                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
-                                                    break;
-                                            }
-                                        }
-                                        //fin de estructura para manejar resta de conceptos
-
-                                    }
+                                //        // 08/07/2022 se agrega concepto a restarse "Aporte a CCAF"
+                                //        // 08/09/2022 se modifica concepto a restarse; en vez de ser uno solo, ahora es un listado de conceptos
 
 
+                                //        //inicio de estructura para manejar conceptos a restar
+                                //        else if (item.Proceso == mpcSincoFlet.FechaProceso && item.Empleado == mpcSincoFlet.Empleado && listadoDeConceptosARestar.Contains(mpcSincoFlet.Concepto))
+                                //        {
+                                //            switch (item.Nombre_cargo)
+                                //            {
+                                //                case "AYUDANTE CHOFER":
+                                //                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                //                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                //                    break;
+                                //                case "AYUDANTE CHOFER E2":
+                                //                    registroMovilizadores.TotalRemuneracionesAyudantes = registroMovilizadores.TotalRemuneracionesAyudantes - mpcSincoFlet.Monto;
+                                //                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                //                    break;
+                                //                case "CHOFER PORTEO":
+                                //                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                //                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                //                    break;
+                                //                case "CHOFER PORTEO E2":
+                                //                    registroMovilizadores.TotalRemuneracionesConductores = registroMovilizadores.TotalRemuneracionesConductores - mpcSincoFlet.Monto;
+                                //                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                //                    break;
+                                //                default:
+                                //                    //son apoyos
+                                //                    registroMovilizadores.TotalRemuneracionesOtros = registroMovilizadores.TotalRemuneracionesOtros - mpcSincoFlet.Monto;
+                                //                    registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores = registroMovilizadores.TotalRemuneracionesDeTodosLosTrabajadores - mpcSincoFlet.Monto;
+                                //                    break;
+                                //            }
+                                //        }
+                                //        //fin de estructura para manejar resta de conceptos
 
-                                    break;
+                                //    }
+
+
+
+                                //    break;
                                
                                 default:
                                     registroSantiago.TotalApoyos = registroSantiago.TotalApoyos + 1;

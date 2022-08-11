@@ -130,3 +130,7 @@ C:\Users\Chelo\Desktop\tessst\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.Cop
 C:\Users\Chelo\Desktop\tessst\DeIntranetARex\obj\Debug\DeIntranetARex.exe
 C:\Users\Chelo\Desktop\tessst\DeIntranetARex\obj\Debug\DeIntranetARex.pdb
 C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.csproj.SuggestedBindingRedirects.cache
+C:\Users\Chelo\Desktop\DeIntranetARex\bin\Debug\DeIntranetARex.exe.manifest
+C:\Users\Chelo\Desktop\DeIntranetARex\bin\Debug\DeIntranetARex.application
+C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.exe.manifest
+C:\Users\Chelo\Desktop\DeIntranetARex\obj\Debug\DeIntranetARex.application
