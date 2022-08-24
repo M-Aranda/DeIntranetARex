@@ -2737,7 +2737,6 @@ namespace DeIntranetARex
                                     else
                                     {
                                         registroSantiago.CantidadDeConductoresActivos = registroSantiago.CantidadDeConductoresActivos + 1;
-
                                     }
 
                                     registroSantiago.TotalRemuneracionesConductores = registroSantiago.TotalRemuneracionesConductores + (int.Parse(item.Imponible_sin_tope) + int.Parse(item.Total_exento) + int.Parse(item.Total_aportes));
