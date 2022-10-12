@@ -33,6 +33,7 @@ namespace DeIntranetARex
         private int totalViaticoAhorroR;
 
         private int totalBonoCompensatorioR;
+        private int totalBonoEspecialTemporadaR;
 
         private int totalRemuneracionesDeTodosLosTrabajadores;
 
@@ -60,6 +61,7 @@ namespace DeIntranetARex
         private String totalViaticoAhorroRComoString;
 
         private String totalBonoCompensatorioRComoString;
+        private String totalBonoEspecialTemporadaRComoString;
 
         private String totalRemuneracionesDeTodosLosTrabajadoresComoString;
 
@@ -94,6 +96,7 @@ namespace DeIntranetARex
             this.totalViaticoAhorroR = r.TotalViaticoAhorroR;
 
             this.TotalBonoCompensatorioR = r.TotalBonoCompensatorioR;
+            this.TotalBonoEspecialTemporadaR = r.TotalBonoEspecialTemporadaR;
 
             this.TotalR = r.TotalR;
             this.TotalRemuneracionesDeTodosLosTrabajadores = r.TotalRemuneracionesDeTodosLosTrabajadores;//.ToString();
@@ -126,6 +129,7 @@ namespace DeIntranetARex
             this.TotalViaticoAhorroRComoString = r.TotalViaticoAhorroR.ToString();
 
             this.TotalBonoCompensatorioRComoString = r.TotalBonoCompensatorioR.ToString();
+            this.TotalBonoEspecialTemporadaRComoString= r.TotalBonoEspecialTemporadaR.ToString();
 
 
             this.totalRemuneracionesDeTodosLosTrabajadoresComoString = r.TotalRemuneracionesDeTodosLosTrabajadores.ToString();
@@ -195,5 +199,7 @@ namespace DeIntranetARex
         public string TotalViaticoAhorroRComoString { get => totalViaticoAhorroRComoString; set => totalViaticoAhorroRComoString = value; }
         public int TotalBonoCompensatorioR { get => totalBonoCompensatorioR; set => totalBonoCompensatorioR = value; }
         public string TotalBonoCompensatorioRComoString { get => totalBonoCompensatorioRComoString; set => totalBonoCompensatorioRComoString = value; }
+        public int TotalBonoEspecialTemporadaR { get => totalBonoEspecialTemporadaR; set => totalBonoEspecialTemporadaR = value; }
+        public string TotalBonoEspecialTemporadaRComoString { get => totalBonoEspecialTemporadaRComoString; set => totalBonoEspecialTemporadaRComoString = value; }
     }
 }
