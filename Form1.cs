@@ -1227,6 +1227,7 @@ namespace DeIntranetARex
             DateTime dt = DateTime.Now;         
             int anioActual = dt.Year + 1;
 
+
             //esta seccion determina por cuantos anios se itera
             for (int i = 2022; i < anioActual; i++)//for (int i = 2022; i < 2023; i++)
             {
