@@ -1223,8 +1223,12 @@ namespace DeIntranetARex
 
             List<String> procesos = new List<String>();
 
+            //agregado el 02/11/2022, para asegurar la continuidad a lo largo de los anios, con los conceptos ya establecidos
+            DateTime dt = DateTime.Now;         
+            int anioActual = dt.Year + 1;
+
             //esta seccion determina por cuantos anios se itera
-            for (int i = 2022; i < 2023; i++)
+            for (int i = 2022; i < anioActual; i++)//for (int i = 2022; i < 2023; i++)
             {
                 for (int j = 1; j < 13; j++)
                 {
